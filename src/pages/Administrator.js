@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import AdminPage from '../components/AdminPage/AdminPage';
 import BasicContainer from '../components/BasicContainer';
+import NavBtn from '../components/NavBtn';
 
 const Container = styled.div`
   width: 1000px;
@@ -56,6 +57,7 @@ const Administrator = () => {
         value="확인" />
     </CheckPasswordForm>}
     {confirm && <AdminPage />}
+    <NavBtn />
   </Container>);
 }
 

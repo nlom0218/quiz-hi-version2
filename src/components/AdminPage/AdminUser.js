@@ -8,6 +8,7 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 40px;
+  margin-bottom: 60px;
 `
 
 const SetTypeBtn = styled.div`
@@ -23,11 +24,25 @@ const Type = styled.div`
   opacity: ${props => props.selected ? 1 : 0.6};
   padding: 10px;
   border-radius: 5px;
-  transition: opacity 0.6s ease;
+  transition: opacity 0.6s ease, color 1s ease, background-color 1s ease;
   cursor: pointer;
 `
 
-const UserList = styled.ul``
+const UserList = styled.ul`
+  display: grid;
+  background-color: rgb(200, 200, 200, 0.8);
+  row-gap: 1px;
+  border: 1px solid rgb(200, 200, 200, 0.8);
+  .sortItem {
+    padding: 15px 20px;
+    background-color: ${props => props.theme.blueColor};
+    color: ${props => props.theme.bgColor};
+    transition: background-color 1s ease, color 1s ease;
+    display: grid;
+    grid-template-columns: 1fr 3fr 4fr 3fr 1fr 1fr;
+    column-gap: 10px;
+  }
+`
 
 const ADMIN_SEE_USER_QUERY = gql`
   query adminSeeUser($type: String!, $page: Int!) {
@@ -35,6 +50,9 @@ const ADMIN_SEE_USER_QUERY = gql`
       user {
         id
         username
+        email
+        nickname
+        type
       }
       totalNum
     }
@@ -53,7 +71,6 @@ const AdminUser = () => {
   const [adminSeeUser, { loading }] = useLazyQuery(ADMIN_SEE_USER_QUERY, {
     onCompleted
   })
-  // console.log(data);
   const onClickType = (type) => {
     setType(type)
     adminSeeUser({
@@ -84,6 +101,13 @@ const AdminUser = () => {
     </SetTypeBtn>
     {loading ? "loading..." :
       <UserList>
+        <div className="sortItem">
+          <div>id</div>
+          <div>아이디</div>
+          <div>이메일</div>
+          <div>닉네임</div>
+          <div>타입</div>
+        </div>
         {user.map((item, index) => {
           return <UserItem key={index} {...item} />
         })}
