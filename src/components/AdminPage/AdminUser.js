@@ -2,6 +2,7 @@ import { useLazyQuery, useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import AdminUserSearch from './AdminUserSearch';
 import UserItem from './UserItem';
 
 const Container = styled.div`
@@ -92,6 +93,12 @@ const ADMIN_SEE_USER_QUERY = gql`
       totalNum
     }
   }
+`
+
+const DivisionLine = styled.div`
+  grid-column: 1 / -1;
+  height: 1px;
+  background-color: rgb(200, 200, 200, 0.6);
 `
 
 const AdminUser = () => {
@@ -195,7 +202,10 @@ const AdminUser = () => {
           })}
         </UserList>
       </React.Fragment>
+
     }
+    <DivisionLine></DivisionLine>
+    <AdminUserSearch />
   </Container>);
 }
 
