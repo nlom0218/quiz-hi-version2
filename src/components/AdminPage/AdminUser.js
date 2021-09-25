@@ -19,7 +19,7 @@ const Container = styled.div`
 
 const SetTypeBtn = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   column-gap: 60px;
 `
 
@@ -135,6 +135,10 @@ const AdminUser = () => {
       }
     })
   }
+  const onClickSearch = () => {
+    setType("search")
+    setUser([])
+  }
   useEffect(() => {
     if (!type) {
       return
@@ -179,6 +183,10 @@ const AdminUser = () => {
         selected={type === "student"}
         onClick={() => onClickType("student")}
       >학생</Type>
+      <Type
+        selected={type === "search"}
+        onClick={() => onClickSearch("search")}
+      >검색</Type>
     </SetTypeBtn>
     {user.length === 0 ? "" :
       <React.Fragment>
@@ -204,8 +212,8 @@ const AdminUser = () => {
       </React.Fragment>
 
     }
-    <DivisionLine></DivisionLine>
-    <AdminUserSearch />
+    {type === "search" &&
+      <AdminUserSearch />}
   </Container>);
 }
 

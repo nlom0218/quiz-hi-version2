@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 
 const Container = styled.div`
+  margin-top: 40px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   row-gap: 20px;
