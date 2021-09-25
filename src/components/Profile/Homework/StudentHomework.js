@@ -58,8 +58,6 @@ const StudentHomework = ({ students, id, type, username }) => {
     null
   )
   useEffect(() => {
-    if (user?.type === "student") {
-    }
     if (user?.type === "nomal") {
       history.push(`/profile/${username}/info`)
       return
@@ -70,6 +68,13 @@ const StudentHomework = ({ students, id, type, username }) => {
         return
       } else {
         history.push(`/profile/${username}/info`)
+      }
+    }
+    if (user?.type === "student") {
+      if (user?.id !== id) {
+        history.push(`/profile/${username}/info`)
+      } else {
+        return
       }
     }
   }, [])

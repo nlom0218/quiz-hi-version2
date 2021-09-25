@@ -172,7 +172,11 @@ const TopProfile = ({ id, username, nickname, email, avatarURL, type, score, isM
       return false
     }
     if (type === "student") {
-      return true
+      if (id === user?.id) {
+        return true
+      } else {
+        return false
+      }
     }
     const studentUsernameArr = user?.students.map((item) => item.username) || []
     if (studentUsernameArr.includes(username)) {
