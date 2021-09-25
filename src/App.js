@@ -51,7 +51,7 @@ function App() {
           <Route exact path="/login">{!isLoggedIn ? <Login /> : <NotFound />}</Route>
           <Route exact path="/create-account">{!isLoggedIn ? <CreateAccount /> : <NotFound />}</Route>
           <Route exact path="/password-reset">{!isLoggedIn ? <PasswordReset /> : <NotFound />}</Route>
-          <Route exact path="/administrator"><Administrator /></Route>
+          <Route exact path="/admin"><Administrator /></Route>
           <Route><NotFound /></Route>
         </Switch>
           :
