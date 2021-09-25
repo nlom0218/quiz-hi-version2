@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
+import AdminPage from '../components/AdminPage/AdminPage';
 import BasicContainer from '../components/BasicContainer';
 
 const Container = styled.div`
   width: 1200px;
   margin: 0 auto;
-  margin-top: 40px;
+  margin-top: 60px;
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 20px;
@@ -54,7 +55,7 @@ const Administrator = () => {
         type="submit"
         value="확인" />
     </CheckPasswordForm>}
-    {confirm && <div>굿!</div>}
+    {confirm && <AdminPage />}
   </Container>);
 }
 
