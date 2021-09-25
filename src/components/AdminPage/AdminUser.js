@@ -1,7 +1,8 @@
-import { useQuery } from '@apollo/client';
+import { useLazyQuery, useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import UserItem from './UserItem';
 
 const Container = styled.div`
   display: grid;
@@ -26,6 +27,8 @@ const Type = styled.div`
   cursor: pointer;
 `
 
+const UserList = styled.ul``
+
 const ADMIN_SEE_USER_QUERY = gql`
   query adminSeeUser($type: String!, $page: Int!) {
     adminSeeUser(type: $type, page: $page) {
@@ -40,18 +43,25 @@ const ADMIN_SEE_USER_QUERY = gql`
 
 
 const AdminUser = () => {
-  const [type, setType] = useState("all")
+  const [user, setUser] = useState([])
+  const [type, setType] = useState(undefined)
   const [page, setPage] = useState(1)
-  const { loading, data, refetch } = useQuery(ADMIN_SEE_USER_QUERY, {
-    variables: {
-      type,
-      page
-    }
+  const onCompleted = (result) => {
+    const { adminSeeUser: { user, totalNum } } = result
+    setUser(user)
+  }
+  const [adminSeeUser, { loading }] = useLazyQuery(ADMIN_SEE_USER_QUERY, {
+    onCompleted
   })
-  console.log(data);
+  // console.log(data);
   const onClickType = (type) => {
     setType(type)
-    refetch()
+    adminSeeUser({
+      variables: {
+        type,
+        page
+      }
+    })
   }
   return (<Container>
     <SetTypeBtn>
@@ -72,6 +82,13 @@ const AdminUser = () => {
         onClick={() => onClickType("student")}
       >학생</Type>
     </SetTypeBtn>
+    {loading ? "loading..." :
+      <UserList>
+        {user.map((item, index) => {
+          return <UserItem key={index} {...item} />
+        })}
+      </UserList>
+    }
   </Container>);
 }
 
