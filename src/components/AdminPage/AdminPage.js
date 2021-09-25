@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useHistory, useParams } from 'react-router';
 import styled from 'styled-components';
+import AdminUser from './AdminUser';
 
 const Container = styled.div`
   display: grid;
@@ -40,7 +41,7 @@ const AdminPage = () => {
           onClick={() => onClickList("msg")} /> 신고메시지
       </List>
     </Bar>
-    {mode === "user" && <div>user</div>}
+    {mode === "user" && <AdminUser />}
     {mode === "msg" && <div>msg</div>}
   </Container>);
 }
