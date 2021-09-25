@@ -204,7 +204,7 @@ const TopProfile = ({ id, username, nickname, email, avatarURL, type, score, isM
     <ProfileNav>
       <NavBtn
         onClick={() => onClickNavBtn("info")}
-        seleted={mode === "info" ? true : false}>프로필</NavBtn>
+        seleted={mode === "info" ? true : false}>프로필ㅇㅇ</NavBtn>
       {type !== "student" && <NavBtn
         onClick={() => onClickNavBtn("quizQuestion")}
         seleted={mode === "quizQuestion" ? true : false}>퀴즈 & 문제</NavBtn>}
