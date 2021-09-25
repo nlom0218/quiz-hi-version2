@@ -5,7 +5,7 @@ import AdminPage from '../components/AdminPage/AdminPage';
 import BasicContainer from '../components/BasicContainer';
 
 const Container = styled.div`
-  width: 1200px;
+  width: 1000px;
   margin: 0 auto;
   margin-top: 60px;
   display: grid;
