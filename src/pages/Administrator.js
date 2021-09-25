@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useHistory } from 'react-router';
 import styled from 'styled-components';
 import AdminPage from '../components/AdminPage/AdminPage';
 import BasicContainer from '../components/BasicContainer';
 import NavBtn from '../components/NavBtn';
+import useUser from '../hooks/useUser';
 
 const Container = styled.div`
   width: 1000px;
