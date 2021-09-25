@@ -65,6 +65,7 @@ const UserItem = styled.div`
 
 const EditBtn = styled.div`
   justify-self: flex-end;
+  cursor: pointer;
 `
 
 const Msg = styled.div`

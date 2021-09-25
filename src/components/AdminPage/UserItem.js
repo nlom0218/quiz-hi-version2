@@ -18,6 +18,7 @@ const Container = styled.li`
 
 const EditBtn = styled.div`
   justify-self: flex-end;
+  cursor: pointer;
 `
 
 const UserItem = ({ id, username, nickname, email, type }) => {

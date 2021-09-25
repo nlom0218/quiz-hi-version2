@@ -1,4 +1,5 @@
 import { faCheckCircle, faCircle } from '@fortawesome/free-regular-svg-icons';
+import { faUserShield } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useHistory, useParams } from 'react-router';
@@ -9,6 +10,12 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 60px;
+`
+
+const TopContents = styled.div`
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 20px;
 `
 
 const Bar = styled.div`
@@ -29,19 +36,21 @@ const AdminPage = () => {
     history.push(`/admin/${mode}`)
   }
   return (<Container>
-    <div style={{ fontWeight: "600" }}>관리자 페이지</div>
-    <Bar>
-      <List>
-        <FontAwesomeIcon
-          icon={mode === "user" ? faCheckCircle : faCircle}
-          onClick={() => onClickList("user")} /> 사용자
+    <TopContents>
+      <div style={{ fontWeight: "600" }}><FontAwesomeIcon icon={faUserShield} /> 관리자 페이지</div>
+      <Bar>
+        <List>
+          <FontAwesomeIcon
+            icon={mode === "user" ? faCheckCircle : faCircle}
+            onClick={() => onClickList("user")} /> 사용자
       </List>
-      <List>
-        <FontAwesomeIcon
-          icon={mode === "msg" ? faCheckCircle : faCircle}
-          onClick={() => onClickList("msg")} /> 신고메시지
+        <List>
+          <FontAwesomeIcon
+            icon={mode === "msg" ? faCheckCircle : faCircle}
+            onClick={() => onClickList("msg")} /> 신고메시지
       </List>
-    </Bar>
+      </Bar>
+    </TopContents>
     {mode === "user" && <AdminUser />}
     {mode === "msg" && <div>msg</div>}
   </Container>);
