@@ -2,6 +2,7 @@ import { useMutation, useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import React from 'react';
 import styled from 'styled-components';
+import useUser from '../../../hooks/useUser';
 import HomeworkItem from './HomeworkItem';
 
 const Container = styled.div`
@@ -84,6 +85,7 @@ const DELETE_ALL_HOMEWORK_MUTATION = gql`
 `
 
 const Homework = ({ id, type, students, setComplete }) => {
+  const user = useUser()
   const { data, loading } = useQuery(SEE_HOMEWORK_QUERY, {
     variables: {
       userId: id,
@@ -112,6 +114,13 @@ const Homework = ({ id, type, students, setComplete }) => {
       })
     }
   }
+  const allowDeleteBtn = () => {
+    if (type === "teacher" && id === user?.id) {
+      return true
+    } else {
+      return false
+    }
+  }
   return (<Container>
     {loading ? "loading..." : (data?.seeHomework.length === 0 ? <Msg>{type === "teacher" ? "내보낸 숙제가 없습니다." : "숙제가 없습니다."}</Msg> :
       <HomeworkLayout>
@@ -129,7 +138,7 @@ const Homework = ({ id, type, students, setComplete }) => {
             return <HomeworkItem {...item} key={index} students={students} userType={type} setComplete={setComplete} profileUserId={id} />
           })}
         </HomeworkList>
-        {type === "teacher" && <DeleteAllHomeworkBtn onClick={onClickDeleteAll}>전체 삭제</DeleteAllHomeworkBtn>}
+        {allowDeleteBtn() && <DeleteAllHomeworkBtn onClick={onClickDeleteAll}>전체 삭제</DeleteAllHomeworkBtn>}
       </HomeworkLayout>)
     }
   </Container>);

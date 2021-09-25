@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router';
 import styled from 'styled-components';
+import useUser from '../../../hooks/useUser';
 import DeleteAllStudentAccount from './DeleteAllStudentAccount';
 import Homework from './Homework';
 import SharedStudent from './SharedStudent';
@@ -37,6 +38,9 @@ const ManagemnetStudent = ({ students, id, quizScore: teacherQuizScore, type, us
   const history = useHistory()
   useEffect(() => {
     if (type === "student") {
+      history.push(`/profile/${username}/info`)
+    }
+    if (type === "nomal") {
       history.push(`/profile/${username}/info`)
     }
   })

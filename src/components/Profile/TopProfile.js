@@ -168,10 +168,10 @@ const TopProfile = ({ id, username, nickname, email, avatarURL, type, score, isM
     }
   }
   const seeHomework = () => {
-    if (user?.type === "nomal") {
+    if (type === "nomal") {
       return false
     }
-    if (user?.type === "student") {
+    if (type === "student") {
       return true
     }
     const studentUsernameArr = user?.students.map((item) => item.username) || []
@@ -180,6 +180,15 @@ const TopProfile = ({ id, username, nickname, email, avatarURL, type, score, isM
     } else {
       return false
     }
+  }
+  const notStudentProfileNam = () => {
+    if (type === "student") {
+      return false
+    }
+    if (user?.type === "student") {
+      return false
+    }
+    return true
   }
   return (<Container>
     <UserAvatar>
@@ -205,7 +214,7 @@ const TopProfile = ({ id, username, nickname, email, avatarURL, type, score, isM
       <NavBtn
         onClick={() => onClickNavBtn("info")}
         seleted={mode === "info" ? true : false}>프로필</NavBtn>
-      {type !== "student" && <NavBtn
+      {notStudentProfileNam() && <NavBtn
         onClick={() => onClickNavBtn("quizQuestion")}
         seleted={mode === "quizQuestion" ? true : false}>퀴즈 & 문제</NavBtn>}
       <NavBtn
