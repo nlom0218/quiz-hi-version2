@@ -171,18 +171,23 @@ const TopProfile = ({ id, username, nickname, email, avatarURL, type, score, isM
     if (type === "nomal") {
       return false
     }
+    if (user?.type === "teacher") {
+      if (type === "teacher") {
+        return false
+      }
+      const studentUsernameArr = user?.students.map((item) => item.username) || []
+      if (studentUsernameArr.includes(username)) {
+        return true
+      } else {
+        return false
+      }
+    }
     if (type === "student") {
       if (id === user?.id) {
         return true
       } else {
         return false
       }
-    }
-    const studentUsernameArr = user?.students.map((item) => item.username) || []
-    if (studentUsernameArr.includes(username)) {
-      return true
-    } else {
-      return false
     }
   }
   const notStudentProfileNam = () => {
