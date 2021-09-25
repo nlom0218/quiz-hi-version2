@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import useUser from '../../../hooks/useUser';
 import FollowSearch from './FollowSearch';
 import SeeFollower from './SeeFollower';
 import SeeFollowing from './SeeFollowing';
@@ -21,11 +22,14 @@ const DivisionLine = styled.div`
 `
 
 const ProfileFollow = ({ id, totalFollow, totalFollowing }) => {
+  const user = useUser()
   return (<Container>
     <SeeFollower userId={id} totalFollower={totalFollow} />
     <SeeFollowing userId={id} totalFollowing={totalFollowing} />
-    <DivisionLine></DivisionLine>
-    <FollowSearch userId={id} />
+    {user.id === id && <React.Fragment>
+      <DivisionLine></DivisionLine>
+      <FollowSearch userId={id} />
+    </React.Fragment>}
   </Container>);
 }
 
