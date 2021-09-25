@@ -23,6 +23,7 @@ import Library from './pages/Library';
 import LibraryMakeQuiz from './pages/LibraryMakeQuiz';
 import StudentNotFound from './pages/StudentNotFound';
 import PasswordReset from './pages/PasswordReset';
+import Administrator from "./pages/Administrator"
 
 function App() {
   const darkMode = useReactiveVar(darkModeVar)
@@ -50,6 +51,7 @@ function App() {
           <Route exact path="/login">{!isLoggedIn ? <Login /> : <NotFound />}</Route>
           <Route exact path="/create-account">{!isLoggedIn ? <CreateAccount /> : <NotFound />}</Route>
           <Route exact path="/password-reset">{!isLoggedIn ? <PasswordReset /> : <NotFound />}</Route>
+          <Route exact path="/administrator"><Administrator /></Route>
           <Route><NotFound /></Route>
         </Switch>
           :
