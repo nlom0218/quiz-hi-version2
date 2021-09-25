@@ -29,6 +29,7 @@ const AdminPage = () => {
     history.push(`/admin/${mode}`)
   }
   return (<Container>
+    <div style={{ fontWeight: "600" }}>관리자 페이지</div>
     <Bar>
       <List>
         <FontAwesomeIcon
