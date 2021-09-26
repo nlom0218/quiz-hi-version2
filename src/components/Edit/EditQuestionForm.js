@@ -13,13 +13,6 @@ import EidtTfQuestionAnswer from './EditTfQuestionAnswer';
 import { EidtMsg, InputTitle } from './sharedCss';
 
 const SEditForm = styled.form`
-  /* border: 1px solid ${props => props.theme.fontColor};
-  padding: 40px 30px;
-  display: grid;
-  grid-template-columns: 1fr;
-  row-gap: 60px;
-  transition: border 1s ease; */
-
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 60px;

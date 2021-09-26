@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory, useParams } from 'react-router';
 import styled from 'styled-components';
-import { fadeIn } from '../../animation/fade';
 import useUser from '../../hooks/useUser';
 import InputBtn from '../InputBtn';
 import EditInputLayout from './EditInputLayout';
@@ -12,14 +11,6 @@ import EditTagInput from './EditTagInput';
 import { EidtMsg, InputTitle } from './sharedCss';
 
 const SEditForm = styled.form`
-  /* border: 1px solid ${props => props.theme.fontColor};
-  padding: 40px 30px;
-  display: grid;
-  grid-template-columns: 1fr;
-  row-gap: 60px;
-  transition: border 1s ease;
-  box-shadow: ${props => props.theme.boxShadow}; */
-
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 60px;

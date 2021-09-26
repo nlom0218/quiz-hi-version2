@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { faCaretDown, faMinusCircle, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { faMinusCircle, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { fadeIn } from '../../animation/fade';
 import useUser from '../../hooks/useUser';

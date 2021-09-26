@@ -6,9 +6,8 @@ import React from 'react';
 import { useHistory, useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import useUser from '../../hooks/useUser';
 import EditQuestionForm from './EditQuestionForm';
-import { PageTitle, PrePage } from './sharedCss';
+import { PageTitle } from './sharedCss';
 
 const Container = styled.div`
   grid-column: 2 / -2;

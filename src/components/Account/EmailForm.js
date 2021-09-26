@@ -99,7 +99,6 @@ const EmailForm = ({ setDoneConfirm, setError, setEmail }) => {
     if (ok) {
       const randomNum = Math.floor(Math.random() * 1000000)
       setConfirmNum(randomNum)
-      console.log(randomNum);
       emailjs.send(
         "service_y3st5zf",
         "template_9ibugnm",

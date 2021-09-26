@@ -11,7 +11,7 @@ import AddOrDisConnectQuestions from './AddOrDisConnectQuestions';
 import AddQuestions from './AddQuestions';
 import DisconnectQuestions from './DisconnectQuestions';
 import EditQuizForm from './EditQuizForm';
-import { PageTitle, PrePage } from './sharedCss';
+import { PageTitle } from './sharedCss';
 
 const Container = styled.div`
   grid-column: 2 / -2;
