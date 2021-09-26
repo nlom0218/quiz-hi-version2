@@ -1,5 +1,7 @@
+import { useMutation } from '@apollo/client';
 import { faSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import gql from 'graphql-tag';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
@@ -35,11 +37,41 @@ const SubmitInput = styled.input`
   cursor: pointer;
 `
 
-const ChangeUserType = () => {
-  const { register } = useForm({
+const ADMIN_CHANGE_USER_TYPE_MUTATION = gql`
+  mutation adminChangeUserType($username: String!, $email: String!) {
+    adminChangeUserType(username: $username, email: $email) {
+      ok
+      error 
+    }
+  }
+`
+
+const ChangeUserType = ({ username }) => {
+  const { register, handleSubmit } = useForm({
     mode: 'onChange'
   })
-  return (<Container>
+  const onCompleted = (result) => {
+    const { adminChangeUserType: { ok } } = result
+    if (ok) {
+      window.alert("요청이 성공적으로 수행되었습니다.")
+    }
+  }
+  const [adminChangeUserType, { loading }] = useMutation(ADMIN_CHANGE_USER_TYPE_MUTATION, {
+    onCompleted
+  })
+  const onSubmit = (data) => {
+    if (loading) {
+      return
+    }
+    const { email } = data
+    adminChangeUserType({
+      variables: {
+        email,
+        username
+      }
+    })
+  }
+  return (<Container onSubmit={handleSubmit(onSubmit)}>
     <Title><FontAwesomeIcon icon={faSquare} /> 선생님 계정으로 변경하기</Title>
     <EmailInput
       {...register("email", { required: true })}

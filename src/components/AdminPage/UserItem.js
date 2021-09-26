@@ -56,7 +56,7 @@ const UserItem = ({ id, username, nickname, email, type }) => {
     <div>{processType()}</div>
     <EditBtn><FontAwesomeIcon icon={faCog} onClick={onClickEdit} /></EditBtn>
     {editMode && <EditBox>
-      {type === "nomal" && <ChangeUserType />}
+      {type === "nomal" && <ChangeUserType username={username} />}
     </EditBox>}
   </Container>);
 }
