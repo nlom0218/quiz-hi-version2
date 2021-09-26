@@ -88,7 +88,6 @@ const ADMIN_USER_SEARCH_MUTATION = gql`
 `
 
 const AdminUserSearch = () => {
-  const [editMode, setEditMode] = useState(false)
   const [user, setUser] = useState(undefined)
   const [msg, setMsg] = useState(undefined)
   const onCompleted = (result) => {

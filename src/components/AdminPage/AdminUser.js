@@ -102,7 +102,7 @@ const ADMIN_SEE_USER_QUERY = gql`
 const AdminUser = () => {
   const [user, setUser] = useState([])
   const [totalNum, setTotalNum] = useState(null)
-  const [type, setType] = useState(undefined)
+  const [seeType, seeTsetType] = useState(undefined)
   const [page, setPage] = useState(1)
   const [lastPage, setLastPage] = useState(1)
   const onCompleted = (result) => {
@@ -125,7 +125,7 @@ const AdminUser = () => {
   })
   const onClickType = (type) => {
     setPage(1)
-    setType(type)
+    seeTsetType(type)
     adminSeeUser({
       variables: {
         type,
@@ -134,16 +134,16 @@ const AdminUser = () => {
     })
   }
   const onClickSearch = () => {
-    setType("search")
+    seeTsetType("search")
     setUser([])
   }
   useEffect(() => {
-    if (!type) {
+    if (!seeType) {
       return
     }
     adminSeeUser({
       variables: {
-        type,
+        type: seeType,
         page
       }
     })
@@ -166,23 +166,23 @@ const AdminUser = () => {
   return (<Container>
     <SetTypeBtn>
       <Type
-        selected={type === "all"}
+        selected={seeType === "all"}
         onClick={() => onClickType("all")}
       >모두</Type>
       <Type
-        selected={type === "teacher"}
+        selected={seeType === "teacher"}
         onClick={() => onClickType("teacher")}
       >선생님</Type>
       <Type
-        selected={type === "nomal"}
+        selected={seeType === "nomal"}
         onClick={() => onClickType("nomal")}
       >일반</Type>
       <Type
-        selected={type === "student"}
+        selected={seeType === "student"}
         onClick={() => onClickType("student")}
       >학생</Type>
       <Type
-        selected={type === "search"}
+        selected={seeType === "search"}
         onClick={() => onClickSearch("search")}
       >검색</Type>
     </SetTypeBtn>
@@ -204,13 +204,13 @@ const AdminUser = () => {
             <div>타입</div>
           </div>
           {user.map((item, index) => {
-            return <UserItem key={index} {...item} type={type} />
+            return <UserItem key={index} {...item} seeType={seeType} />
           })}
         </UserList>
       </React.Fragment>
 
     }
-    {type === "search" &&
+    {seeType === "search" &&
       <AdminUserSearch />}
   </Container>);
 }
