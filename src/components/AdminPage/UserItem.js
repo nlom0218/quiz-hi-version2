@@ -6,6 +6,7 @@ import { fadeIn } from '../../animation/fade';
 import ChangeUserPassword from './ChangeUserPassword';
 import ChangeUserType from './ChangeUserType';
 import DeleteUser from './DeleteUser';
+import UserEditBox from './UserEditBox';
 
 const Container = styled.li`
   padding: 17px 20px;
@@ -25,16 +26,6 @@ const EditBtn = styled.div`
   justify-self: flex-end;
   cursor: pointer;
 `
-
-const EditBox = styled.div`
-  animation: ${fadeIn} 0.6s ease;
-  margin-left: 80px;
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: 1fr;
-  row-gap: 20px;
-`
-
 
 const UserItem = ({ id, username, nickname, email, type }) => {
   const [editMode, setEditMode] = useState(false)
@@ -60,11 +51,7 @@ const UserItem = ({ id, username, nickname, email, type }) => {
     <div>{nickname}</div>
     <div>{processType()}</div>
     <EditBtn><FontAwesomeIcon icon={faCog} onClick={onClickEdit} /></EditBtn>
-    {editMode && <EditBox>
-      {type === "nomal" && <ChangeUserType username={username} />}
-      <ChangeUserPassword username={username} />
-      <DeleteUser username={username} />
-    </EditBox>}
+    {editMode && <UserEditBox username={username} type={type} />}
   </Container>);
 }
 

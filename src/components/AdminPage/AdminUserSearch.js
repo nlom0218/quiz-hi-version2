@@ -5,6 +5,7 @@ import gql from 'graphql-tag';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
+import UserEditBox from './UserEditBox';
 
 const Container = styled.div`
   margin-top: 40px;
@@ -36,6 +37,7 @@ const UserList = styled.div`
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: 1fr;
+  row-gap: 20px;
   background-color: rgb(200, 200, 200, 0.8);
   row-gap: 1px;
   border: 1px solid rgb(200, 200, 200, 0.8);
@@ -86,6 +88,7 @@ const ADMIN_USER_SEARCH_MUTATION = gql`
 `
 
 const AdminUserSearch = () => {
+  const [editMode, setEditMode] = useState(false)
   const [user, setUser] = useState(undefined)
   const [msg, setMsg] = useState(undefined)
   const onCompleted = (result) => {
@@ -154,6 +157,7 @@ const AdminUserSearch = () => {
         <EditBtn><FontAwesomeIcon icon={faCog} /></EditBtn>
       </UserItem>
     </UserList>}
+    {user && <UserEditBox username={user?.username} type={user?.type} />}
     {msg && <Msg>검색결과가 없습니다.</Msg>}
   </Container>);
 }
