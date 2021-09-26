@@ -30,6 +30,7 @@ const EmailInput = styled.input`
 const SubmitInput = styled.input`
   background-color: ${props => props.theme.blueColor};
   color: ${props => props.theme.bgColor};
+  transition: background-color 1s ease, color 1s ease;
   text-align: center;
   cursor: pointer;
 `

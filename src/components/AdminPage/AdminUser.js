@@ -59,6 +59,7 @@ const PageBar = styled.div`
   border-radius: 5px;
   display: flex;
   position: relative;
+  transition: background-color 1s ease;
 `
 
 const PageBarBtn = styled.div`
