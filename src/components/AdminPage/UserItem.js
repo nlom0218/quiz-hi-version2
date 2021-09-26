@@ -2,6 +2,8 @@ import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { fadeIn } from '../../animation/fade';
+import ChangeUserType from './ChangeUserType';
 
 const Container = styled.li`
   padding: 17px 20px;
@@ -23,8 +25,14 @@ const EditBtn = styled.div`
 `
 
 const EditBox = styled.div`
+  animation: ${fadeIn} 0.6s ease;
+  margin-left: 80px;
   grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 20px;
 `
+
 
 const UserItem = ({ id, username, nickname, email, type }) => {
   const [editMode, setEditMode] = useState(false)
@@ -47,7 +55,9 @@ const UserItem = ({ id, username, nickname, email, type }) => {
     <div>{nickname}</div>
     <div>{processType()}</div>
     <EditBtn><FontAwesomeIcon icon={faCog} onClick={onClickEdit} /></EditBtn>
-    {editMode && <EditBox>수정합니다.</EditBox>}
+    {editMode && <EditBox>
+      {type === "nomal" && <ChangeUserType />}
+    </EditBox>}
   </Container>);
 }
 
