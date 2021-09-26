@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { fadeIn } from '../../animation/fade';
 import ChangeUserPassword from './ChangeUserPassword';
 import ChangeUserType from './ChangeUserType';
+import DeleteUser from './DeleteUser';
 
 const Container = styled.li`
   padding: 17px 20px;
@@ -62,6 +63,7 @@ const UserItem = ({ id, username, nickname, email, type }) => {
     {editMode && <EditBox>
       {type === "nomal" && <ChangeUserType username={username} />}
       <ChangeUserPassword username={username} />
+      <DeleteUser username={username} />
     </EditBox>}
   </Container>);
 }
