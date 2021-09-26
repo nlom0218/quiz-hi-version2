@@ -46,7 +46,7 @@ const ADMIN_CHANGE_USER_TYPE_MUTATION = gql`
   }
 `
 
-const ChangeUserType = ({ username }) => {
+const ChangeUserPassword = ({ username }) => {
   const { register, handleSubmit } = useForm({
     mode: 'onChange'
   })
@@ -72,12 +72,12 @@ const ChangeUserType = ({ username }) => {
     })
   }
   return (<Container onSubmit={handleSubmit(onSubmit)}>
-    <Title><FontAwesomeIcon icon={faSquare} /> 선생님 계정으로 변경하기</Title>
+    <Title><FontAwesomeIcon icon={faSquare} /> 계정 비밀번호 변경하기</Title>
     <EmailInput
       {...register("email", { required: true })}
       type="text"
       autoComplete="off"
-      placeholder="등록할 이메일을 입력하세요."
+      placeholder="비밀번호를 입력하세요."
     />
     <SubmitInput
       type="submit"
@@ -85,4 +85,4 @@ const ChangeUserType = ({ username }) => {
   </Container>);
 }
 
-export default ChangeUserType;
+export default ChangeUserPassword;

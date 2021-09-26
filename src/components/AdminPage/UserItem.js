@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { fadeIn } from '../../animation/fade';
+import ChangeUserPassword from './ChangeUserPassword';
 import ChangeUserType from './ChangeUserType';
 
 const Container = styled.li`
@@ -57,6 +58,7 @@ const UserItem = ({ id, username, nickname, email, type }) => {
     <EditBtn><FontAwesomeIcon icon={faCog} onClick={onClickEdit} /></EditBtn>
     {editMode && <EditBox>
       {type === "nomal" && <ChangeUserType username={username} />}
+      <ChangeUserPassword username={username} />
     </EditBox>}
   </Container>);
 }

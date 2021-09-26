@@ -48,6 +48,9 @@ const UserList = styled.ul`
     display: grid;
     grid-template-columns: 1fr 3fr 4fr 3fr 1fr 1fr;
     column-gap: 10px;
+    div {
+      font-weight: 600;
+    }
   }
 `
 
@@ -94,12 +97,6 @@ const ADMIN_SEE_USER_QUERY = gql`
       totalNum
     }
   }
-`
-
-const DivisionLine = styled.div`
-  grid-column: 1 / -1;
-  height: 1px;
-  background-color: rgb(200, 200, 200, 0.6);
 `
 
 const AdminUser = () => {
