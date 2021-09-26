@@ -85,7 +85,6 @@ const CONFIRM_EXIST_EMAIL_MUTATION = gql`
 
 const PasswordEmailForm = ({ setDoneConfirm, setError, setEmail }) => {
   const [confirmNum, setConfirmNum] = useState("")
-  console.log(confirmNum);
   const [sendEmail, setSendEmail] = useState(false)
   const [platform, setPlatForm] = useState("")
   const [sending, setSending] = useState(false)
