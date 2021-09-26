@@ -2,7 +2,7 @@ import { useMutation } from '@apollo/client';
 import { faSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import gql from 'graphql-tag';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 
@@ -10,6 +10,7 @@ const Container = styled.form`
   display: grid;
   grid-template-columns: 260px 3fr 1fr;
   column-gap: 20px;
+  row-gap: 20px;
   align-items: center;
   input {
     padding: 10px 20px;
@@ -37,6 +38,12 @@ const SubmitInput = styled.input`
   cursor: pointer;
 `
 
+const ErrMsg = styled.div`
+  grid-column: 1 / -1;
+  color: tomato;
+  text-align: center;
+`
+
 const ADMIN_CHANGE_USER_PASSWORD_MUTATION = gql`
   mutation adminChangeUserPassword($username: String!, $password: String!) {
     adminChangeUserPassword(username: $username, password: $password) {
@@ -47,11 +54,15 @@ const ADMIN_CHANGE_USER_PASSWORD_MUTATION = gql`
 `
 
 const ChangeUserPassword = ({ username }) => {
+  const [err, setErr] = useState(undefined)
   const { register, handleSubmit } = useForm({
     mode: 'onChange'
   })
   const onCompleted = (result) => {
-    const { adminChangeUserPassword: { ok } } = result
+    const { adminChangeUserPassword: { ok, error } } = result
+    if (!ok) {
+      setErr(error)
+    }
     if (ok) {
       window.alert("요청이 성공적으로 수행되었습니다.")
     }
@@ -82,6 +93,7 @@ const ChangeUserPassword = ({ username }) => {
     <SubmitInput
       type="submit"
       value="변경" />
+    {err && <ErrMsg>{err}</ErrMsg>}
   </Container>);
 }
 
