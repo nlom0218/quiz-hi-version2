@@ -37,9 +37,9 @@ const SubmitInput = styled.input`
   cursor: pointer;
 `
 
-const ADMIN_CHANGE_USER_TYPE_MUTATION = gql`
-  mutation adminChangeUserType($username: String!, $email: String!) {
-    adminChangeUserType(username: $username, email: $email) {
+const ADMIN_CHANGE_USER_PASSWORD_MUTATION = gql`
+  mutation adminChangeUserPassword($username: String!, $password: String!) {
+    adminChangeUserPassword(username: $username, password: $password) {
       ok
       error 
     }
@@ -51,22 +51,22 @@ const ChangeUserPassword = ({ username }) => {
     mode: 'onChange'
   })
   const onCompleted = (result) => {
-    const { adminChangeUserType: { ok } } = result
+    const { adminChangeUserPassword: { ok } } = result
     if (ok) {
       window.alert("요청이 성공적으로 수행되었습니다.")
     }
   }
-  const [adminChangeUserType, { loading }] = useMutation(ADMIN_CHANGE_USER_TYPE_MUTATION, {
+  const [adminChangeUserPassword, { loading }] = useMutation(ADMIN_CHANGE_USER_PASSWORD_MUTATION, {
     onCompleted
   })
   const onSubmit = (data) => {
     if (loading) {
       return
     }
-    const { email } = data
-    adminChangeUserType({
+    const { password } = data
+    adminChangeUserPassword({
       variables: {
-        email,
+        password,
         username
       }
     })
@@ -74,7 +74,7 @@ const ChangeUserPassword = ({ username }) => {
   return (<Container onSubmit={handleSubmit(onSubmit)}>
     <Title><FontAwesomeIcon icon={faSquare} /> 계정 비밀번호 변경하기</Title>
     <EmailInput
-      {...register("email", { required: true })}
+      {...register("password", { required: true })}
       type="text"
       autoComplete="off"
       placeholder="비밀번호를 입력하세요."
