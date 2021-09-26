@@ -204,7 +204,7 @@ const AdminUser = () => {
             <div>타입</div>
           </div>
           {user.map((item, index) => {
-            return <UserItem key={index} {...item} />
+            return <UserItem key={index} {...item} type={type} />
           })}
         </UserList>
       </React.Fragment>

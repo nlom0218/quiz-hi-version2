@@ -1,6 +1,6 @@
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { fadeIn } from '../../animation/fade';
 import ChangeUserPassword from './ChangeUserPassword';
@@ -46,6 +46,9 @@ const UserItem = ({ id, username, nickname, email, type }) => {
       return "학생"
     }
   }
+  useEffect(() => {
+    setEditMode(false)
+  }, [type])
   const onClickEdit = () => {
     setEditMode(prev => !prev)
   }
