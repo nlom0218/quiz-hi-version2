@@ -137,6 +137,7 @@ const UpdateDay = styled.div`
 `
 
 const UpdateContent = styled.textarea`
+  grid-column:  1 / -1;
   line-height: 25px;
   width: 100%;
   height: ${props => props.txtHeight}px;

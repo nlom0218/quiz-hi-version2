@@ -1,7 +1,9 @@
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { fadeIn } from '../../animation/fade';
+import ChangeUserType from './ChangeUserType';
 
 const Container = styled.li`
   padding: 17px 20px;
@@ -11,6 +13,7 @@ const Container = styled.li`
   display: grid;
   grid-template-columns: 1fr 3fr 4fr 3fr 1fr 1fr;
   column-gap: 10px;
+  row-gap: 20px;
   :hover {
     background-color: ${props => props.theme.grayColor};
   }
@@ -21,7 +24,18 @@ const EditBtn = styled.div`
   cursor: pointer;
 `
 
+const EditBox = styled.div`
+  animation: ${fadeIn} 0.6s ease;
+  margin-left: 80px;
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 20px;
+`
+
+
 const UserItem = ({ id, username, nickname, email, type }) => {
+  const [editMode, setEditMode] = useState(false)
   const processType = () => {
     if (type === "teacher") {
       return "선생님"
@@ -31,13 +45,19 @@ const UserItem = ({ id, username, nickname, email, type }) => {
       return "학생"
     }
   }
+  const onClickEdit = () => {
+    setEditMode(prev => !prev)
+  }
   return (<Container>
     <div>{id}</div>
     <div>{username}</div>
     <div>{email}</div>
     <div>{nickname}</div>
     <div>{processType()}</div>
-    <EditBtn><FontAwesomeIcon icon={faCog} /></EditBtn>
+    <EditBtn><FontAwesomeIcon icon={faCog} onClick={onClickEdit} /></EditBtn>
+    {editMode && <EditBox>
+      {type === "nomal" && <ChangeUserType username={username} />}
+    </EditBox>}
   </Container>);
 }
 
