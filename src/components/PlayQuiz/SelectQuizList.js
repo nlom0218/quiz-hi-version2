@@ -54,10 +54,11 @@ const List = styled.ul`
 `
 
 const Item = styled.li`
-  padding: 20px 20px;
+  padding: 10px 20px;
   padding-bottom: ${props => props.tags && "15px"};
   border-bottom: 1px solid rgb(200, 200, 200, 0.8);
   display: grid;
+  column-gap: 20px;
   grid-template-columns: 1fr auto;
   background-color: ${props => props.selected && "rgb(200, 200, 200, 0.2)"};
   transition: background-color 0.2s linear;
@@ -68,10 +69,11 @@ const Item = styled.li`
 
 const QuizTitle = styled.div`
   align-self: center;
+  line-height: 160%;
 `
 
 const SeleteQuizBtn = styled.div`
-  align-self: flex-start;
+  align-self: center;
   background-color: ${props => props.selected ? "rgb(255, 165, 0, 0.8)" : "rgb(255, 165, 0, 0.4)"};
   padding: 5px 10px;
   border-radius: 5px;
@@ -159,7 +161,7 @@ const SelectQuizList = ({ setQuizId, setQuizTitle }) => {
         {data?.seeFollowQuiz?.quiz.map((item, index) => {
           return <React.Fragment key={index}>
             <Item selected={selected(item.id)}>
-              <QuizTitle>{item.title.length > 35 ? `${item.title.substring(0, 35)}...` : item.title}</QuizTitle>
+              <QuizTitle>{item.title}</QuizTitle>
               <SeleteQuizBtn onClick={() => onClickQuiz(item.id, item.title)} selected={selected(item.id)}>
                 {selected(item.id) ? "선택됨" : "선택"}
               </SeleteQuizBtn>
