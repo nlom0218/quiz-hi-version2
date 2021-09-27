@@ -11,11 +11,11 @@ import { getCreatedDay } from '../../sharedFn';
 import { checkLibraryQuestionBasket, onClickLibraryQuestionBasketBtn } from './libraryBasketFn';
 
 const SQuizItem = styled.div`
-  padding: 20px;
+  padding: 10px 20px;
   padding-bottom: ${props => props.tags && "15px"};
   border-bottom: 1px solid rgb(200, 200, 200, 0.8);
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr 120px;
   grid-template-rows: repeat(2, auto);
   row-gap: 10px;
   transition: background-color 0.2s linear;
@@ -28,6 +28,7 @@ const QuizTitle = styled.div`
   grid-column: 1 / 2;
   justify-self: flex-start;
   font-weight: 600;
+  line-height: 160%;
   cursor: pointer;
 `
 
@@ -109,6 +110,8 @@ const QuizTag = styled.div`
 
 const QuizBasketBtn = styled.div`
   cursor: pointer;
+  line-height: 160%;
+  justify-self: flex-end;
 `
 
 const UPDATE_HIT_MUTATION = gql`
@@ -165,7 +168,7 @@ const QuestionItem = ({ id, question, user: { nickname, avatarURL, username, id:
   }
   return (<SQuizItem>
     <QuizTitle onClick={updateHit}>
-      {question.length > 40 ? `${question.substring(0, 40)}...` : question}
+      {question}
     </QuizTitle>
     <QuizBasketBtn onClick={() => {
       onClickLibraryQuestionBasketBtn(question, id)
