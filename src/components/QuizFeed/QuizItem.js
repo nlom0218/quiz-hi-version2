@@ -16,8 +16,7 @@ const SQuizItem = styled.div`
   padding-bottom: ${props => props.tags && "15px"};
   border-bottom: 1px solid rgb(200, 200, 200, 0.8);
   display: grid;
-  column-gap: 60px;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr 120px;
   grid-template-rows: repeat(2, auto);
   row-gap: 10px;
   transition: background-color 0.2s linear;
@@ -38,6 +37,7 @@ const EditBasketBtn = styled.div`
   grid-column: 2 / 3;
   display: flex;
   align-items: flex-start;
+  justify-self: flex-end;
   line-height: 160%;
 `
 

@@ -12,11 +12,11 @@ import { useMutation } from '@apollo/client';
 import useUser from '../../hooks/useUser';
 
 const SQuestionItem = styled.div`
-  padding: 20px;
+  padding: 10px 20px;
   padding-bottom: ${props => props.tags && "15px"};
   border-bottom: 1px solid rgb(200, 200, 200, 0.8);
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr 120px;
   grid-template-rows: repeat(2, auto);
   row-gap: 10px;
   transition: background-color 0.2s linear;
@@ -29,6 +29,7 @@ const QuizTitle = styled.div`
   grid-column: 1 / 2;
   justify-self: flex-start;
   font-weight: 600;
+  line-height: 160%;
   cursor: pointer;
 `
 
@@ -36,6 +37,8 @@ const EditBasketBtn = styled.div`
   grid-column: 2 / 3;
   display: flex;
   align-items: flex-start;
+  justify-self: flex-end;
+  line-height: 160%;
 `
 
 const EditBtn = styled.div`
@@ -203,7 +206,7 @@ const QuestionItem = (
   }
   return (<SQuestionItem tags={tags.length !== 0 ? true : false}>
     <QuizTitle onClick={onClickTitle}>
-      {question.length > 40 ? `${question.substring(0, 40)}...` : question}
+      {question}
     </QuizTitle>
     <EditBasketBtn>
       {editMode() && <EditBtn onClick={onClickEditBtn}>
