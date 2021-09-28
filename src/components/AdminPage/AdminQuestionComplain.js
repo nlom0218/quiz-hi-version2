@@ -67,7 +67,7 @@ const AdminQuestionComplain = () => {
   return (contents.length === 0 ? "" :
     <React.Fragment>
       <div className="topContent">
-        <TotalNum>{totalNum}명의 퀴즈 신고</TotalNum>
+        <TotalNum>{totalNum}명의 문제 신고</TotalNum>
         <PageBar>
           <PageBarBtn firstPage={page === 1 ? true : false} onClick={() => onClickPageBtn("pre")}>이전</PageBarBtn>
           <PageBarBtn lastPage={lastPage === page} onClick={() => onClickPageBtn("next")}>다음</PageBarBtn>
