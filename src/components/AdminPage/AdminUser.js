@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import AdminUserSearch from './AdminUserSearch';
-import { SetTypeBtn, Type } from './sharedCss';
+import { PageBar, PageBarBtn, SetTypeBtn, TotalNum, Type } from './sharedCss';
 import UserItem from './UserItem';
 
 const Container = styled.div`
@@ -37,36 +37,6 @@ const UserList = styled.ul`
     }
   }
 `
-
-const PageBar = styled.div`
-  justify-self: flex-end;
-  align-self: flex-end;
-  border: 1px solid rgb(200, 200, 200, 0.6);
-  background-color: ${props => props.theme.bgColor};
-  border-radius: 5px;
-  display: flex;
-  position: relative;
-  transition: background-color 1s ease;
-`
-
-const PageBarBtn = styled.div`
-  padding: 8px 20px;
-  transition: background-color 0.2s linear;
-  :hover {
-    background-color: rgb(200, 200, 200, 0.2);
-  }
-  :first-child {
-    border-right: 1px solid rgb(200, 200, 200, 0.6);
-    opacity: ${props => props.firstPage ? "0.4" : "1"};
-    cursor: ${props => props.firstPage ? "not-allowd" : "pointer"};
-  }
-  :nth-child(2) {
-    opacity: ${props => props.lastPage ? "0.4" : "1"};
-    cursor: ${props => props.lastPage ? "not-allowd" : "pointer"};
-  }
-`
-
-const UserTotalNum = styled.div``
 
 const ADMIN_SEE_USER_QUERY = gql`
   query adminSeeUser($type: String!, $page: Int!) {
@@ -173,7 +143,7 @@ const AdminUser = () => {
     {user.length === 0 ? "" :
       <React.Fragment>
         <div className="topContent">
-          <UserTotalNum>{totalNum}명의 유저</UserTotalNum>
+          <TotalNum>{totalNum}명의 유저</TotalNum>
           <PageBar>
             <PageBarBtn firstPage={page === 1 ? true : false} onClick={() => onClickPageBtn("pre")}>이전</PageBarBtn>
             <PageBarBtn lastPage={lastPage === page} onClick={() => onClickPageBtn("next")}>다음</PageBarBtn>
@@ -192,7 +162,6 @@ const AdminUser = () => {
           })}
         </UserList>
       </React.Fragment>
-
     }
     {seeType === "search" &&
       <AdminUserSearch />}

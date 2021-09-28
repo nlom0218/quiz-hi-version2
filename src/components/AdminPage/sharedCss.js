@@ -16,3 +16,33 @@ export const Type = styled.div`
   transition: opacity 0.6s ease, color 1s ease, background-color 1s ease;
   cursor: pointer;
 `
+
+export const TotalNum = styled.div``
+
+export const PageBar = styled.div`
+  justify-self: flex-end;
+  align-self: flex-end;
+  border: 1px solid rgb(200, 200, 200, 0.6);
+  background-color: ${props => props.theme.bgColor};
+  border-radius: 5px;
+  display: flex;
+  position: relative;
+  transition: background-color 1s ease;
+`
+
+export const PageBarBtn = styled.div`
+  padding: 8px 20px;
+  transition: background-color 0.2s linear;
+  :hover {
+    background-color: rgb(200, 200, 200, 0.2);
+  }
+  :first-child {
+    border-right: 1px solid rgb(200, 200, 200, 0.6);
+    opacity: ${props => props.firstPage ? "0.4" : "1"};
+    cursor: ${props => props.firstPage ? "not-allowd" : "pointer"};
+  }
+  :nth-child(2) {
+    opacity: ${props => props.lastPage ? "0.4" : "1"};
+    cursor: ${props => props.lastPage ? "not-allowd" : "pointer"};
+  }
+`
