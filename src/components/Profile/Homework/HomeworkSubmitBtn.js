@@ -71,7 +71,7 @@ const HomeworkSubmitBtn = ({ setSaveMsg, quizTitle }) => {
           studentAnswerStr = studentAnswer.sort().join(",")
           result = quizAnswerStr === studentAnswerStr
         } else if (item.type === "tf") {
-          studentAnswerStr = "" + studentAnswer
+          studentAnswerStr = studentAnswer
           result = item.answer === studentAnswerStr
         } else if (item.type === "sub") {
           const quizAnswerStr = item.answer.replace(/(\s*)/g, "").toLowerCase()

@@ -142,8 +142,8 @@ const HomeworkAnswer = ({ type, register, id, isValid, setChange }) => {
       </ObjAnswerList>
     </ObjAnswerInput>}
     {type === "tf" && <TFAnswerInput>
-      <TFAnswerList onClick={() => onClickAnswer(id, true)} check={processAnswer(id, true)} >○</TFAnswerList>
-      <TFAnswerList onClick={() => onClickAnswer(id, false)} check={processAnswer(id, false)} >✕</TFAnswerList>
+      <TFAnswerList onClick={() => onClickAnswer(id, "true")} check={processAnswer(id, "true")} >○</TFAnswerList>
+      <TFAnswerList onClick={() => onClickAnswer(id, "false")} check={processAnswer(id, "false")} >✕</TFAnswerList>
     </TFAnswerInput>}
     {type === "sub" &&
       <Wrapper>
