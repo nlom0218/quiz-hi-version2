@@ -4,27 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import gql from 'graphql-tag';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { PageBar, PageBarBtn, TotalNum } from './sharedCss';
-
-const QuizList = styled.ul`
-  display: grid;
-  grid-template-columns: 1fr;
-  background-color: rgb(200, 200, 200, 0.8);
-  row-gap: 1px;
-  border: 1px solid rgb(200, 200, 200, 0.8);
-  .sortItem {
-    padding: 15px 20px;
-    background-color: ${props => props.theme.blueColor};
-    color: ${props => props.theme.bgColor};
-    transition: background-color 1s ease, color 1s ease;
-    display: grid;
-    grid-template-columns: 1.5fr 3fr 3fr 4fr 1fr;
-    column-gap: 10px;
-    div {
-      font-weight: 600;
-    }
-  }
-`
+import { PageBar, PageBarBtn, QuizQuestionList, TotalNum } from './sharedCss';
 
 const ADMIN_SEE_QUIZ_COMPLAIN_QUERY = gql`
   query adminSeeQuizComplain($page: Int!) {
@@ -94,7 +74,7 @@ const AdminQuizComplain = () => {
           <PageBarBtn lastPage={lastPage === page} onClick={() => onClickPageBtn("next")}>다음</PageBarBtn>
         </PageBar>
       </div>
-      <QuizList>
+      <QuizQuestionList>
         <div className="sortItem">
           <div>퀴즈ID</div>
           <div>보낸이ID</div>
@@ -105,7 +85,7 @@ const AdminQuizComplain = () => {
         {/* {user.map((item, index) => {
           return <UserItem key={index} {...item} seeType={seeType} />
         })} */}
-      </QuizList>
+      </QuizQuestionList>
     </React.Fragment>
   );
 }
