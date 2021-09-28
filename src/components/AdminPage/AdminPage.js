@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useHistory, useParams } from 'react-router';
 import styled from 'styled-components';
+import AdminComplain from './AdminComplain';
 import AdminUser from './AdminUser';
 
 const Container = styled.div`
@@ -47,12 +48,12 @@ const AdminPage = () => {
         <List>
           <FontAwesomeIcon
             icon={mode === "msg" ? faCheckCircle : faCircle}
-            onClick={() => onClickList("msg")} /> 신고메시지
+            onClick={() => onClickList("msg")} /> 퀴즈 / 문제 신고
       </List>
       </Bar>
     </TopContents>
     {mode === "user" && <AdminUser />}
-    {mode === "msg" && <div>msg</div>}
+    {mode === "msg" && <AdminComplain />}
   </Container>);
 }
 
