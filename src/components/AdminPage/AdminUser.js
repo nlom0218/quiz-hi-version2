@@ -3,6 +3,7 @@ import gql from 'graphql-tag';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import AdminUserSearch from './AdminUserSearch';
+import { SetTypeBtn, Type } from './sharedCss';
 import UserItem from './UserItem';
 
 const Container = styled.div`
@@ -15,23 +16,6 @@ const Container = styled.div`
     grid-template-columns: 1fr auto;
     align-items: flex-end;
   }
-`
-
-const SetTypeBtn = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  column-gap: 60px;
-`
-
-const Type = styled.div`
-  text-align: center;
-  background-color: ${props => props.theme.blueColor};
-  color: ${props => props.theme.bgColor};
-  opacity: ${props => props.selected ? 1 : 0.6};
-  padding: 10px;
-  border-radius: 5px;
-  transition: opacity 0.6s ease, color 1s ease, background-color 1s ease;
-  cursor: pointer;
 `
 
 const UserList = styled.ul`
@@ -102,7 +86,7 @@ const ADMIN_SEE_USER_QUERY = gql`
 const AdminUser = () => {
   const [user, setUser] = useState([])
   const [totalNum, setTotalNum] = useState(null)
-  const [seeType, seeTsetType] = useState(undefined)
+  const [seeType, setSeeType] = useState(undefined)
   const [page, setPage] = useState(1)
   const [lastPage, setLastPage] = useState(1)
   const onCompleted = (result) => {
@@ -125,7 +109,7 @@ const AdminUser = () => {
   })
   const onClickType = (type) => {
     setPage(1)
-    seeTsetType(type)
+    setSeeType(type)
     adminSeeUser({
       variables: {
         type,
@@ -134,7 +118,7 @@ const AdminUser = () => {
     })
   }
   const onClickSearch = () => {
-    seeTsetType("search")
+    setSeeType("search")
     setUser([])
   }
   useEffect(() => {
