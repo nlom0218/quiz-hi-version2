@@ -55,7 +55,11 @@ row-gap: 1px;
 border: 1px solid rgb(200, 200, 200, 0.8);
 .detail_content {
     justify-self: center;
+    cursor: pointer;
   }
+.link_btn {
+  cursor: pointer;
+}
 .sortItem {
   padding: 15px 20px;
   background-color: ${props => props.theme.blueColor};

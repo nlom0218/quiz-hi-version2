@@ -75,6 +75,14 @@ const AdminQuizComplain = () => {
     const { username } = obj
     return username
   }
+  const onCLickId = (id) => {
+    window.open(`/detail/quiz/${id}`, "_blank")
+  }
+  const onCLickUser = (str) => {
+    const obj = JSON.parse(str)
+    const { username } = obj
+    window.open(`/profile/${username}/info`, "_blank")
+  }
   return (contents.length === 0 ? "신고된 퀴즈가 없습니다." :
     <React.Fragment>
       <div className="topContent">
@@ -94,9 +102,9 @@ const AdminQuizComplain = () => {
         </div>
         {contents.map((item, index) => {
           return <ContentItem key={index}>
-            <div>{item.quiz.id}</div>
-            <div>{processSender(item.sender)}</div>
-            <div>{processReceiver(item.receiver)}</div>
+            <div className="link_btn" onClick={() => onCLickId(item.quiz.id)}>{item.quiz.id}</div>
+            <div className="link_btn" onClick={() => onCLickUser(item.sender)}>{processSender(item.sender)}</div>
+            <div className="link_btn" onClick={() => onCLickUser(item.receiver)}>{processReceiver(item.receiver)}</div>
             <div>{item.message}</div>
             <div className="detail_content"><FontAwesomeIcon icon={faInfoCircle} /></div>
           </ContentItem>
