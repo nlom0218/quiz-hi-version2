@@ -64,7 +64,7 @@ const AdminQuestionComplain = () => {
       }
     }
   }
-  return (contents.length === 0 ? "" :
+  return (contents.length === 0 ? "신고된 문제가 없습니다." :
     <React.Fragment>
       <div className="topContent">
         <TotalNum>{totalNum}명의 문제 신고</TotalNum>

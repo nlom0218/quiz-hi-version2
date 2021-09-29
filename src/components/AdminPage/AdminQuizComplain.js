@@ -65,7 +65,7 @@ const AdminQuizComplain = () => {
       }
     }
   }
-  return (contents.length === 0 ? "" :
+  return (contents.length === 0 ? "신고된 퀴즈가 없습니다." :
     <React.Fragment>
       <div className="topContent">
         <TotalNum>{totalNum}명의 퀴즈 신고</TotalNum>
