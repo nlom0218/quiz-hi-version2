@@ -69,3 +69,16 @@ border: 1px solid rgb(200, 200, 200, 0.8);
   }
 }
 `
+
+export const ContentItem = styled.div`
+  padding: 17px 20px;
+  line-height: 160%;
+  background-color: ${props => props.theme.boxColor};
+  transition: background-color 1s ease;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1.5fr 4fr 1fr;
+  column-gap: 10px;
+  :hover {
+    background-color: ${props => props.theme.grayColor};
+  }
+`

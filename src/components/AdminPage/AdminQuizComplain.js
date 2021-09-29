@@ -1,10 +1,10 @@
 import { useQuery } from '@apollo/client';
-import { faInfo } from '@fortawesome/free-solid-svg-icons';
+import { faInfo, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import gql from 'graphql-tag';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { PageBar, PageBarBtn, QuizQuestionList, TotalNum } from './sharedCss';
+import { ContentItem, PageBar, PageBarBtn, QuizQuestionList, TotalNum } from './sharedCss';
 
 const ADMIN_SEE_QUIZ_COMPLAIN_QUERY = gql`
   query adminSeeQuizComplain($page: Int!) {
@@ -65,6 +65,16 @@ const AdminQuizComplain = () => {
       }
     }
   }
+  const processSender = (str) => {
+    const obj = JSON.parse(str)
+    const { username } = obj
+    return username
+  }
+  const processReceiver = (str) => {
+    const obj = JSON.parse(str)
+    const { username } = obj
+    return username
+  }
   return (contents.length === 0 ? "신고된 퀴즈가 없습니다." :
     <React.Fragment>
       <div className="topContent">
@@ -82,9 +92,15 @@ const AdminQuizComplain = () => {
           <div>신고내용</div>
           <div className="detail_content">상세보기</div>
         </div>
-        {/* {user.map((item, index) => {
-          return <UserItem key={index} {...item} seeType={seeType} />
-        })} */}
+        {contents.map((item, index) => {
+          return <ContentItem key={index}>
+            <div>{item.quiz.id}</div>
+            <div>{processSender(item.sender)}</div>
+            <div>{processReceiver(item.receiver)}</div>
+            <div>{item.message}</div>
+            <div className="detail_content"><FontAwesomeIcon icon={faInfoCircle} /></div>
+          </ContentItem>
+        })}
       </QuizQuestionList>
     </React.Fragment>
   );
