@@ -53,13 +53,16 @@ grid-template-columns: 1fr;
 background-color: rgb(200, 200, 200, 0.8);
 row-gap: 1px;
 border: 1px solid rgb(200, 200, 200, 0.8);
+.detail_content {
+    justify-self: center;
+  }
 .sortItem {
   padding: 15px 20px;
   background-color: ${props => props.theme.blueColor};
   color: ${props => props.theme.bgColor};
   transition: background-color 1s ease, color 1s ease;
   display: grid;
-  grid-template-columns: 1.5fr 3fr 3fr 4fr 1fr;
+  grid-template-columns: 1fr 1.5fr 1.5fr 4fr 1fr;
   column-gap: 10px;
   div {
     font-weight: 600;

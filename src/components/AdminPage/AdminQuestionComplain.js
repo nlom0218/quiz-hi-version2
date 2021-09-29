@@ -1,7 +1,10 @@
 
 import { useQuery } from '@apollo/client';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import gql from 'graphql-tag';
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import { PageBar, PageBarBtn, QuizQuestionList, TotalNum } from './sharedCss';
 
 const ADMIN_SEE_QUESTION_COMPLAIN_QUERY = gql`
@@ -19,6 +22,19 @@ const ADMIN_SEE_QUESTION_COMPLAIN_QUERY = gql`
         receiver
       }
     }
+  }
+`
+
+const ContentItem = styled.div`
+  padding: 17px 20px;
+  line-height: 160%;
+  background-color: ${props => props.theme.boxColor};
+  transition: background-color 1s ease;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1.5fr 4fr 1fr;
+  column-gap: 10px;
+  :hover {
+    background-color: ${props => props.theme.grayColor};
   }
 `
 
@@ -64,6 +80,16 @@ const AdminQuestionComplain = () => {
       }
     }
   }
+  const processSender = (str) => {
+    const obj = JSON.parse(str)
+    const { username } = obj
+    return username
+  }
+  const processReceiver = (str) => {
+    const obj = JSON.parse(str)
+    const { username } = obj
+    return username
+  }
   return (contents.length === 0 ? "신고된 문제가 없습니다." :
     <React.Fragment>
       <div className="topContent">
@@ -79,11 +105,17 @@ const AdminQuestionComplain = () => {
           <div>보낸이ID</div>
           <div>받은이ID</div>
           <div>신고내용</div>
-          <div>상세보기</div>
+          <div className="detail_content">상세보기</div>
         </div>
-        {/* {user.map((item, index) => {
-        return <UserItem key={index} {...item} seeType={seeType} />
-      })} */}
+        {contents.map((item, index) => {
+          return <ContentItem key={index}>
+            <div>{item.question.id}</div>
+            <div>{processSender(item.sender)}</div>
+            <div>{processReceiver(item.receiver)}</div>
+            <div>{item.message}</div>
+            <div className="detail_content"><FontAwesomeIcon icon={faInfoCircle} /></div>
+          </ContentItem>
+        })}
       </QuizQuestionList>
     </React.Fragment>);
 }

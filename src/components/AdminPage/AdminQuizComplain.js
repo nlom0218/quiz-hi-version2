@@ -80,7 +80,7 @@ const AdminQuizComplain = () => {
           <div>보낸이ID</div>
           <div>받은이ID</div>
           <div>신고내용</div>
-          <div>상세보기</div>
+          <div className="detail_content">상세보기</div>
         </div>
         {/* {user.map((item, index) => {
           return <UserItem key={index} {...item} seeType={seeType} />
