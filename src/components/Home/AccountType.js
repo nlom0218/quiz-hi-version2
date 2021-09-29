@@ -62,7 +62,7 @@ const AccountType = () => {
           <Icon><FontAwesomeIcon icon={faChild} />학생</Icon>
           <Description>
             학생 계정은 선생님 계정을 통해서 생성할 수 있습니다.
-            학생들은 선생님이 봬는 퀴즈를 풀 수 있으며 얻은 점수로 레벨을 올릴 수 있습니다.
+            학생들은 선생님이 보내는 퀴즈를 풀 수 있으며 얻은 점수로 레벨을 올릴 수 있습니다.
           </Description>
         </Wapper>
         <Wapper>
