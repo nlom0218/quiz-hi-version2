@@ -40,9 +40,14 @@ const UserItem = ({ id, username, nickname, email, type }) => {
   const onClickEdit = () => {
     setEditMode(prev => !prev)
   }
+  const onCLickUser = () => {
+    window.open(`/profile/${username}/info`, "_blank")
+  }
   return (<Container>
     <div>{id}</div>
-    <div>{username}</div>
+    <div onClick={onCLickUser}
+      style={{ cursor: "pointer" }}
+    >{username}</div>
     <div>{email}</div>
     <div>{nickname}</div>
     <div>{processType()}</div>
