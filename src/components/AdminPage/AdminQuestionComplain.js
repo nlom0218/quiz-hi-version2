@@ -4,6 +4,8 @@ import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import gql from 'graphql-tag';
 import React, { useState } from 'react';
+import AdminComplainDetail from './AdminComplainDetail';
+import AdminQuestionComplainItem from './AdminQuestionComplainItem';
 import { PageBar, PageBarBtn, QuizQuestionList, TotalNum, ContentItem } from './sharedCss';
 
 const ADMIN_SEE_QUESTION_COMPLAIN_QUERY = gql`
@@ -25,6 +27,7 @@ const ADMIN_SEE_QUESTION_COMPLAIN_QUERY = gql`
 `
 
 const AdminQuestionComplain = () => {
+  const [seeInfo, setSeeInfo] = useState(false)
   const [contents, setContents] = useState([])
   const [totalNum, setTotalNum] = useState(null)
   const [page, setPage] = useState(1)
@@ -65,24 +68,6 @@ const AdminQuestionComplain = () => {
       }
     }
   }
-  const processSender = (str) => {
-    const obj = JSON.parse(str)
-    const { username } = obj
-    return username
-  }
-  const processReceiver = (str) => {
-    const obj = JSON.parse(str)
-    const { username } = obj
-    return username
-  }
-  const onCLickId = (id) => {
-    window.open(`/detail/question/${id}`, "_blank")
-  }
-  const onCLickUser = (str) => {
-    const obj = JSON.parse(str)
-    const { username } = obj
-    window.open(`/profile/${username}/info`, "_blank")
-  }
   return (contents.length === 0 ? "신고된 문제가 없습니다." :
     <React.Fragment>
       <div className="topContent">
@@ -101,13 +86,7 @@ const AdminQuestionComplain = () => {
           <div className="detail_content">상세보기</div>
         </div>
         {contents.map((item, index) => {
-          return <ContentItem key={index}>
-            <div className="link_btn" onClick={() => onCLickId(item.question.id)}>{item.question.id}</div>
-            <div className="link_btn" onClick={() => onCLickUser(item.sender)}>{processSender(item.sender)}</div>
-            <div className="link_btn" onClick={() => onCLickUser(item.receiver)}>{processReceiver(item.receiver)}</div>
-            <div>{item.message}</div>
-            <div className="detail_content"><FontAwesomeIcon icon={faInfoCircle} /></div>
-          </ContentItem>
+          return <AdminQuestionComplainItem key={index} {...item} />
         })}
       </QuizQuestionList>
     </React.Fragment>);

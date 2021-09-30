@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import gql from 'graphql-tag';
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import AdminQuizComplainItem from './AdminQuizComplainItem';
 import { ContentItem, PageBar, PageBarBtn, QuizQuestionList, TotalNum } from './sharedCss';
 
 const ADMIN_SEE_QUIZ_COMPLAIN_QUERY = gql`
@@ -65,24 +66,6 @@ const AdminQuizComplain = () => {
       }
     }
   }
-  const processSender = (str) => {
-    const obj = JSON.parse(str)
-    const { username } = obj
-    return username
-  }
-  const processReceiver = (str) => {
-    const obj = JSON.parse(str)
-    const { username } = obj
-    return username
-  }
-  const onCLickId = (id) => {
-    window.open(`/detail/quiz/${id}`, "_blank")
-  }
-  const onCLickUser = (str) => {
-    const obj = JSON.parse(str)
-    const { username } = obj
-    window.open(`/profile/${username}/info`, "_blank")
-  }
   return (contents.length === 0 ? "신고된 퀴즈가 없습니다." :
     <React.Fragment>
       <div className="topContent">
@@ -101,13 +84,7 @@ const AdminQuizComplain = () => {
           <div className="detail_content">상세보기</div>
         </div>
         {contents.map((item, index) => {
-          return <ContentItem key={index}>
-            <div className="link_btn" onClick={() => onCLickId(item.quiz.id)}>{item.quiz.id}</div>
-            <div className="link_btn" onClick={() => onCLickUser(item.sender)}>{processSender(item.sender)}</div>
-            <div className="link_btn" onClick={() => onCLickUser(item.receiver)}>{processReceiver(item.receiver)}</div>
-            <div>{item.message}</div>
-            <div className="detail_content"><FontAwesomeIcon icon={faInfoCircle} /></div>
-          </ContentItem>
+          return <AdminQuizComplainItem key={index} {...item} />
         })}
       </QuizQuestionList>
     </React.Fragment>
