@@ -34,7 +34,7 @@ const AdminQuizComplainItem = ({ quiz, sender, receiver, message }) => {
     <div className="link_btn" onClick={() => onCLickUser(receiver)}>{processReceiver(receiver)}</div>
     <div>{message}</div>
     <div className="detail_content"><FontAwesomeIcon icon={faInfoCircle} onClick={onClickInfoBtn} /></div>
-    {seeInfo && <AdminComplainDetail />}
+    {seeInfo && <AdminComplainDetail type="quiz" id={quiz.id} />}
   </ContentItem>);
 }
 
