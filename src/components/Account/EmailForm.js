@@ -7,6 +7,8 @@ import { faPaperPlane, faRedoAlt, faSpinner } from '@fortawesome/free-solid-svg-
 import EmailConfirm from './EmailConfirm';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/client';
+import dotenv from "dotenv"
+dotenv.config()
 
 const Wrapper = styled.div``
 
@@ -85,7 +87,6 @@ const CONFIRM_EMAIL_MUTATION = gql`
 
 const EmailForm = ({ setDoneConfirm, setError, setEmail }) => {
   const [confirmNum, setConfirmNum] = useState("")
-  console.log(confirmNum);
   const [sendEmail, setSendEmail] = useState(false)
   const [platform, setPlatForm] = useState("")
   const [sending, setSending] = useState(false)
@@ -100,13 +101,13 @@ const EmailForm = ({ setDoneConfirm, setError, setEmail }) => {
       const randomNum = Math.floor(Math.random() * 1000000)
       setConfirmNum(randomNum)
       emailjs.send(
-        "service_y3st5zf",
-        "template_9ibugnm",
+        process.env.REACT_APP_EMAILSERVICEID,
+        process.env.REACT_APP_EMAILTEMPLATEID,
         {
           email,
           confirmNum: randomNum
         },
-        "user_sJAAszXnKTFqusb3xguHm")
+        process.env.REACT_APP_EMAILUSERID)
         .then((result) => {
           setSendEmail(true)
           setSending(false)
