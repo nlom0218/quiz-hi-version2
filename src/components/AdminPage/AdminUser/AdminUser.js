@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import AdminUserSearch from './AdminUserSearch';
-import { PageBar, PageBarBtn, SetTypeBtn, TotalNum, Type } from './sharedCss';
+import { PageBar, PageBarBtn, SetTypeBtn, TotalNum, Type } from '../sharedCss';
 import UserItem from './UserItem';
 
 const Container = styled.div`

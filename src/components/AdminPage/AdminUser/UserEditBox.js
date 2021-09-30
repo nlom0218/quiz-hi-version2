@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { fadeIn } from '../../animation/fade';
+import { fadeIn } from '../../../animation/fade';
 import ChangeUserPassword from './ChangeUserPassword';
 import ChangeUserType from './ChangeUserType';
 import DeleteUser from './DeleteUser';

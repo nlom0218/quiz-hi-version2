@@ -1,19 +1,17 @@
+
 import { useQuery } from '@apollo/client';
-import { faInfo, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import gql from 'graphql-tag';
 import React, { useState } from 'react';
-import styled from 'styled-components';
-import AdminQuizComplainItem from './AdminQuizComplainItem';
-import { ContentItem, PageBar, PageBarBtn, QuizQuestionList, TotalNum } from './sharedCss';
+import AdminQuestionComplainItem from './AdminQuestionComplainItem';
+import { PageBar, PageBarBtn, QuizQuestionList, TotalNum } from '../sharedCss';
 
-const ADMIN_SEE_QUIZ_COMPLAIN_QUERY = gql`
-  query adminSeeQuizComplain($page: Int!) {
-    adminSeeQuizComplain(page: $page) {
+const ADMIN_SEE_QUESTION_COMPLAIN_QUERY = gql`
+  query adminSeeQuestionComplain($page: Int!) {
+    adminSeeQuestionComplain(page: $page) {
       totalNum
-      quizComplain {
-        quiz {
-          title
+      questionComplain {
+        question {
+          question
           id
         }
         id
@@ -25,14 +23,15 @@ const ADMIN_SEE_QUIZ_COMPLAIN_QUERY = gql`
   }
 `
 
-const AdminQuizComplain = () => {
+const AdminQuestionComplain = () => {
+  const [seeInfo, setSeeInfo] = useState(false)
   const [contents, setContents] = useState([])
   const [totalNum, setTotalNum] = useState(null)
   const [page, setPage] = useState(1)
   const [lastPage, setLastPage] = useState(1)
   const onCompleted = (result) => {
-    const { adminSeeQuizComplain: { totalNum, quizComplain } } = result
-    setContents(quizComplain)
+    const { adminSeeQuestionComplain: { totalNum, questionComplain } } = result
+    setContents(questionComplain)
     setTotalNum(totalNum)
     if (totalNum === 0) {
       setLastPage(1)
@@ -45,7 +44,7 @@ const AdminQuizComplain = () => {
     const lastPage = Math.floor(totalNum / 20) + 1
     setLastPage(lastPage)
   }
-  const { data, loading } = useQuery(ADMIN_SEE_QUIZ_COMPLAIN_QUERY, {
+  const { data, loading } = useQuery(ADMIN_SEE_QUESTION_COMPLAIN_QUERY, {
     variables: {
       page
     },
@@ -66,10 +65,10 @@ const AdminQuizComplain = () => {
       }
     }
   }
-  return (contents.length === 0 ? "신고된 퀴즈가 없습니다." :
+  return (contents.length === 0 ? "신고된 문제가 없습니다." :
     <React.Fragment>
       <div className="topContent">
-        <TotalNum>{totalNum}명의 퀴즈 신고</TotalNum>
+        <TotalNum>{totalNum}명의 문제 신고</TotalNum>
         <PageBar>
           <PageBarBtn firstPage={page === 1 ? true : false} onClick={() => onClickPageBtn("pre")}>이전</PageBarBtn>
           <PageBarBtn lastPage={lastPage === page} onClick={() => onClickPageBtn("next")}>다음</PageBarBtn>
@@ -77,18 +76,17 @@ const AdminQuizComplain = () => {
       </div>
       <QuizQuestionList>
         <div className="sortItem">
-          <div>퀴즈ID</div>
+          <div>문제ID</div>
           <div>보낸이ID</div>
           <div>받은이ID</div>
           <div>신고내용</div>
           <div className="detail_content">상세보기</div>
         </div>
         {contents.map((item, index) => {
-          return <AdminQuizComplainItem key={index} {...item} />
+          return <AdminQuestionComplainItem key={index} {...item} />
         })}
       </QuizQuestionList>
-    </React.Fragment>
-  );
+    </React.Fragment>);
 }
 
-export default AdminQuizComplain;
+export default AdminQuestionComplain;

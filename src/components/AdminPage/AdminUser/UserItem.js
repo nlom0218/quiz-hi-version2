@@ -2,10 +2,6 @@ import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { fadeIn } from '../../animation/fade';
-import ChangeUserPassword from './ChangeUserPassword';
-import ChangeUserType from './ChangeUserType';
-import DeleteUser from './DeleteUser';
 import UserEditBox from './UserEditBox';
 
 const Container = styled.li`

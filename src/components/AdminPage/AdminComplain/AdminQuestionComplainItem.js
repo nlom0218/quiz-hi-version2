@@ -2,9 +2,9 @@ import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import AdminComplainDetail from './AdminComplainDetail';
-import { ContentItem } from './sharedCss';
+import { ContentItem } from '../sharedCss';
 
-const AdminQuizComplainItem = ({ quiz, sender, receiver, message }) => {
+const AdminQuestionComplainItem = ({ question, sender, receiver, message }) => {
   const [seeInfo, setSeeInfo] = useState(false)
   const processSender = (str) => {
     const obj = JSON.parse(str)
@@ -17,7 +17,7 @@ const AdminQuizComplainItem = ({ quiz, sender, receiver, message }) => {
     return username
   }
   const onCLickId = (id) => {
-    window.open(`/detail/quiz/${id}`, "_blank")
+    window.open(`/detail/question/${id}`, "_blank")
   }
   const onCLickUser = (str) => {
     const obj = JSON.parse(str)
@@ -27,9 +27,8 @@ const AdminQuizComplainItem = ({ quiz, sender, receiver, message }) => {
   const onClickInfoBtn = () => {
     setSeeInfo(prev => !prev)
   }
-
   return (<ContentItem>
-    <div className="link_btn" onClick={() => onCLickId(quiz.id)}>{quiz.id}</div>
+    <div className="link_btn" onClick={() => onCLickId(question.id)}>{question.id}</div>
     <div className="link_btn" onClick={() => onCLickUser(sender)}>{processSender(sender)}</div>
     <div className="link_btn" onClick={() => onCLickUser(receiver)}>{processReceiver(receiver)}</div>
     <div>{message}</div>
@@ -38,4 +37,4 @@ const AdminQuizComplainItem = ({ quiz, sender, receiver, message }) => {
   </ContentItem>);
 }
 
-export default AdminQuizComplainItem;
+export default AdminQuestionComplainItem;

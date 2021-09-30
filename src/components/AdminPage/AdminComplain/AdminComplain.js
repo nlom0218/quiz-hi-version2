@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import AdminQuestionComplain from './AdminQuestionComplain';
 import AdminQuizComplain from './AdminQuizComplain';
-import { SetTypeBtn, Type } from './sharedCss';
+import { SetTypeBtn, Type } from '../sharedCss';
 
 const Container = styled.div`
   display: grid;
