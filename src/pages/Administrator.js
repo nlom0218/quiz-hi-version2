@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useHistory } from 'react-router';
 import styled from 'styled-components';
 import AdminPage from '../components/AdminPage/AdminPage';
-import BasicContainer from '../components/BasicContainer';
 import NavBtn from '../components/NavBtn';
-import useUser from '../hooks/useUser';
+import dotenv from "dotenv"
+dotenv.config()
 
 const Container = styled.div`
   width: 1000px;
@@ -36,13 +35,13 @@ const CheckPasswordForm = styled.form`
 
 const Administrator = () => {
   const [confirm, setConfirm] = useState(false)
-  const adminPpassword = "ghdehd2580!@"
+  const adminPassword = process.env.REACT_APP_ADMIM
   const { register, handleSubmit } = useForm({
     mode: "onChange"
   })
   const onSubmit = (data) => {
     const { password } = data
-    if (password === adminPpassword) {
+    if (password === adminPassword) {
       setConfirm(true)
     }
   }
@@ -55,6 +54,7 @@ const Administrator = () => {
         autoComplete="off"
       />
       <input
+        style={{ cursor: 'pointer' }}
         type="submit"
         value="확인" />
     </CheckPasswordForm>}
