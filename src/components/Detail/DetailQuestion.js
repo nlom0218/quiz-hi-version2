@@ -1,8 +1,9 @@
 import { faBell, faFile } from '@fortawesome/free-regular-svg-icons';
-import { faImage, faListOl, faMagic } from '@fortawesome/free-solid-svg-icons';
+import { faBan, faImage, faListOl, faMagic } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
+import useUser from '../../hooks/useUser';
 
 const Question = styled.div`
   margin-top: ${props => props.tags ? "10px" : "20px"};
@@ -99,7 +100,19 @@ const Image = styled.div`
   }
 `
 
+const BanMsg = styled.div`
+  margin-top: 20px;
+  grid-column: 1 / -1;
+  line-height: 25px;
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  .msg {
+    color: tomato;
+  }
+`
+
 const DetailQuestion = ({ question, tags, answer, type, distractor, hint, image }) => {
+  const user = useUser()
   const textarea = useRef()
   const distractor1 = useRef()
   const distractor2 = useRef()
@@ -150,6 +163,17 @@ const DetailQuestion = ({ question, tags, answer, type, distractor, hint, image 
       return false
     }
   }
+  const allowSeeAnswer = () => {
+    if (!user) {
+      return false
+    } else {
+      if (user.type === "teacher") {
+        return true
+      } else {
+        return false
+      }
+    }
+  }
   return (<React.Fragment>
     <Question tags={tags.length !== 0 ? true : false}>
       <div className="title"><FontAwesomeIcon icon={faFile} /> 문제</div>
@@ -185,22 +209,31 @@ const DetailQuestion = ({ question, tags, answer, type, distractor, hint, image 
         </div>
       </Answer>
     }
-    <Answer>
-      <div className="title"><FontAwesomeIcon icon={faBell} /> 정답</div>
-      {type === "tf" ?
-        <div className="content">{answer === "true" ? "○" : "✕"}</div>
-        :
-        <div className="content">{answer}</div>}
-    </Answer>
-    {hint && <Hint>
-      <div className="title"><FontAwesomeIcon icon={faMagic} /> 힌트</div>
-      <div className="content">{hint}</div>
-    </Hint>}
-    {image && <Image>
-      <div className="title"><FontAwesomeIcon icon={faImage} /> 이미지</div>
-      <img className="content" src={image} />
-    </Image>}
-  </React.Fragment>);
+    {allowSeeAnswer() ?
+      <React.Fragment>
+        <Answer>
+          <div className="title"><FontAwesomeIcon icon={faBell} /> 정답</div>
+          {type === "tf" ?
+            <div className="content">{answer === "true" ? "○" : "✕"}</div>
+            :
+            <div className="content">{answer}</div>}
+        </Answer>
+        {hint && <Hint>
+          <div className="title"><FontAwesomeIcon icon={faMagic} /> 힌트</div>
+          <div className="content">{hint}</div>
+        </Hint>}
+        {image && <Image>
+          <div className="title"><FontAwesomeIcon icon={faImage} /> 이미지</div>
+          <img className="content" src={image} />
+        </Image>}
+      </React.Fragment>
+      :
+      <BanMsg>
+        <div><FontAwesomeIcon icon={faBan} /> 알림</div>
+        <div className="msg">문제에 대한 정보는 선생님 계정으로 확인할 수 있습니다.</div>
+      </BanMsg>
+    }
+  </React.Fragment >);
 }
 
 export default DetailQuestion;

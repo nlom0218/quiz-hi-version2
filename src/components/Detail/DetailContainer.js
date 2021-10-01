@@ -13,9 +13,21 @@ const SDetailContainer = styled.div`
 
 const DetailContainer = ({ children, user, id, title }) => {
   const loggedInUser = useUser()
+  const allowSendMsg = () => {
+    if (!loggedInUser) {
+      return false
+    } else {
+      if (user.id === loggedInUser.id) {
+        return false
+      } else {
+        return true
+      }
+    }
+
+  }
   return (<SDetailContainer>
     {children}
-    {user.id !== loggedInUser.id && <SendEditDChargeMsg user={user} id={id} title={title} />}
+    {allowSendMsg() && <SendEditDChargeMsg user={user} id={id} title={title} />}
   </SDetailContainer>);
 }
 

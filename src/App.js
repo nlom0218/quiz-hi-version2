@@ -27,7 +27,8 @@ import Administrator from "./pages/Administrator"
 
 function App() {
   const darkMode = useReactiveVar(darkModeVar)
-  const isLoggedIn = useReactiveVar(isLoggedInVar)
+  // const isLoggedIn = useReactiveVar(isLoggedInVar)
+  const isLoggedIn = true
   const user = useUser()
   return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme} >

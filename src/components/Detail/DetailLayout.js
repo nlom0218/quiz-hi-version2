@@ -173,6 +173,7 @@ const TOGGLE_LIKE_MUTATION = gql`
 const DetailLayout = ({
   id, children, title, question, user: { avatarURL, nickname, username, id: userId }, createdAt, isLiked, likes, hits, tags, setPutQuiz, updateInfo, updatedAt
 }) => {
+  const loggedInUser = useUser()
   const textarea = useRef()
   const [txtHeight, setTxtHeight] = useState(null)
   useEffect(() => {
@@ -234,6 +235,10 @@ const DetailLayout = ({
     update
   })
   const onClickToggleLike = () => {
+    if (!loggedInUser) {
+      window.alert("로그인 후 다시 시도해주세요.")
+      return
+    }
     if (loading) {
       window.alert("요청을 처리 중입니다.")
       return

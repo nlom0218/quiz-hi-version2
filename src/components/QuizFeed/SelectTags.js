@@ -228,6 +228,13 @@ const SelectTags = ({ setTagsArr, tagsArr, refetch }) => {
         })}
       </FollowTagBox>
     </FollowTags>}
+    {!user && <FollowTags>
+      <FollowTagTitle>
+        <FontAwesomeIcon icon={faFolderOpen} />
+        팔로우 태그
+        <FollowTagsMsg>로그인 후 태그를 팔로우 해주세요!</FollowTagsMsg>
+      </FollowTagTitle>
+    </FollowTags>}
   </Container>);
 }
 

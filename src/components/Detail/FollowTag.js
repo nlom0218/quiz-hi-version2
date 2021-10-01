@@ -76,7 +76,10 @@ const FollowTag = ({ isFollow, id, name }) => {
     update
   })
   const onClickFollowBtn = () => {
-    console.log(name);
+    if (!user) {
+      window.alert("로그인 후 다시 시도해주세요.")
+      return
+    }
     if (loading) {
       return
     }
