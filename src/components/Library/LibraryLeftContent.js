@@ -213,6 +213,9 @@ const LibraryLeftContent = ({ setPutQuiz }) => {
     }
   }
   const onClickRemoveAll = () => {
+    if (!user) {
+      return
+    }
     if (allLoading) {
       return
     }

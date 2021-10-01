@@ -7,6 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { gsap } from "gsap"
 import { LibraryFeedBottomContainerGsap } from '../../hooks/Gsap';
 import LibraryLeftContent from './LibraryLeftContent';
+import useUser from '../../hooks/useUser';
 gsap.registerPlugin(ScrollTrigger)
 
 const SLibraryContainer = styled.div`
@@ -59,6 +60,7 @@ const PageBarBtn = styled.div`
 `
 
 const LibarayContainer = ({ children, loading, totalNum, lastPage, quiz, setPutQuiz }) => {
+  const user = useUser()
   const { page, type } = useParams()
   const history = useHistory()
   const onClickPageBtn = (btn) => {
@@ -71,6 +73,8 @@ const LibarayContainer = ({ children, loading, totalNum, lastPage, quiz, setPutQ
     } else if (btn === "next") {
       if (lastPage === parseInt(page)) {
         return
+      } else if (!lastPage) {
+        return
       } else {
         history.push(`/library/${type}/${parseInt(page) + 1}`)
       }
@@ -82,9 +86,12 @@ const LibarayContainer = ({ children, loading, totalNum, lastPage, quiz, setPutQ
       {loading ? "loading..." :
         <React.Fragment>
           <TopBar>
-            <ContentsNum>
-              <FontAwesomeIcon icon={quiz ? faBook : faBookOpen} />{totalNum}개의 퀴즈
+            {!user ? <ContentsNum style={{ color: "tomato" }}>로그인하여 라이브러리를 이용하세요!</ContentsNum>
+              :
+              <ContentsNum>
+                <FontAwesomeIcon icon={quiz ? faBook : faBookOpen} />{totalNum ? totalNum : 0}개의 퀴즈
             </ContentsNum>
+            }
             <PageBar>
               <PageBarBtn firstPage={parseInt(page) === 1 ? true : false} onClick={() => onClickPageBtn("pre")}>이전</PageBarBtn>
               <PageBarBtn lastPage={lastPage === parseInt(page)} onClick={() => onClickPageBtn("next")}>다음</PageBarBtn>
