@@ -1,37 +1,40 @@
-
 import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import React, { useState } from 'react';
-import AdminQuestionComplainItem from './AdminQuestionComplainItem';
+import AdminQuestionComplainItem from '../AdminComplain/AdminQuestionComplainItem';
 import { PageBar, PageBarBtn, QuizQuestionList, TotalNum } from '../sharedCss';
 
 const ADMIN_SEE_QUESTION_COMPLAIN_QUERY = gql`
   query adminSeeQuestionComplain($page: Int!) {
     adminSeeQuestionComplain(page: $page) {
-      totalNum
       question {
-        question {
-          question
-          id
-        }
+        question
         id
-        message
-        sender
-        receiver
+        complain
+        deleteDay
+        user {
+          username
+        }
+        QuestionComplain {
+          id
+          message
+          sender
+          receiver
+        }
       }
+      totalNum
     }
   }
 `
 
 const AdminQuestionComplain = () => {
-  const [seeInfo, setSeeInfo] = useState(false)
   const [contents, setContents] = useState([])
   const [totalNum, setTotalNum] = useState(null)
   const [page, setPage] = useState(1)
   const [lastPage, setLastPage] = useState(1)
   const onCompleted = (result) => {
-    const { adminSeeQuestionComplain: { totalNum, questionComplain } } = result
-    setContents(questionComplain)
+    const { adminSeeQuestionComplain: { totalNum, question } } = result
+    setContents(question)
     setTotalNum(totalNum)
     if (totalNum === 0) {
       setLastPage(1)
@@ -77,9 +80,8 @@ const AdminQuestionComplain = () => {
       <QuizQuestionList>
         <div className="sortItem">
           <div>문제ID</div>
-          <div>보낸이ID</div>
-          <div>받은이ID</div>
-          <div>신고내용</div>
+          <div>작성자ID</div>
+          <div>문제</div>
           <div className="detail_content">상세보기</div>
         </div>
         {contents.map((item, index) => {

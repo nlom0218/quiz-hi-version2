@@ -1,13 +1,14 @@
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
+import AdminComplainDetail from './AdminComplainDetail';
 import { ContentItem } from '../sharedCss';
-import AdaminQuizDetail from './AdaminQuizDetail';
+import AdaminQuestionDetail from './AdaminQuestionDetail';
 
-const AdminQuizComplainItem = ({ id, title, QuizComplain, user: { username }, complain, deleteDay }) => {
+const AdminQuestionComplainItem = ({ id, question, QuestionComplain, user: { username }, complain, deleteDay }) => {
   const [seeInfo, setSeeInfo] = useState(false)
-  const onCLickTitle = () => {
-    window.open(`/detail/quiz/${id}`, "_blank")
+  const onCLickQuestion = () => {
+    window.open(`/detail/question/${id}`, "_blank")
   }
   const onCLickUser = () => {
     window.open(`/profile/${username}/info`, "_blank")
@@ -15,14 +16,13 @@ const AdminQuizComplainItem = ({ id, title, QuizComplain, user: { username }, co
   const onClickInfoBtn = () => {
     setSeeInfo(prev => !prev)
   }
-
   return (<ContentItem>
     <div>{id}</div>
     <div className="link_btn" onClick={onCLickUser}>{username}</div>
-    <div className="link_btn" onClick={onCLickTitle}>{title}</div>
+    <div className="link_btn" onClick={onCLickQuestion}>{question}</div>
     <div className="detail_content"><FontAwesomeIcon icon={faInfoCircle} onClick={onClickInfoBtn} /></div>
-    {seeInfo && <AdaminQuizDetail QuizComplain={QuizComplain} />}
+    {seeInfo && <AdaminQuestionDetail type="question" QuestionComplain={QuestionComplain} />}
   </ContentItem>);
 }
 
-export default AdminQuizComplainItem;
+export default AdminQuestionComplainItem;

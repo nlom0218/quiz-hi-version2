@@ -36,7 +36,7 @@ const AdminComplain = () => {
         >문제</Type>
       </SetTypeBtn>
       {seeType === "quiz" && <AdminQuizComplain />}
-      {/* {seeType === "question" && <AdminQuestionComplain />} */}
+      {seeType === "question" && <AdminQuestionComplain />}
     </Container>);
 }
 
