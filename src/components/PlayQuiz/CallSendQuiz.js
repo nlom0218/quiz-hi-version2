@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
+import useUser from '../../hooks/useUser';
 import SaveBtn from '../Profile/Edit/SaveBtn';
 import SelectStudents from './SelectStudents';
 
@@ -78,8 +79,12 @@ const SaveMsg = styled.div`
 `
 
 const CallSendQuiz = ({ setStduents, students, type, setType, quizMode, quizList, setTargetScore, targetScore }) => {
+  const user = useUser()
   const [saveMsg, setSaveMsg] = useState("목표 점수를 설정하세요.")
   const onClickTypeBtn = (type) => {
+    if (!user) {
+      return
+    }
     setStduents([])
     setType(type)
   }

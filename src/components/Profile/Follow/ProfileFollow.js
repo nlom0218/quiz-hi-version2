@@ -23,10 +23,21 @@ const DivisionLine = styled.div`
 
 const ProfileFollow = ({ id, totalFollow, totalFollowing }) => {
   const user = useUser()
+  const allowAccess = () => {
+    if (!user) {
+      return false
+    } else {
+      if (user.id === id) {
+        return true
+      } else {
+        return false
+      }
+    }
+  }
   return (<Container>
     <SeeFollower userId={id} totalFollower={totalFollow} />
     <SeeFollowing userId={id} totalFollowing={totalFollowing} />
-    {user.id === id && <React.Fragment>
+    {allowAccess() && <React.Fragment>
       <DivisionLine></DivisionLine>
       <FollowSearch userId={id} />
     </React.Fragment>}

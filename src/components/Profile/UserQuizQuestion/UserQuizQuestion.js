@@ -42,12 +42,23 @@ const UserQuizQuestion = ({ data }) => {
   const onClickState = (state) => {
     history.push(`/profile/${username}/${mode}/${state}/quiz/1`)
   }
+  const allowAccess = () => {
+    if (!user) {
+      return false
+    } else {
+      if (parseInt(id) === user.id) {
+        return true
+      } else {
+        return false
+      }
+    }
+  }
   return (<Container>
     <QuizQestionState>
       <State onClick={() => { onClickState("public") }} selected={state === "public"}>
         <FontAwesomeIcon icon={faLockOpen} /> Public
       </State>
-      {parseInt(id) === user.id &&
+      {allowAccess() &&
         <State onClick={() => { onClickState("private") }} selected={state === "private"}>
           <FontAwesomeIcon icon={faLock} /> Private
         </State>}
