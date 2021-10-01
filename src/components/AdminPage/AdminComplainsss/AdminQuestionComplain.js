@@ -9,7 +9,7 @@ const ADMIN_SEE_QUESTION_COMPLAIN_QUERY = gql`
   query adminSeeQuestionComplain($page: Int!) {
     adminSeeQuestionComplain(page: $page) {
       totalNum
-      questionComplain {
+      question {
         question {
           question
           id

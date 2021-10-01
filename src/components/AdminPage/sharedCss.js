@@ -66,7 +66,7 @@ border: 1px solid rgb(200, 200, 200, 0.8);
   color: ${props => props.theme.bgColor};
   transition: background-color 1s ease, color 1s ease;
   display: grid;
-  grid-template-columns: 1fr 1.5fr 1.5fr 4fr 1fr;
+  grid-template-columns: 0.5fr 1fr 4fr 0.5fr;
   column-gap: 10px;
   div {
     font-weight: 600;
@@ -80,7 +80,7 @@ export const ContentItem = styled.div`
   background-color: ${props => props.theme.boxColor};
   transition: background-color 1s ease;
   display: grid;
-  grid-template-columns: 1fr 1.5fr 1.5fr 4fr 1fr;
+  grid-template-columns: 0.5fr 1fr 4fr 0.5fr;
   column-gap: 10px;
   row-gap: 20px;
   :hover {

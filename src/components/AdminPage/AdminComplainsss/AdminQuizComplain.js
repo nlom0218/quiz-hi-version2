@@ -7,22 +7,17 @@ import { PageBar, PageBarBtn, QuizQuestionList, TotalNum } from '../sharedCss';
 const ADMIN_SEE_QUIZ_COMPLAIN_QUERY = gql`
   query adminSeeQuizComplain($page: Int!) {
     adminSeeQuizComplain(page: $page) {
-      quiz {
-        title
-        id
-        complain
-        deleteDay
-        user {
-          username
-        }
-        QuizComplain {
-          id
-          message
-          sender
-          receiver
-        }
-      }
       totalNum
+      quizComplain {
+        quiz {
+          title
+          id
+        }
+        id
+        message
+        sender
+        receiver
+      }
     }
   }
 `
@@ -33,8 +28,8 @@ const AdminQuizComplain = () => {
   const [page, setPage] = useState(1)
   const [lastPage, setLastPage] = useState(1)
   const onCompleted = (result) => {
-    const { adminSeeQuizComplain: { totalNum, quiz } } = result
-    setContents(quiz)
+    const { adminSeeQuizComplain: { totalNum, quizComplain } } = result
+    setContents(quizComplain)
     setTotalNum(totalNum)
     if (totalNum === 0) {
       setLastPage(1)
@@ -80,8 +75,9 @@ const AdminQuizComplain = () => {
       <QuizQuestionList>
         <div className="sortItem">
           <div>퀴즈ID</div>
-          <div>작성자ID</div>
-          <div>퀴즈 제목</div>
+          <div>보낸이ID</div>
+          <div>받은이ID</div>
+          <div>신고내용</div>
           <div className="detail_content">상세보기</div>
         </div>
         {contents.map((item, index) => {
