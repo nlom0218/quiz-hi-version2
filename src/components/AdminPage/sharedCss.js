@@ -87,3 +87,11 @@ export const ContentItem = styled.div`
     background-color: ${props => props.theme.grayColor};
   }
 `
+
+export const DeleteBtn = styled.div`
+  background-color: tomato;
+  color: #e8e8e8;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+`
