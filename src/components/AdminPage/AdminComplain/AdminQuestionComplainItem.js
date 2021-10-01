@@ -1,7 +1,6 @@
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
-import AdminComplainDetail from './AdminComplainDetail';
 import { ContentItem } from '../sharedCss';
 import AdaminQuestionDetail from './AdaminQuestionDetail';
 
