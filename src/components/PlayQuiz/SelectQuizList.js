@@ -120,6 +120,7 @@ const SelectQuizList = ({ setQuizId, setQuizTitle }) => {
     skip: Boolean(!user),
     onCompleted
   })
+  console.log(data);
   const onClickPageBtn = (btn) => {
     if (btn === "pre") {
       if (page === 1) {
@@ -149,7 +150,7 @@ const SelectQuizList = ({ setQuizId, setQuizTitle }) => {
   }
   return (<Container>
     <Wrapper>
-      <ContainerTitle>라이브러리에 저장된 퀴즈</ContainerTitle>
+      <ContainerTitle>{user?.type === "teacher" ? "라이브러리에 저장된 퀴즈" : "생성된 문제"}</ContainerTitle>
       <SPageBar>
         <PageBarBtn firstPage={page === 1 ? true : false} onClick={() => onClickPageBtn("pre")}>이전</PageBarBtn>
         <PageBarBtn lastPage={lastPage === page} onClick={() => onClickPageBtn("next")}>다음</PageBarBtn>
