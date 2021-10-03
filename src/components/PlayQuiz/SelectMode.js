@@ -4,6 +4,7 @@ import { faCheck, faGamepad } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import useUser from '../../hooks/useUser';
 import SelectQuizList from './SelectQuizList';
 
 const Container = styled.div`
@@ -45,6 +46,7 @@ const ExplainMode = styled.div`
 `
 
 const SelectMode = ({ quizMode, setQuizMode, setType, setStduents }) => {
+  const user = useUser()
   const onClickModeBtn = (mode) => {
     localStorage.setItem("selectMode", mode)
     setQuizMode(mode)
@@ -84,21 +86,25 @@ const SelectMode = ({ quizMode, setQuizMode, setType, setStduents }) => {
           icon={quizMode === "nomal" ? faCheckCircle : faCircle}
           onClick={() => onClickModeBtn("nomal")} /> 일반
       </Mode>
-      <Mode>
-        <FontAwesomeIcon
-          icon={quizMode === "goldenBell" ? faCheckCircle : faCircle}
-          onClick={() => onClickModeBtn("goldenBell")} /> 골든벨
-      </Mode>
-      <Mode>
-        <FontAwesomeIcon
-          icon={quizMode === "score" ? faCheckCircle : faCircle}
-          onClick={() => onClickModeBtn("score")} /> 포인트
-      </Mode>
-      <Mode>
-        <FontAwesomeIcon
-          icon={quizMode === "cooperation" ? faCheckCircle : faCircle}
-          onClick={() => onClickModeBtn("cooperation")} /> 협동
-      </Mode>
+      {user?.type === "teacher" &&
+        <React.Fragment>
+          <Mode>
+            <FontAwesomeIcon
+              icon={quizMode === "goldenBell" ? faCheckCircle : faCircle}
+              onClick={() => onClickModeBtn("goldenBell")} /> 골든벨
+          </Mode>
+          <Mode>
+            <FontAwesomeIcon
+              icon={quizMode === "score" ? faCheckCircle : faCircle}
+              onClick={() => onClickModeBtn("score")} /> 포인트
+          </Mode>
+          <Mode>
+            <FontAwesomeIcon
+              icon={quizMode === "cooperation" ? faCheckCircle : faCircle}
+              onClick={() => onClickModeBtn("cooperation")} /> 협동
+          </Mode>
+        </React.Fragment>
+      }
     </SelectModeList>
     {quizMode && <ExplainMode>
       {processModeExplain()}
