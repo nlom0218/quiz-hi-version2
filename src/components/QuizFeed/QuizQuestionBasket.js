@@ -76,6 +76,7 @@ const FOLLOW_QUIZ_MUTATION = gql`
   mutation followQuiz($quizIds: String!) {
     followQuiz(quizIds: $quizIds) {
       ok
+      error
     }
   }
 `
@@ -84,6 +85,7 @@ const FOLLOW_QUESTION_MUTATION = gql`
   mutation followQuestion($questionIds: String!) {
     followQuestion(questionIds: $questionIds) {
       ok
+      error
     }
   }
 `
@@ -93,7 +95,12 @@ const QuizQuestionBasket = ({ setPutQuiz }) => {
   const history = useHistory()
   const [followQuiz, { loading: quizLoading }] = useMutation(FOLLOW_QUIZ_MUTATION, {
     onCompleted: (result) => {
-      if (result.followQuiz.ok) {
+      const { followQuiz: { ok, error } } = result
+      if (error) {
+        window.alert(error)
+        return
+      }
+      if (ok) {
         if (window.confirm("퀴즈가 라이브러리에 저장이 되었습니다.\n라이브러리로 이동하시겠습니까?")) {
           history.push("/library/quiz/1")
           window.location.reload()
@@ -107,7 +114,12 @@ const QuizQuestionBasket = ({ setPutQuiz }) => {
   })
   const [followQuestion, { loading: questionLoading }] = useMutation(FOLLOW_QUESTION_MUTATION, {
     onCompleted: (result) => {
-      if (result.followQuestion.ok) {
+      const { followQuestion: { ok, error } } = result
+      if (error) {
+        window.alert(error)
+        return
+      }
+      if (ok) {
         if (window.confirm("문제가 라이브러리에 저장이 되었습니다.\n라이브러리로 이동하시겠습니까?")) {
           history.push("/library/question/1")
           window.location.reload()
