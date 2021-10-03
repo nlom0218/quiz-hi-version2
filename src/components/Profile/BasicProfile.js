@@ -258,7 +258,7 @@ const BasicProfile = ({ id, nickname, email, totalFollow, totalFollowing, type, 
     </RigthContents>
     <LeftContents>
       <DetailInto>
-        <DetailInfoLayout>
+        {type !== "nomal" && <DetailInfoLayout>
           <Title>Lv 레벨</Title>
           <LevelContainer>
             <Level>
@@ -274,8 +274,8 @@ const BasicProfile = ({ id, nickname, email, totalFollow, totalFollowing, type, 
               레벨에 대해 알아보기
           </LevelRule>
           </LevelContainer>
-        </DetailInfoLayout>
-        {type === "teacher" && <DetailInfoLayout>
+        </DetailInfoLayout>}
+        {type !== "student" && <DetailInfoLayout>
           <Title>
             <div><FontAwesomeIcon icon={faTags} /> 팔로우 태그</div>
             <ContentNum>{tags.length}개의 팔로우 태그</ContentNum>
