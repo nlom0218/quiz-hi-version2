@@ -229,8 +229,8 @@ const DetailQuestion = ({ question, tags, answer, type, distractor, hint, image 
       </React.Fragment>
       :
       <BanMsg>
-        <div><FontAwesomeIcon icon={faBan} /> 알림</div>
-        <div className="msg">문제에 대한 정보는 선생님 계정으로 확인할 수 있습니다.</div>
+        <div><FontAwesomeIcon icon={faBan} /> 제한</div>
+        <div className="msg">문제에 대한 정보는 선생님 계정에서만 확인할 수 있습니다.</div>
       </BanMsg>
     }
   </React.Fragment >);
