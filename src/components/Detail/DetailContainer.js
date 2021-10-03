@@ -17,10 +17,14 @@ const DetailContainer = ({ children, user, id, title }) => {
     if (!loggedInUser) {
       return false
     } else {
-      if (user.id === loggedInUser.id) {
-        return false
+      if (loggedInUser?.type === "teacher") {
+        if (user.id === loggedInUser?.id) {
+          return false
+        } else {
+          return true
+        }
       } else {
-        return true
+        return false
       }
     }
 
