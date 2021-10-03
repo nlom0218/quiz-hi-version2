@@ -1,6 +1,6 @@
 import { useMutation, useReactiveVar } from '@apollo/client';
 import gql from 'graphql-tag';
-import { faCircle, faEye, faEyeSlash, faQuestionCircle, faSun } from '@fortawesome/free-regular-svg-icons';
+import { faCheckSquare, faCircle, faEye, faEyeSlash, faQuestionCircle, faSquare, faSun } from '@fortawesome/free-regular-svg-icons';
 import { faCheckCircle, faHome, faMoon, faSignInAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
@@ -44,6 +44,24 @@ const AccountLink = styled.div`
   }
 `
 
+const AgreeRule = styled.div`
+  display: grid;
+  grid-template-columns: auto 1fr;
+  font-size: 14px;
+  align-items: center;
+  line-height: 120%;
+  svg {
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  .link_btn {
+    text-decoration: underline;
+    font-weight: 600;
+    color: ${props => props.theme.blueColor};
+    cursor: pointer;
+  }
+`
+
 const CREATE_ACCOUNT_MUTATION = gql`
   mutation createAccount($type: String!, $email: String, $username: String!, $password: String! $passwordConfirm: String!) {
     createAccount(type: $type, email: $email, username: $username, password: $password, passwordConfirm: $passwordConfirm) {
@@ -55,6 +73,8 @@ const CREATE_ACCOUNT_MUTATION = gql`
 
 const CreateAccount = () => {
   const titleUpdataer = useTitle("QUIZ HI | 계정 생성")
+  const [agreeFirst, setAgreeFirst] = useState(false)
+  const [agreeSecond, setAgreeSecond] = useState(false)
   const history = useHistory()
   const [doneConfirm, setDoneConfirm] = useState(false)
   const [error, setError] = useState(undefined)
@@ -112,6 +132,20 @@ const CreateAccount = () => {
   const onClickQuestionMode = () => {
     setQuestionMode(true)
   }
+  const onClickAgreeBtn = (rule) => {
+    if (rule === "first") {
+      setAgreeFirst(prev => !prev)
+    } else {
+      setAgreeSecond(prev => !prev)
+    }
+  }
+  const onClickLinkBtn = (rule) => {
+    if (rule === "first") {
+      window.open("https://quiz-hi.co.kr/notice/18", "_blank")
+    } else {
+      window.open("https://quiz-hi.co.kr/notice/16", "_blank")
+    }
+  }
   return (
     <AccountContainer>
       <Title page="회원가입" />
@@ -148,8 +182,16 @@ const CreateAccount = () => {
             </span>
             <input type={visible ? "text" : "password"} {...register("passwordConfirm", { required: true })} autoComplete="off" />
           </InputLayout>
+          <AgreeRule>
+            <FontAwesomeIcon icon={agreeFirst ? faCheckSquare : faSquare} onClick={() => onClickAgreeBtn("first")} />
+            <div>퀴즈하이 <span className="link_btn" onClick={() => onClickLinkBtn("first")}>이용약관</span>에 동의합니다.</div>
+          </AgreeRule>
+          <AgreeRule>
+            <FontAwesomeIcon icon={agreeSecond ? faCheckSquare : faSquare} onClick={() => onClickAgreeBtn("second")} />
+            <div>퀴즈하이 <span className="link_btn" onClick={() => onClickLinkBtn("second")}>개인정보 처리방침</span>에 동의합니다.</div>
+          </AgreeRule>
           {error ? <ErrMsg error={error} /> : null}
-          <InputBtn value="회원가입" disabled={!isValid || !doneConfirm} bgColor="rgb(42, 140, 0, 0.6)" />
+          <InputBtn value="회원가입" disabled={!isValid || !doneConfirm || !agreeFirst || !agreeSecond} bgColor="rgb(42, 140, 0, 0.6)" />
           <AccountLink>
             계정이 있으신가요? <Link to="/login"><span>로그인</span></Link>
           </AccountLink>
