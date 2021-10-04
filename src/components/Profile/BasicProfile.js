@@ -210,7 +210,7 @@ const BasicProfile = ({ id, nickname, email, totalFollow, totalFollowing, type, 
         {type === "teacher" &&
           <Wrapper>
             <div className="input">이메일</div>
-            <div className="value">{email.length > 20 ? `${email.substring(0, 20)}...` : email}</div>
+            <div className="value">{email.length > 15 ? `${email.substring(0, 15)}...` : email}</div>
           </Wrapper>}
         <Wrapper>
           <div className="input">가입일</div>
