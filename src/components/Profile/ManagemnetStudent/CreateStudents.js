@@ -145,6 +145,7 @@ const CreateStudents = ({ id, addAccount, students }) => {
   }
   const onSubmit = (data) => {
     if (loading) {
+      window.alert("요청을 처리 중입니다.")
       return
     }
     const { password } = data
