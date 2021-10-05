@@ -69,7 +69,7 @@ const AccountType = () => {
           <Icon><FontAwesomeIcon icon={faMale} />일반인</Icon>
           <Description>
             일반인 계정은 일부 컨텐츠가 제한이 되며 학생 계정을 생성할 수 없습니다.
-            프로필에서 이메일을 인증하면 선생님 계정으로 변경 가능합니다.
+            프로필에서 이메일을 인증하면 선생님 계정으로 변경 가능합니다.(계정 변경 기능은 다음 업데이트 때 추가됩니다.)
           </Description>
         </Wapper>
       </Box>
