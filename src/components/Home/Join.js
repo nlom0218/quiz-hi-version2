@@ -21,7 +21,6 @@ const Box = styled.div`
   justify-content: center;
   align-items: center;
   box-shadow: 0px 17px 6px -14px rgba(0,0,0,0.2);
-  margin-bottom: 40px;
 `
 
 const BoxTitle = styled.div`

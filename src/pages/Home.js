@@ -35,11 +35,11 @@ const Home = () => {
       <HomeContainer className="homeContainer">
         <HomeContainerGsap />
         <Intro />
-        <SendMsg />
         <NavIcon />
         <AccountType />
         <Level />
         <Join />
+        <SendMsg />
       </HomeContainer>
       <NavBtn />
     </React.Fragment>
