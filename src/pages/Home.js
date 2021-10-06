@@ -13,6 +13,7 @@ import { BasicContainerGsap, HomeContainerGsap } from '../hooks/Gsap';
 import useUser from '../hooks/useUser';
 import { useHistory } from 'react-router';
 import useTitle from '../hooks/useTitle';
+import SendMsg from '../components/Home/SendMsg';
 gsap.registerPlugin(ScrollTrigger)
 
 const HomeContainer = styled.div`
@@ -34,6 +35,7 @@ const Home = () => {
       <HomeContainer className="homeContainer">
         <HomeContainerGsap />
         <Intro />
+        <SendMsg />
         <NavIcon />
         <AccountType />
         <Level />
