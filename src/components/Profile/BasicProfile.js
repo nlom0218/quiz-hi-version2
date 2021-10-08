@@ -88,7 +88,7 @@ const LevelScore = styled.div`
   }
 `
 
-const LevelRule = styled.div`
+const LevelRule = styled.a`
   align-self: center;
   padding: 10px 20px;
   background-color: rgb(255, 165, 0, 0.4);
@@ -270,7 +270,7 @@ const BasicProfile = ({ id, nickname, email, totalFollow, totalFollowing, type, 
                 {level === 10 ? "최고레벨입니다." : `다음 레벨까지 ${processNextLevelScore(type, level, score)}점 남았습니다.`}
               </div>
             </LevelScore>
-            <LevelRule>
+            <LevelRule href="https://quiz-hi.co.kr/27" target="_blank">
               레벨에 대해 알아보기
           </LevelRule>
           </LevelContainer>
