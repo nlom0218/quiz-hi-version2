@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useHistory, useParams } from 'react-router';
 import styled from 'styled-components';
+import useTitle from '../../hooks/useTitle';
 import AdminComplain from './AdminComplain/AdminComplain';
 import AdminSuggestion from './AdminSuggestion/AdminSuggestion';
 import AdminUser from './AdminUser/AdminUser';
@@ -32,6 +33,7 @@ const List = styled.div`
 `
 
 const AdminPage = () => {
+  const titleUpdataer = useTitle("QUIZ HI | ADMIN")
   const history = useHistory()
   const { mode } = useParams()
   const onClickList = (mode) => {

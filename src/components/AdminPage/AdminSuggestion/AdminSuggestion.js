@@ -41,14 +41,26 @@ border: 1px solid rgb(200, 200, 200, 0.8);
 }
 `
 
+const SEE_SUGGESTIONS_QUERY = gql`
+  query adminSeeSuggetions($page: Int!) {
+    adminSeeSuggetions(page: $page) {
+      suggestions {
+        suggestion
+        sender
+      }
+      totalNum
+    }
+  }
+`
+
 const AdminSuggestion = () => {
   const [contents, setContents] = useState([])
   const [totalNum, setTotalNum] = useState(null)
   const [page, setPage] = useState(1)
   const [lastPage, setLastPage] = useState(1)
   const onCompleted = (result) => {
-    const { adminSeeQuizComplain: { totalNum, quiz } } = result
-    setContents(quiz)
+    const { adminSeeSuggetions: { totalNum, suggestions } } = result
+    setContents(suggestions)
     setTotalNum(totalNum)
     if (totalNum === 0) {
       setLastPage(1)
@@ -61,12 +73,12 @@ const AdminSuggestion = () => {
     const lastPage = Math.floor(totalNum / 20) + 1
     setLastPage(lastPage)
   }
-  // const { data, loading } = useQuery(ADMIN_SEE_QUIZ_COMPLAIN_QUERY, {
-  //   variables: {
-  //     page
-  //   },
-  //   onCompleted
-  // })
+  const { data, loading } = useQuery(SEE_SUGGESTIONS_QUERY, {
+    variables: {
+      page
+    },
+    onCompleted
+  })
   const onClickPageBtn = (btn) => {
     if (btn === "pre") {
       if (page === 1) {
@@ -85,7 +97,7 @@ const AdminSuggestion = () => {
   return (
     <Container>
       <div className="topContent">
-        <TotalNum>{totalNum}의 건의사항</TotalNum>
+        <TotalNum>{totalNum}개의 건의사항</TotalNum>
         <PageBar>
           <PageBarBtn firstPage={page === 1 ? true : false} onClick={() => onClickPageBtn("pre")}>이전</PageBarBtn>
           <PageBarBtn lastPage={lastPage === page} onClick={() => onClickPageBtn("next")}>다음</PageBarBtn>
