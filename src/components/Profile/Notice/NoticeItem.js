@@ -9,6 +9,7 @@ import SharedStudentNotice from './SharedStudentNotice';
 import { fadeIn } from '../../../animation/fade';
 import EditNotice from './EditNotice';
 import ChargeNotice from './ChargeNotice';
+import AdminAnswerNotice from './AdminAnswerNotice';
 
 const SNoticeItem = styled.div`
   :not(:last-child) {
@@ -62,6 +63,8 @@ const NoticeItem = ({ createdAt, sender, type, confirm, userId, id, message, inf
       return "수정 알림"
     } else if (type === "chargeNotice") {
       return "신고 접수 알림"
+    } else if (type === "adminAnswer") {
+      return "관리자 메시지"
     }
   }
   const update = (cache, result) => {
@@ -109,6 +112,7 @@ const NoticeItem = ({ createdAt, sender, type, confirm, userId, id, message, inf
       {type === "sharedStudent" && <SharedStudentNotice userId={userId} message={message} info={info} noticeId={id} />}
       {type === "editNotice" && <EditNotice userId={userId} message={message} info={info} noticeId={id} />}
       {type === "chargeNotice" && <ChargeNotice userId={userId} message={message} info={info} noticeId={id} />}
+      {type === "adminAnswer" && <AdminAnswerNotice message={message} info={info} noticeId={id} />}
     </DetailNotice>}
   </SNoticeItem>);
 }
