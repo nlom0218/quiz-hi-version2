@@ -18,8 +18,11 @@ export const Container = styled.div`
 `
 
 const AdminSuggestionItem = ({ suggestion, sender }) => {
+  const onClickUser = () => {
+    window.open(`/profile/${sender}/info`, "_blank")
+  }
   return (<Container>
-    <div>{sender}</div>
+    <div onClick={onClickUser} style={{ cursor: "pointer" }}>{sender}</div>
     <div>{suggestion}</div>
     <div className="detail_content"><FontAwesomeIcon icon={faCog} /></div>
   </Container>);
