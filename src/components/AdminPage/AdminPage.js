@@ -5,6 +5,7 @@ import React from 'react';
 import { useHistory, useParams } from 'react-router';
 import styled from 'styled-components';
 import AdminComplain from './AdminComplain/AdminComplain';
+import AdminSuggestion from './AdminSuggestion/AdminSuggestion';
 import AdminUser from './AdminUser/AdminUser';
 
 const Container = styled.div`
@@ -59,6 +60,7 @@ const AdminPage = () => {
     </TopContents>
     {mode === "user" && <AdminUser />}
     {mode === "msg" && <AdminComplain />}
+    {mode === "sug" && <AdminSuggestion />}
   </Container>);
 }
 
