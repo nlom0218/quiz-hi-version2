@@ -3,6 +3,7 @@ import gql from 'graphql-tag';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { PageBar, PageBarBtn, QuizQuestionList, TotalNum } from '../sharedCss';
+import AdminSuggestionItem from './AdminSuggestionItem';
 
 const Container = styled.div`
   display: grid;
@@ -109,6 +110,9 @@ const AdminSuggestion = () => {
           <div>건의사항</div>
           <div className="detail_content">상세보기</div>
         </div>
+        {contents.map((item, index) => {
+          return <AdminSuggestionItem key={index} {...item} />
+        })}
       </SugList>
     </Container>
   );
