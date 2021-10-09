@@ -1,6 +1,8 @@
+import { useMutation } from '@apollo/client';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import gql from 'graphql-tag';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
@@ -57,11 +59,46 @@ const MsgForm = styled.form`
   row-gap: 20px;
 `
 
+const SEND_SUGGESTION_MUTATION = gql`
+  mutation sendSuggestion($suggestion: String!, $sender: String!) {
+    sendSuggestion(suggestion: $suggestion, sender: $sender) {
+      ok
+    }
+  } 
+`
+
 const SendMsg = () => {
   const user = useUser()
-  const { register } = useForm({
+  const { register, handleSubmit, setValue } = useForm({
     mode: "onChange"
   })
+  const [sendSuggestion, { loading }] = useMutation(SEND_SUGGESTION_MUTATION, {
+    onCompleted: () => {
+      window.alert("메시지가 전송 되었습니다.")
+      setValue("suggestion", "")
+    }
+  })
+  const onSubmit = (data) => {
+    const { suggestion } = data
+    if (loading) {
+      window.alert("요청 처리 중 입니다.")
+      return
+    }
+    if (!user) {
+      window.alert("로그인 후 메시지를 보낼 수 있습니다.")
+      return
+    }
+    if (!suggestion || suggestion === "") {
+      window.alert("메시지를 입력해 주세요.")
+      return
+    }
+    sendSuggestion({
+      variables: {
+        suggestion,
+        sender: user?.username
+      }
+    })
+  }
   return (<HomeLayout
     className="sendMsg"
     layout="sendMsg"
@@ -77,11 +114,11 @@ const SendMsg = () => {
         <div><FontAwesomeIcon icon={faCheck} /> 궁금하신 내용이 있으신가요?</div>
         <div style={{ fontWeight: "600" }}>언제든지 메시지를 보내주세요!</div>
       </SendMsgInfo>
-      <MsgForm>
+      <MsgForm onSubmit={handleSubmit(onSubmit)}>
         <Textarea
           cols={20}
           rows={8}
-          {...register("question", {
+          {...register("suggestion", {
             required: true
           })}
         ></Textarea >
