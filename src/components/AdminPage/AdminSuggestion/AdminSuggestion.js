@@ -48,6 +48,7 @@ const SEE_SUGGESTIONS_QUERY = gql`
       suggestions {
         suggestion
         sender
+        id
       }
       totalNum
     }

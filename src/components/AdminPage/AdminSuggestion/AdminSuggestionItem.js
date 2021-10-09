@@ -18,7 +18,7 @@ export const Container = styled.div`
   }
 `
 
-const AdminSuggestionItem = ({ suggestion, sender }) => {
+const AdminSuggestionItem = ({ suggestion, sender, id }) => {
   const [detail, setDetail] = useState(false)
   const onClickUser = () => {
     window.open(`/profile/${sender}/info`, "_blank")
@@ -30,7 +30,7 @@ const AdminSuggestionItem = ({ suggestion, sender }) => {
     <div onClick={onClickUser} style={{ cursor: "pointer" }}>{sender}</div>
     <div>{suggestion}</div>
     <div className="detail_content"><FontAwesomeIcon icon={faCog} onClick={onClickDetail} /></div>
-    {detail && <AdminSuggestionDetail sender={sender} />}
+    {detail && <AdminSuggestionDetail sender={sender} sugId={id} />}
   </Container>);
 }
 

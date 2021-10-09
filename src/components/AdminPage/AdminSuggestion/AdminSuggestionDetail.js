@@ -1,3 +1,5 @@
+import { useMutation } from '@apollo/client';
+import gql from 'graphql-tag';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
@@ -22,7 +24,7 @@ const MsgForm = styled.form`
     transition: background-color 1s ease, color 1s ease;
     border-radius: 5px;
     :hover {
-      background-color: rgb(77, 242, 78, 0.6);
+      background-color: rgb(200, 200, 200, 0.4);
     }
   }
   row-gap: 20px;
@@ -44,12 +46,41 @@ const Textarea = styled.textarea`
   }
 `
 
-const AdminSuggestionDetail = ({ sender }) => {
+const SEND_NOTICE_MUTATION = gql`
+  mutation adminSendNotice($info: String!, $type: String!, $username: String, $sugId: Int!) {
+    adminSendNotice(info: $info, type: $type, username: $username, sugId: $sugId) {
+      ok
+      error
+    }
+  }
+`
+
+const AdminSuggestionDetail = ({ sender, sugId }) => {
   const { register, handleSubmit, setValue } = useForm({
     mode: "onChange"
   })
+  const [adminSendNotice, { loading }] = useMutation(SEND_NOTICE_MUTATION, {
+    onCompleted: () => {
+      window.alert("요청이 성공적으로 수행되었습니다.")
+      window.location.reload()
+    }
+  })
   const onSubmit = (data) => {
-
+    const { answer } = data
+    const type = "adminAnswer"
+    const info = answer
+    const username = sender
+    if (loading) {
+      return
+    }
+    adminSendNotice({
+      variables: {
+        info,
+        username,
+        type,
+        sugId
+      }
+    })
   }
   return (<Container>
     <SendMsg>
@@ -58,11 +89,11 @@ const AdminSuggestionDetail = ({ sender }) => {
         <Textarea
           cols={20}
           rows={8}
-          {...register("suggestion", {
+          {...register("answer", {
             required: true
           })}
         ></Textarea >
-        <input type="submit" value="메시지 보내기" />
+        <input type="submit" value="메시지 보내기 및 건의사항 삭제하기" />
       </MsgForm>
     </SendMsg>
   </Container>);
