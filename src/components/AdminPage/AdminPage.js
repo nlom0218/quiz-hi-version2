@@ -50,6 +50,11 @@ const AdminPage = () => {
             icon={mode === "msg" ? faCheckCircle : faCircle}
             onClick={() => onClickList("msg")} /> 퀴즈 / 문제 신고
       </List>
+        <List>
+          <FontAwesomeIcon
+            icon={mode === "sug" ? faCheckCircle : faCircle}
+            onClick={() => onClickList("sug")} /> 건의사항
+      </List>
       </Bar>
     </TopContents>
     {mode === "user" && <AdminUser />}
