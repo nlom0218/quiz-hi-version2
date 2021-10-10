@@ -9,6 +9,7 @@ import LevelStep from '../LevelStep';
 import PopularQuizQuiestion from './PopularQuizQuiestion';
 import { ContentNum, DetailInfoLayout, Title } from './sharedCss';
 import StudentScoreList from './StudentScoreList';
+import UpdateAccount from './UpdateAccount';
 
 const Container = styled.div`
   margin-top: 20px;
@@ -294,6 +295,7 @@ const BasicProfile = ({ id, nickname, email, totalFollow, totalFollowing, type, 
         </DetailInfoLayout>}
         {type === "teacher" && <PopularQuizQuiestion userId={id} totalPublicQuiz={totalPublicQuiz} totalPublicQuestion={totalPublicQuestion} />}
         {type === "student" && <StudentScoreList quizScore={quizScore} />}
+        {type === "nomal" && <UpdateAccount />}
       </DetailInto>
     </LeftContents>
 
