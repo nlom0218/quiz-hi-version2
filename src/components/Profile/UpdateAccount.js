@@ -90,6 +90,7 @@ const CONFIRM_EMAIL_MUTATION = gql`
 `
 
 const UpdateAccount = ({ userId }) => {
+  const [error, setError] = useState(null)
   const [doneConfirm, setDoneConfirm] = useState(false)
   const [confirmNum, setConfirmNum] = useState("")
   const [sendEmail, setSendEmail] = useState(false)
@@ -179,7 +180,7 @@ const UpdateAccount = ({ userId }) => {
       {errMsg && <ErrMsg>{errMsg} <span onClick={onClickRetry}>재시도</span></ErrMsg>}
       {sendEmail &&
         <React.Fragment>
-          <EmailConfirm confirmNum={confirmNum} setDoneConfirm={setDoneConfirm} />
+          <EmailConfirm confirmNum={confirmNum} setDoneConfirm={setDoneConfirm} setError={setError} />
           <PlatForm>
             <a href={`https://${platform}`} target="_blank">
               {platform}로 이동하기
@@ -188,6 +189,7 @@ const UpdateAccount = ({ userId }) => {
           </PlatForm>
         </React.Fragment>
       }
+      {error && <ErrMsg>{error}</ErrMsg>}
       {doneConfirm && <UpdateAccountBtn email={email} userId={userId} />}
     </Wrapper>
   </DetailInfoLayout>);
