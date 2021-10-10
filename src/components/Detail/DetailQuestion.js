@@ -136,7 +136,7 @@ const DetailQuestion = ({ question, tags, answer, type, distractor, hint, image 
   const [distractor4Height, setDistractor4Height] = useState(null)
   useEffect(() => {
     setTxtHeight(textarea.current.scrollHeight)
-    if (type === "obj") {
+    if (allowSeeDisTractor()) {
       setDistractor1Height(distractor1.current.scrollHeight)
       setDistractor2Height(distractor2.current.scrollHeight)
       setDistractor3Height(distractor3.current.scrollHeight)
@@ -174,6 +174,20 @@ const DetailQuestion = ({ question, tags, answer, type, distractor, hint, image 
       }
     }
   }
+  const allowSeeDisTractor = () => {
+    if (type !== "obj") {
+      return false
+    }
+    if (!user) {
+      return false
+    } else {
+      if (user.type === "teacher") {
+        return true
+      } else {
+        return false
+      }
+    }
+  }
   return (<React.Fragment>
     <Question tags={tags.length !== 0 ? true : false}>
       <div className="title"><FontAwesomeIcon icon={faFile} /> 문제</div>
@@ -186,7 +200,7 @@ const DetailQuestion = ({ question, tags, answer, type, distractor, hint, image 
         ref={textarea}
       ></QuestionText>
     </Question>
-    {type === "obj" &&
+    {allowSeeDisTractor() &&
       <Answer>
         <div className="title"><FontAwesomeIcon icon={faListOl} /> 선택지</div>
         <div className="content">
