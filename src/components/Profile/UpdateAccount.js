@@ -9,6 +9,7 @@ import { DetailInfoLayout, Title } from './sharedCss';
 import emailjs from 'emailjs-com';
 import dotenv from "dotenv"
 import EmailConfirm from '../Account/EmailConfirm';
+import UpdateAccountBtn from './UpdateAccountBtn';
 dotenv.config()
 
 const Wrapper = styled.div`
@@ -88,7 +89,7 @@ const CONFIRM_EMAIL_MUTATION = gql`
   }
 `
 
-const UpdateAccount = () => {
+const UpdateAccount = ({ userId }) => {
   const [doneConfirm, setDoneConfirm] = useState(false)
   const [confirmNum, setConfirmNum] = useState("")
   const [sendEmail, setSendEmail] = useState(false)
@@ -148,6 +149,7 @@ const UpdateAccount = () => {
   const onClinkAgainBtn = () => {
     setSendEmail(false)
     setValue("email", "")
+    setDoneConfirm(false)
   }
   const onClickRetry = () => {
     setSending(false)
@@ -186,6 +188,7 @@ const UpdateAccount = () => {
           </PlatForm>
         </React.Fragment>
       }
+      {doneConfirm && <UpdateAccountBtn email={email} userId={userId} />}
     </Wrapper>
   </DetailInfoLayout>);
 }

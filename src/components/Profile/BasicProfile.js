@@ -295,7 +295,7 @@ const BasicProfile = ({ id, nickname, email, totalFollow, totalFollowing, type, 
         </DetailInfoLayout>}
         {type === "teacher" && <PopularQuizQuiestion userId={id} totalPublicQuiz={totalPublicQuiz} totalPublicQuestion={totalPublicQuestion} />}
         {type === "student" && <StudentScoreList quizScore={quizScore} />}
-        {type === "nomal" && <UpdateAccount />}
+        {type === "nomal" && <UpdateAccount userId={id} />}
       </DetailInto>
     </LeftContents>
 
