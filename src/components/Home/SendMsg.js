@@ -28,6 +28,7 @@ const SendMsgInfo = styled.div`
 
 const Textarea = styled.textarea`
   width: 100%;
+  line-height: 160%;
   resize: none;
   border: none;
   font-size: 16px;
@@ -117,7 +118,7 @@ const SendMsg = () => {
       <MsgForm onSubmit={handleSubmit(onSubmit)}>
         <Textarea
           cols={20}
-          rows={8}
+          rows={6}
           {...register("suggestion", {
             required: true
           })}

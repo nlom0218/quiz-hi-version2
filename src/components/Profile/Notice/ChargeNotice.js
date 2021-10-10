@@ -13,6 +13,7 @@ const Contents = styled.div`
 
 const InfoTextarea = styled.textarea`
   width: 100%;
+  line-height: 160%;
   height: ${props => props.txtHeight}px;
   resize: none;
   border: none;

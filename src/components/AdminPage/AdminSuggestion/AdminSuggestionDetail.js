@@ -32,6 +32,7 @@ const MsgForm = styled.form`
 
 const Textarea = styled.textarea`
   width: 100%;
+  line-height: 160%;
   resize: none;
   border: none;
   font-size: 16px;
