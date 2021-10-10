@@ -1,5 +1,4 @@
 import { useMutation } from '@apollo/client';
-import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import gql from 'graphql-tag';
@@ -12,7 +11,7 @@ import HomeLayout from './HomeLayout';
 const Box = styled.div`
   padding: 60px;
   grid-row: 2 / 3;
-  background-color: rgb(77, 242, 78, 0.2);
+  background-color: rgb(255, 226, 124, 0.2);
   box-shadow: 0px 17px 6px -14px rgba(0,0,0,0.2);
   display: grid;
   grid-template-columns: auto 1fr;
@@ -35,7 +34,7 @@ const Textarea = styled.textarea`
   border-radius: 5px;
   padding: 20px 20px;
   color: ${props => props.theme.fontColor};
-  background-color: rgb(77, 242, 78, 0.4);
+  background-color: rgb(255, 226, 124, 0.4);
   transition: box-shadow 0.4s linear, background-color 1s ease, color 1s ease;
   :focus {
     box-shadow: 0 0 1px 0.5px ${props => props.theme.fontColor};
@@ -50,11 +49,11 @@ const MsgForm = styled.form`
     justify-self: flex-end;
     cursor: pointer;
     padding: 10px 20px;
-    background-color: rgb(77, 242, 78, 0.4);
+    background-color: rgb(255, 226, 124, 0.4);
     transition: background-color 1s ease, color 1s ease;
     border-radius: 5px;
     :hover {
-      background-color: rgb(77, 242, 78, 0.6);
+      background-color: rgb(255, 226, 124, 0.6);
     }
   }
   row-gap: 20px;
