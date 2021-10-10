@@ -238,7 +238,7 @@ const TopProfile = ({ id, username, nickname, email, avatarURL, type, score, isM
       {needLoginMode() === "teacher" && <NavBtn
         onClick={() => onClickNavBtn("student")}
         seleted={mode === "student" ? true : false}>학생 관리</NavBtn>}
-      {needLoginMode() === "teacher" && <NavBtn
+      {needLoginMode() !== "student" && <NavBtn
         onClick={() => onClickNavBtn("notice")}
         seleted={mode === "notice" ? true : false}>
         <div>알림</div>
