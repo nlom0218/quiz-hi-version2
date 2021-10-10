@@ -12,7 +12,7 @@ const SNavBtn = styled.div`
   align-items: center;
   cursor: pointer;
   color: ${props => props.theme.fontColor};
-  transition: background-color 0.5s linear, color  0.5s linear;
+  transition: background-color 0.5s linear, color  0.5s linear, border 1s ease;
   :hover {
   background-color: ${props => props.theme.fontColor};   
   color: ${props => props.theme.bgColor};
