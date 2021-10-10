@@ -106,28 +106,23 @@ const UpdateAccount = ({ userId }) => {
     const { confirmEmail: { ok, error } } = result
     if (ok) {
       const randomNum = Math.floor(Math.random() * 1000000)
-      console.log(randomNum);
       setConfirmNum(randomNum)
-      // emailjs.send(
-      //   process.env.REACT_APP_EMAILSERVICEID,
-      //   process.env.REACT_APP_EMAILTEMPLATEID,
-      //   {
-      //     email,
-      //     confirmNum: randomNum
-      //   },
-      //   process.env.REACT_APP_EMAILUSERID)
-      //   .then((result) => {
-      //     setSendEmail(true)
-      //     setSending(false)
-      //     setEmail(email)
-      //     setPlatForm(email.split("@").reverse()[0])
-      //   }, (error) => {
-      //     console.log(error.text);
-      //   })
-      setSendEmail(true)
-      setSending(false)
-      setEmail(email)
-      setPlatForm(email.split("@").reverse()[0])
+      emailjs.send(
+        process.env.REACT_APP_EMAILSERVICEID,
+        process.env.REACT_APP_EMAILTEMPLATEID,
+        {
+          email,
+          confirmNum: randomNum
+        },
+        process.env.REACT_APP_EMAILUSERID)
+        .then((result) => {
+          setSendEmail(true)
+          setSending(false)
+          setEmail(email)
+          setPlatForm(email.split("@").reverse()[0])
+        }, (error) => {
+          console.log(error.text);
+        })
     } else {
       setErrMsg(error)
     }

@@ -1,3 +1,5 @@
+import { useMutation } from '@apollo/client';
+import gql from 'graphql-tag';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -24,11 +26,39 @@ const UpdateBtn = styled.div`
   }
 `
 
+const UPDATE_ACCOUNT_MUTATION = gql`
+  mutation updateAccount($email: String!, $userId: Int!) {
+    updateAccount(email: $email, userId: $userId) {
+      ok
+    }
+  }
+`
+
 const UpdateAccountBtn = ({ email, userId }) => {
-  console.log(email, userId);
+  const onCompleted = (result) => {
+    const { updateAccount: { ok } } = result
+    if (ok) {
+      window.alert("선생님 계정으로 업데이트 되었습니다.")
+      window.location.reload()
+    }
+  }
+  const [updateAccount, { loading }] = useMutation(UPDATE_ACCOUNT_MUTATION, {
+    onCompleted
+  })
+  const onClickUpdate = () => {
+    if (loading) {
+      return
+    }
+    updateAccount({
+      variables: {
+        email,
+        userId
+      }
+    })
+  }
   return (<Container>
     <div>이메일 인증에 성공하였습니다.</div>
-    <UpdateBtn>계정 업데이트</UpdateBtn>
+    <UpdateBtn onClick={onClickUpdate}>계정 업데이트</UpdateBtn>
   </Container>);
 }
 
