@@ -120,7 +120,6 @@ const SelectQuizList = ({ setQuizId, setQuizTitle }) => {
     skip: Boolean(!user),
     onCompleted
   })
-  console.log(data);
   const onClickPageBtn = (btn) => {
     if (btn === "pre") {
       if (page === 1) {
