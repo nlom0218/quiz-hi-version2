@@ -69,7 +69,7 @@ const SortBtn = styled.div`
 
 const SortList = styled.ul`
   position: absolute;
-  top: 34px;
+  top: 37px;
   right: 0px;
   background-color: ${props => props.theme.grayColor};
   display: grid;
@@ -150,12 +150,12 @@ const QuizFeedContainer = ({ children, feedType, sort, page, lastPage, tagsArr, 
         </form>
       </SearchBar>
       {checkPageBar() ? <PageBar lastPage={lastPage} /> : null}
-      <SortBar onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}>
+      <SortBar onMouseOver={onMouseOver}>
         <Sort>{processSort(sort)}</Sort>
         <SortBtn>
           <FontAwesomeIcon icon={faChevronDown} />
         </SortBtn>
-        {seeSortList && <SortList>
+        {seeSortList && <SortList onMouseLeave={onMouseLeave}>
           <SortItem onClick={() => onClickSortItem("recent")}>최신순
             {sort === "recent" && <FontAwesomeIcon icon={faCheck} />}
           </SortItem>
