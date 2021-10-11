@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import useUser from '../../hooks/useUser';
 import { processNextLevelScore, processUserLevel, getCreatedDay } from '../../sharedFn';
 import LevelStep from '../LevelStep';
 import PopularQuizQuiestion from './PopularQuizQuiestion';
@@ -164,6 +165,7 @@ const UserCaption = styled.textarea`
 
 const BasicProfile = ({ id, nickname, email, totalFollow, totalFollowing, type, totalPublicQuiz, totalPublicQuestion, score, createdAt, tags, personalPage, caption, quizScore }) => {
   const textarea = useRef()
+  const user = useUser()
   const [txtHeight, setTxtHeight] = useState(null)
   useEffect(() => {
     if (caption) {
@@ -198,6 +200,20 @@ const BasicProfile = ({ id, nickname, email, totalFollow, totalFollowing, type, 
       return <FontAwesomeIcon icon={faBlog} />
     } else if (page === "기타") {
       return <FontAwesomeIcon icon={faIcons} />
+    }
+  }
+  const seeUpdateAccount = () => {
+    if (type !== "nomal") {
+      return false
+    }
+    if (!user) {
+      return false
+    } else {
+      if (user?.id !== id) {
+        return false
+      } else {
+        return true
+      }
     }
   }
   return (<Container>
@@ -295,7 +311,7 @@ const BasicProfile = ({ id, nickname, email, totalFollow, totalFollowing, type, 
         </DetailInfoLayout>}
         {type === "teacher" && <PopularQuizQuiestion userId={id} totalPublicQuiz={totalPublicQuiz} totalPublicQuestion={totalPublicQuestion} />}
         {type === "student" && <StudentScoreList quizScore={quizScore} />}
-        {type === "nomal" && <UpdateAccount userId={id} />}
+        {seeUpdateAccount() && <UpdateAccount userId={id} />}
       </DetailInto>
     </LeftContents>
 
