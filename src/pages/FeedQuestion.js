@@ -54,7 +54,7 @@ const FeedQuestion = () => {
   const onCompleted = (result) => {
     const { detailQuestion } = result
     if (detailQuestion.state === "private" && user?.id !== detailQuestion.user.id) {
-      window.alert("해당 퀴즈의 접근 권한이 없습니다.")
+      window.alert("해당 문제의 접근 권한이 없습니다.")
       history.push("/")
     }
     if (!detailQuestion) {
