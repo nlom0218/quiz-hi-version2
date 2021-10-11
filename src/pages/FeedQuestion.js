@@ -10,11 +10,13 @@ import Header from '../components/Header';
 import NavBtn from '../components/NavBtn';
 import QuizQuestionBasket from '../components/QuizFeed/QuizQuestionBasket';
 import useTitle from '../hooks/useTitle';
+import useUser from '../hooks/useUser';
 
 const DETAIL_QUESTION_QUERY = gql`
   query detailQuestion($id: Int!) {
     detailQuestion(id: $id) {
       id
+      state
       question
       distractor
       hint
@@ -44,12 +46,17 @@ const DETAIL_QUESTION_QUERY = gql`
 
 const FeedQuestion = () => {
   const history = useHistory()
+  const user = useUser()
   const titleUpdataer = useTitle("QUIZ HI | 문제")
   const { id } = useParams()
   const [putQuiz, setPutQuiz] = useState(false)
   const [loading, setLoading] = useState(true)
   const onCompleted = (result) => {
     const { detailQuestion } = result
+    if (detailQuestion.state === "private" && user?.id !== detailQuestion.user.id) {
+      window.alert("해당 퀴즈의 접근 권한이 없습니다.")
+      history.push("/")
+    }
     if (!detailQuestion) {
       window.alert("요청하신 페이지가 없습니다.")
       history.push("/")

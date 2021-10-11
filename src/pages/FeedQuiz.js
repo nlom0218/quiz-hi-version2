@@ -12,6 +12,7 @@ import Header from '../components/Header';
 import NavBtn from '../components/NavBtn';
 import QuizQuestionBasket from '../components/QuizFeed/QuizQuestionBasket';
 import useTitle from '../hooks/useTitle';
+import useUser from '../hooks/useUser';
 
 const DelQuizMsg = styled.div`
   color: tomato;
@@ -22,6 +23,7 @@ const DETAIL_QUIZ_QUERY = gql`
     detailQuiz(id: $id) {
       id
       title
+      state
       createdAt
       caption
       order
@@ -65,6 +67,7 @@ const DETAIL_QUIZ_QUERY = gql`
 `
 
 const FeedQuiz = () => {
+  const user = useUser()
   const history = useHistory()
   const titleUpdataer = useTitle("QUIZ HI | 퀴즈")
   const { id } = useParams()
@@ -72,6 +75,10 @@ const FeedQuiz = () => {
   const [loading, setLoading] = useState(true)
   const onCompleted = (result) => {
     const { detailQuiz } = result
+    if (detailQuiz.state === "private" && user?.id !== detailQuiz.user.id) {
+      window.alert("해당 퀴즈의 접근 권한이 없습니다.")
+      history.push("/")
+    }
     if (!detailQuiz) {
       window.alert("요청하신 페이지가 없습니다.")
       history.push("/")
