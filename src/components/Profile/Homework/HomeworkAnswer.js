@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
+import { fadeIn } from '../../../animation/fade';
 import { compare } from '../../../sharedFn';
 
 const ObjAnswerInput = styled.div`
@@ -38,6 +39,7 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 3fr 1fr;
   column-gap: 20px;
+  row-gap: 20px;
 `
 
 const SubAnswerInput = styled.input`
@@ -61,7 +63,15 @@ const SubmitBtn = styled.input`
   cursor: pointer;
 `
 
-const HomeworkAnswer = ({ type, register, id, isValid, setChange }) => {
+const ChangeMsg = styled.div`
+  grid-column: 1 / -1;
+  text-align: center;
+  color: tomato;
+  animation: ${fadeIn} 0.4s ease;
+  line-height: 160%;
+`
+
+const HomeworkAnswer = ({ type, register, id, isValid, setChange, watch }) => {
   const onClickAnswer = (id, answer) => {
     const homeworkScore = JSON.parse(localStorage.getItem("homeworkScore"))
     const questionObj = homeworkScore.filter((item) => item.id === id)[0]
@@ -122,6 +132,14 @@ const HomeworkAnswer = ({ type, register, id, isValid, setChange }) => {
       }
     }
   }
+  const checkSubAnswer = () => {
+    if (type !== "sub") {
+      return
+    }
+    const homeworkScore = JSON.parse(localStorage.getItem("homeworkScore"))
+    const questionObj = homeworkScore.filter((item) => item.id === id)[0]
+    return questionObj.answer === watch("answer")
+  }
   return (<React.Fragment>
     {type === "obj" && <ObjAnswerInput>
       <ObjAnswerList>
@@ -158,10 +176,14 @@ const HomeworkAnswer = ({ type, register, id, isValid, setChange }) => {
           placeholder="정답을 입력해 주세요."
         />
         <SubmitBtn
-          value={processAnswer(id) ? "저장됨" : "저장"}
+          value={processAnswer(id) && checkSubAnswer() ? "저장됨" : "저장"}
           type="submit"
           disabled={!isValid}
         />
+        {!checkSubAnswer() && <ChangeMsg>
+          <div>정답을 수정하였습니다. 위의 저장 버튼을 다시 눌러주세요.</div>
+          <div>새로운 정답이 저장되면 해당 메시지는 사라집니다.</div>
+        </ChangeMsg>}
       </Wrapper>
     }
   </React.Fragment>);

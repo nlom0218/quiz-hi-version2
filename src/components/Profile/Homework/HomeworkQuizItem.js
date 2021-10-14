@@ -157,7 +157,7 @@ const HomeworkQuizItem = ({ question, index, setChange, resultArr }) => {
       return distractor4Height
     }
   }
-  const { register, formState: { isValid }, handleSubmit } = useForm({
+  const { register, formState: { isValid }, handleSubmit, watch } = useForm({
     mode: "onChange",
     ...(!resultArr && {
       defaultValues: {
@@ -260,7 +260,7 @@ const HomeworkQuizItem = ({ question, index, setChange, resultArr }) => {
       </Wrapper>}
       <FormWrapper onSubmit={handleSubmit(onSubmit)}>
         <div><FontAwesomeIcon icon={faBell} /> 정답</div>
-        {!resultArr && <HomeworkAnswer type={question.type} questionNum={index + 1} register={register} id={question.id} isValid={isValid} setChange={setChange} />}
+        {!resultArr && <HomeworkAnswer type={question.type} questionNum={index + 1} register={register} id={question.id} isValid={isValid} setChange={setChange} watch={watch} />}
         {resultArr && <HomeworkAnswerResult resultArr={resultArr} type={question.type} id={question.id} />}
       </FormWrapper>
       {resultArr && <Wrapper>
