@@ -76,7 +76,11 @@ const HomeworkAnswer = ({ type, register, id, isValid, setChange }) => {
           newQuestionObj = { ...questionObj, answer: newAnswer }
         } else {
           const newAnswer = questionObj.answer.filter((item) => item !== answer)
-          newQuestionObj = { ...questionObj, answer: newAnswer }
+          if (newAnswer.length === 0) {
+            newQuestionObj = { id: questionObj.id, score: questionObj.score }
+          } else {
+            newQuestionObj = { ...questionObj, answer: newAnswer }
+          }
         }
       }
       const newHomeworkSocre = [...existQuestion, newQuestionObj]
