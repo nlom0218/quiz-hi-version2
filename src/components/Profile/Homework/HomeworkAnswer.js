@@ -71,7 +71,7 @@ const ChangeMsg = styled.div`
   line-height: 160%;
 `
 
-const HomeworkAnswer = ({ type, register, id, isValid, setChange, watch }) => {
+const HomeworkAnswer = ({ type, register, id, isValid, setChange, watch, saveAnswer }) => {
   const onClickAnswer = (id, answer) => {
     const homeworkScore = JSON.parse(localStorage.getItem("homeworkScore"))
     const questionObj = homeworkScore.filter((item) => item.id === id)[0]
@@ -135,6 +135,9 @@ const HomeworkAnswer = ({ type, register, id, isValid, setChange, watch }) => {
   const checkSubAnswer = () => {
     if (type !== "sub") {
       return
+    }
+    if (!saveAnswer) {
+      return true
     }
     const homeworkScore = JSON.parse(localStorage.getItem("homeworkScore"))
     const questionObj = homeworkScore.filter((item) => item.id === id)[0]

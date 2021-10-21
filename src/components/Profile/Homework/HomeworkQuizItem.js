@@ -116,6 +116,7 @@ const StudentAnswer = styled.div`
 `
 
 const HomeworkQuizItem = ({ question, index, setChange, resultArr }) => {
+  const [saveAnswer, setSaveAnswer] = useState(false)
   const textarea = useRef()
   const distractor1 = useRef()
   const distractor2 = useRef()
@@ -168,6 +169,7 @@ const HomeworkQuizItem = ({ question, index, setChange, resultArr }) => {
     })
   })
   const onSubmit = (data) => {
+    setSaveAnswer(true)
     const homeworkScore = JSON.parse(localStorage.getItem("homeworkScore"))
     const questionObj = homeworkScore.filter((item) => item.id === question.id)[0]
     const existQuestion = homeworkScore.filter((item) => item.id !== question.id)
@@ -260,7 +262,7 @@ const HomeworkQuizItem = ({ question, index, setChange, resultArr }) => {
       </Wrapper>}
       <FormWrapper onSubmit={handleSubmit(onSubmit)}>
         <div><FontAwesomeIcon icon={faBell} /> 정답</div>
-        {!resultArr && <HomeworkAnswer type={question.type} questionNum={index + 1} register={register} id={question.id} isValid={isValid} setChange={setChange} watch={watch} />}
+        {!resultArr && <HomeworkAnswer type={question.type} questionNum={index + 1} register={register} id={question.id} isValid={isValid} setChange={setChange} watch={watch} saveAnswer={saveAnswer} />}
         {resultArr && <HomeworkAnswerResult resultArr={resultArr} type={question.type} id={question.id} />}
       </FormWrapper>
       {resultArr && <Wrapper>
