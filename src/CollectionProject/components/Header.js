@@ -37,6 +37,7 @@ const Title = styled.div`
   display: none;
   color: ${props => props.theme.bgColor};
   transition: color 1s ease;
+  font-weight: 600;
   ${customMedia.greaterThan("tablet")`
     display: block;
     margin-left: 20px;

@@ -7,15 +7,13 @@ const SContents = styled.div`
   position: absolute;
   top: 50px;
   top: 3.125rem;
-  background-color: ${props => props.theme.boxColor};
-  transition: background-color 1s ease;
+  background-color: ${props => props.theme.fontColor};
+  color: ${props => props.theme.bgColor};
+  transition: background-color 1s ease, color 1s ease;
   padding: 0px 30px;
   padding: 0px 1.875rem;
   ${customMedia.greaterThan("desktop")`
     position: static;
-    background-color: ${props => props.theme.fontColor};
-    color: ${props => props.theme.bgColor};
-    transition: color 1s ease, background-color 1s ease;
     padding: 0px;
     margin-left: 30px;
     margin-left: 1.875rem;
