@@ -14,6 +14,7 @@ import useUser from '../hooks/useUser';
 import { useHistory } from 'react-router';
 import useTitle from '../hooks/useTitle';
 import SendMsg from '../components/Home/SendMsg';
+import { Link } from 'react-router-dom';
 gsap.registerPlugin(ScrollTrigger)
 
 const HomeContainer = styled.div`
@@ -27,12 +28,17 @@ const HomeContainer = styled.div`
   position: relative;
 `
 
+const Container = styled.div`
+  grid-column: 1 / -1;
+`
+
 const Home = () => {
   const titleUpdataer = useTitle("QUIZ HI | 홈")
   return (
     <React.Fragment>
       <Header />
       <HomeContainer className="homeContainer">
+        <Container><Link to="/collection">두 번째 프로잭트로 고고!!!</Link></Container>
         <HomeContainerGsap />
         <Intro />
         <NavIcon />
