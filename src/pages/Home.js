@@ -39,7 +39,7 @@ const Home = () => {
     <React.Fragment>
       <Header />
       <HomeContainer className="homeContainer">
-        <Container><Link to="/collection">두 번째 프로잭트로 고고!!!</Link></Container>
+        {/* <Container><Link to="/collection">두 번째 프로잭트로 고고!!!</Link></Container> */}
         <HomeContainerGsap />
         <Intro />
         <NavIcon />

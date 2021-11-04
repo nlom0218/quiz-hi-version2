@@ -5,7 +5,6 @@ import Header from '../components/Header';
 
 const Container = styled.div`
   display: grid;
-  
 `
 
 const Main = () => {
