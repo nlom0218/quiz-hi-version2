@@ -52,6 +52,7 @@ function App() {
           <Route exact path="/login">{isLoggedIn ? <Login /> : <NotFound />}</Route>
           <Route exact path="/create-account">{isLoggedIn ? <CreateAccount /> : <NotFound />}</Route>
           <Route exact path="/password-reset">{isLoggedIn ? <PasswordReset /> : <NotFound />}</Route>
+          <Route exact path="/collection"></Route>
           <Route path="/admin/:mode">{user?.username === "nlom0218" ? <Administrator /> : <NotFound />}</Route>
           <Route><NotFound /></Route>
         </Switch>
