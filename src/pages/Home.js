@@ -19,6 +19,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 const HomeContainer = styled.div`
   width: 1200px;
+  min-width: 1200px;
   margin: 0 auto;
   margin-top: 40px;
   display: grid;

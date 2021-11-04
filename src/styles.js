@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { generateMedia } from "styled-media-query";
 import reset from "styled-reset";
 
 // / color: rgb(255, 165, 0, 0.8); orange /
@@ -11,6 +12,13 @@ import reset from "styled-reset";
 //     return 
 //   }
 // }
+
+export const customMedia = generateMedia({
+  mobile: "320px",
+  tablet: "768px",
+  desktop: "1024px"
+})
+
 
 const color = {
   black: "#3f3f3f",
@@ -44,8 +52,8 @@ export const GlobalStyle = createGlobalStyle`
     overflow: auto;
   }
   body {
-    min-width: 1200px;
-    font-size: 16px;
+    font-size: 1em;
+    font-size: 1rem;
     color: ${props => props.theme.fontColor};
     background-color: ${props => props.theme.bgColor};
     transition: color 1s ease, background-color 1s ease;
