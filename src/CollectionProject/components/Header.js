@@ -18,7 +18,7 @@ const Container = styled.div`
   line-height: 3.125rem;
   transition: background-color 1s ease;
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto auto 1fr;
   position: relative;
   box-shadow: 0px 1px 1px #4f4f4f;
   svg {
@@ -26,24 +26,17 @@ const Container = styled.div`
     transition: color 1s ease;
     cursor: pointer;
   }
-  ${customMedia.greaterThan("tablet")`
-    grid-template-columns: auto auto 1fr;
-  `}
 `
 
 const HomeIcon = styled.div`
 `
 
 const Title = styled.div`
-  display: none;
   color: ${props => props.theme.bgColor};
   transition: color 1s ease;
   font-weight: 600;
-  ${customMedia.greaterThan("tablet")`
-    display: block;
-    margin-left: 20px;
-    margin-left: 1.25rem;
-  `}
+  margin-left: 20px;
+  margin-left: 1.25rem;
 `
 
 const MenuBar = styled.div`
