@@ -45,13 +45,17 @@ const MenuBar = styled.div`
 
 const Header = () => {
   const [seeMenu, setSeeMenu] = useState(false)
+  const [initMenu, setInitMenu] = useState(true)
   const isDesktop = useMediaQuery({
     query: "(min-width: 1024px)"
   })
   const isTablet = useMediaQuery({
     query: "(min-width: 768px)"
   })
-  const onClickMenu = () => { setSeeMenu(prev => !prev) }
+  const onClickMenu = () => {
+    setSeeMenu(prev => !prev)
+    setInitMenu(false)
+  }
   const possibleMenu = () => {
     if (isDesktop) {
       return true
@@ -66,7 +70,7 @@ const Header = () => {
     <HomeIcon><Link to="/"><FontAwesomeIcon icon={faHome} /></Link></HomeIcon>
     <Title>QUIZ HI Collection</Title>
     {!isDesktop && <MenuBar onClick={onClickMenu}><FontAwesomeIcon icon={faBars} /></MenuBar>}
-    {possibleMenu() && <Contents seeMenu={seeMenu} />}
+    {!initMenu && <Contents seeMenu={seeMenu} />}
   </Container>);
 }
 

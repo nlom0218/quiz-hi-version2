@@ -36,10 +36,10 @@ export const fadeIn = keyframes`
 export const collectionMenuFadeIn = keyframes`
   from {
     opacity: 1;
-    transform: translateY(-200px);
   }
   to {
     opacity: 1;
+    top: 50px;
   }
 `
 
@@ -48,7 +48,7 @@ export const collectionMenuFadeOut = keyframes`
     opacity: 1;
   }
   to {
-    transform: translateY(-200px);
     opacity: 1;
+    top: -200px;
   }
 `

@@ -6,14 +6,14 @@ import { customMedia } from '../../styles';
 const SContents = styled.div`
   width: 100%;
   position: absolute;
-  top: 50px;
-  top: 3.125rem;
+  top: ${props => props.seeMenu ? "-200px" : "50px"};
+  /* top: -12.5rem; */
   background-color: ${props => props.theme.fontColor};
   color: ${props => props.theme.bgColor};
   transition: background-color 1s ease, color 1s ease;
   padding: 0px 30px;
   padding: 0px 1.875rem;
-  /* animation: ${props => props.seeMenu ? collectionMenuFadeIn : collectionMenuFadeOut} 1s ease forwards; */
+  animation: ${props => props.seeMenu ? collectionMenuFadeIn : collectionMenuFadeOut} 1s ease forwards;
   z-index: -1;
   ${customMedia.greaterThan("desktop")`
     position: static;
