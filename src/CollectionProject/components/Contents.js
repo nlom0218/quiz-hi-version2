@@ -7,7 +7,7 @@ const SContents = styled.div`
   width: 100%;
   position: absolute;
   top: ${props => props.seeMenu ? "-200px" : "50px"};
-  /* top: -12.5rem; */
+  top: ${props => props.seeMenu ? "-12.5rem" : "3.125rem"};
   background-color: ${props => props.theme.fontColor};
   color: ${props => props.theme.bgColor};
   transition: background-color 1s ease, color 1s ease;
@@ -15,6 +15,10 @@ const SContents = styled.div`
   padding: 0px 1.875rem;
   animation: ${props => props.seeMenu ? collectionMenuFadeIn : collectionMenuFadeOut} 1s ease forwards;
   z-index: -1;
+  ${customMedia.greaterThan("tablet")`
+    top: ${props => props.seeMenu ? "-100px" : "50px"};
+    top: ${props => props.seeMenu ? "-6.25rem" : "3.125rem"};
+  `}
   ${customMedia.greaterThan("desktop")`
     position: static;
     padding: 0px;

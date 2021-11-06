@@ -1,4 +1,5 @@
 import { keyframes } from "styled-components";
+import { customMedia } from "../styles";
 
 export const pageFadeIn = keyframes`
   0% {
@@ -35,20 +36,22 @@ export const fadeIn = keyframes`
 
 export const collectionMenuFadeIn = keyframes`
   from {
-    opacity: 1;
   }
   to {
-    opacity: 1;
     top: 50px;
+    top: 3.125rem;
   }
 `
 
 export const collectionMenuFadeOut = keyframes`
   from {
-    opacity: 1;
   }
   to {
-    opacity: 1;
     top: -200px;
+    top: -12.5rem;
+    ${customMedia.greaterThan("tablet")`
+      top: -100px;
+      top: -6.25rem;
+    `}
   }
 `
