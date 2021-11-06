@@ -56,11 +56,11 @@ const Header = () => {
     setSeeMenu(prev => !prev)
     setInitMenu(false)
   }
-  const possibleMenu = () => {
+  const desktopMenu = () => {
     if (isDesktop) {
       return true
     } else {
-      if (seeMenu) {
+      if (!initMenu) {
         return true
       }
     }
@@ -70,7 +70,7 @@ const Header = () => {
     <HomeIcon><Link to="/"><FontAwesomeIcon icon={faHome} /></Link></HomeIcon>
     <Title>QUIZ HI Collection</Title>
     {!isDesktop && <MenuBar onClick={onClickMenu}><FontAwesomeIcon icon={faBars} /></MenuBar>}
-    {!initMenu && <Contents seeMenu={seeMenu} />}
+    {desktopMenu() && <Contents seeMenu={seeMenu} />}
   </Container>);
 }
 
