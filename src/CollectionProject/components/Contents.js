@@ -1,22 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
+import { collectionMenuFadeIn, collectionMenuFadeOut } from '../../animation/fade';
 import { customMedia } from '../../styles';
 
 const SContents = styled.div`
   width: 100%;
   position: absolute;
-  top: 51px;
-  top: 3.1875rem;
+  top: 50px;
+  top: 3.125rem;
   background-color: ${props => props.theme.fontColor};
   color: ${props => props.theme.bgColor};
   transition: background-color 1s ease, color 1s ease;
   padding: 0px 30px;
   padding: 0px 1.875rem;
+  /* animation: ${props => props.seeMenu ? collectionMenuFadeIn : collectionMenuFadeOut} 1s ease forwards; */
+  z-index: -1;
   ${customMedia.greaterThan("desktop")`
     position: static;
     padding: 0px;
     margin-left: 30px;
     margin-left: 1.875rem;
+    z-index: 1;
   `}
 `
 
@@ -46,8 +50,8 @@ const ItemDot = styled.span`
   margin-right: 0.625rem;
 `
 
-const Contents = () => {
-  return (<SContents>
+const Contents = ({ seeMenu }) => {
+  return (<SContents seeMenu={seeMenu}>
     <ContentsList>
       <ContentsItem><ItemDot>•</ItemDot> 스피드 퀴즈</ContentsItem>
       <ContentsItem><ItemDot>•</ItemDot> 스피드 퀴즈</ContentsItem>

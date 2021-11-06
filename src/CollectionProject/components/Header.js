@@ -66,7 +66,7 @@ const Header = () => {
     <HomeIcon><Link to="/"><FontAwesomeIcon icon={faHome} /></Link></HomeIcon>
     <Title>QUIZ HI Collection</Title>
     {!isDesktop && <MenuBar onClick={onClickMenu}><FontAwesomeIcon icon={faBars} /></MenuBar>}
-    {possibleMenu() && <Contents />}
+    {possibleMenu() && <Contents seeMenu={seeMenu} />}
   </Container>);
 }
 

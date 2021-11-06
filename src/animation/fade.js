@@ -32,3 +32,23 @@ export const fadeIn = keyframes`
     opacity: 1;
   }
 `
+
+export const collectionMenuFadeIn = keyframes`
+  from {
+    opacity: 1;
+    transform: translateY(-200px);
+  }
+  to {
+    opacity: 1;
+  }
+`
+
+export const collectionMenuFadeOut = keyframes`
+  from {
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-200px);
+    opacity: 1;
+  }
+`
