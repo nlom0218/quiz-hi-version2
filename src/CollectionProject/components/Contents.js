@@ -41,13 +41,18 @@ const ContentsItem = styled.li`
   `}
 `
 
+const ItemDot = styled.span`
+  margin-right: 10px;
+  margin-right: 0.625rem;
+`
+
 const Contents = () => {
   return (<SContents>
     <ContentsList>
-      <ContentsItem>• 스피드 퀴즈</ContentsItem>
-      <ContentsItem>• 스피드 퀴즈</ContentsItem>
-      <ContentsItem>• 스피드 퀴즈</ContentsItem>
-      <ContentsItem>• 스피드 퀴즈</ContentsItem>
+      <ContentsItem><ItemDot>•</ItemDot> 스피드 퀴즈</ContentsItem>
+      <ContentsItem><ItemDot>•</ItemDot> 스피드 퀴즈</ContentsItem>
+      <ContentsItem><ItemDot>•</ItemDot> 스피드 퀴즈</ContentsItem>
+      <ContentsItem><ItemDot>•</ItemDot> 스피드 퀴즈</ContentsItem>
     </ContentsList>
   </SContents>);
 }
