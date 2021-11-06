@@ -20,6 +20,7 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: auto 1fr;
   position: relative;
+  box-shadow: 0px 1px 1px #4f4f4f;
   svg {
     color: ${props => props.theme.bgColor};
     transition: color 1s ease;

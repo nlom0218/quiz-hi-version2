@@ -5,8 +5,8 @@ import { customMedia } from '../../styles';
 const SContents = styled.div`
   width: 100%;
   position: absolute;
-  top: 50px;
-  top: 3.125rem;
+  top: 51px;
+  top: 3.1875rem;
   background-color: ${props => props.theme.fontColor};
   color: ${props => props.theme.bgColor};
   transition: background-color 1s ease, color 1s ease;
