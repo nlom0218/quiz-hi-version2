@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { mobileMoveBot, mobileMoveTop, tabletMoveBot, tabletMoveTop } from '../../animation/fade';
 import { speedQuizList } from '../../Quiz/SpeedQuiz/SpeedQuizList';
@@ -95,12 +96,13 @@ const Speed = ({ moveBot, changeWidth, setChangeWidth }) => {
   }
   return (<Container moveBot={moveBot} changeWidth={changeWidth}>
     {speedQuizList.map((item, index) => {
-      return <QuizList img={item.imageURL} key={index}>
+      return <Link key={index} to={`/collection/speed/${item.id}`}><QuizList img={item.imageURL}>
         <QuizInfo changeWidth={changeWidth} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
           <Topic>{item.topic}</Topic>
           <QuizNum>{item.quizNum}문제</QuizNum>
         </QuizInfo>
       </QuizList>
+      </Link>
     })}
   </Container>);
 }
