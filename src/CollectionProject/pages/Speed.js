@@ -11,10 +11,10 @@ const Container = styled.div`
   row-gap: 1.25rem;
   column-gap: 20px;
   column-gap: 1.25rem;
-  animation: ${props => props.changeWidth ? "none" : (props.moveBot ? mobileMoveBot : mobileMoveTop)} 1s ease forwards;
+  animation: ${props => props.moveBot ? mobileMoveBot : mobileMoveTop} 1s ease forwards;
   ${customMedia.greaterThan("tablet")`
     grid-template-columns: 1fr 1fr;
-    animation: ${props => props.changeWidth ? "none" : (props.moveBot ? tabletMoveBot : tabletMoveTop)} 1s ease forwards;
+    animation: ${props => props.moveBot ? tabletMoveBot : tabletMoveTop} 1s ease forwards;
   `}
   ${customMedia.greaterThan("desktop")`
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -59,7 +59,7 @@ const QuizInfo = styled.div`
     :hover {
       opacity: 0.8;
     }
-    transition: ${props => !props.changeWidth && "opacity 0.6s ease"};
+    transition: ${props => !props.changeWidth && "opacity 0.4s ease"};
     font-weight: 600;
   `}
 `
@@ -102,9 +102,9 @@ const Speed = ({ moveBot, changeWidth, setChangeWidth }) => {
         <QuizNum>30문제</QuizNum>
       </QuizInfo>
     </QuizList>
-    <QuizList img="https://images.unsplash.com/photo-1571254120989-7a3c07c50c98?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=772&q=80">
+    <QuizList img="https://images.unsplash.com/photo-1506917847218-5725045a0731?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80">
       <QuizInfo changeWidth={changeWidth} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-        <Topic>학용품</Topic>
+        <Topic>탈것</Topic>
         <QuizNum>30문제</QuizNum>
       </QuizInfo>
     </QuizList>

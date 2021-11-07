@@ -1,6 +1,6 @@
 import { faBars, faHome } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -50,7 +50,6 @@ const Header = ({ setMoveBot, isDesktop, setChangeWidth }) => {
     setSeeMenu(prev => !prev)
     setInitMenu(false)
     setMoveBot(prev => !prev)
-    setChangeWidth(false)
   }
   const desktopMenu = () => {
     if (isDesktop) {
