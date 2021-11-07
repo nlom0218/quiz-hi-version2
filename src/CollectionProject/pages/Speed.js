@@ -18,6 +18,7 @@ const Container = styled.div`
   `}
   ${customMedia.greaterThan("desktop")`
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    animation: none;
   `}
 `
 
