@@ -43,7 +43,7 @@ const MenuBar = styled.div`
   justify-self: end;
 `
 
-const Header = ({ setMoveBot, isDesktop, setChangeWidth }) => {
+const Header = ({ setMoveBot, isDesktop }) => {
   const [seeMenu, setSeeMenu] = useState(false)
   const [initMenu, setInitMenu] = useState(true)
   const onClickMenu = () => {

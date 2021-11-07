@@ -25,7 +25,7 @@ import StudentNotFound from './pages/StudentNotFound';
 import PasswordReset from './pages/PasswordReset';
 import Administrator from "./pages/Administrator"
 import Main from './CollectionProject/pages/Main';
-import SpeedQuiz from './CollectionProject/pages/SpeedQuiz';
+import SpeedQuiz from './CollectionProject/pages/Speed/SpeedQuiz';
 
 function App() {
   const darkMode = useReactiveVar(darkModeVar)

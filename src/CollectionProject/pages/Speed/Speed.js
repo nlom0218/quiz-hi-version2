@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { mobileMoveBot, mobileMoveTop, tabletMoveBot, tabletMoveTop } from '../../animation/fade';
-import { speedQuizList } from '../../Quiz/SpeedQuiz/SpeedQuizList';
-import { customMedia } from '../../styles';
+import { mobileMoveBot, mobileMoveTop, tabletMoveBot, tabletMoveTop } from '../../../animation/fade';
+import { speedQuizList } from '../../../Quiz/SpeedQuiz/SpeedQuizList';
+import { customMedia } from '../../../styles';
 
 const Container = styled.div`
   padding: 20px;
@@ -27,10 +27,10 @@ const Container = styled.div`
 const QuizList = styled.div`
   width: 100%;
   background-image: url(${props => props.img});
-  height: 350px;
-  height: 21.875rem;
   background-size: cover;
   background-position: center;
+  height: 350px;
+  height: 21.875rem;
   display: grid;
   align-content: flex-end;
   cursor: pointer;
