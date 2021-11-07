@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { collectionMenuFadeIn, collectionMenuFadeOut } from '../../animation/fade';
+import { collectionMenuFadeIn, collectionMenuFadeOut, collectionMenuFadeOutTablet } from '../../animation/fade';
 import { customMedia } from '../../styles';
 
 const SContents = styled.div`
   width: 100%;
   position: absolute;
-  top: ${props => props.seeMenu ? "-200px" : "50px"};
-  top: ${props => props.seeMenu ? "-12.5rem" : "3.125rem"};
+  top: ${props => props.seeMenu ? "-150px" : "50px"};
+  top: ${props => props.seeMenu ? "-9.375rem" : "3.125rem"};
   background-color: ${props => props.theme.fontColor};
   color: ${props => props.theme.bgColor};
   transition: background-color 1s ease, color 1s ease;
@@ -16,8 +16,9 @@ const SContents = styled.div`
   animation: ${props => props.seeMenu ? collectionMenuFadeIn : collectionMenuFadeOut} 1s ease forwards;
   z-index: -1;
   ${customMedia.greaterThan("tablet")`
-    top: ${props => props.seeMenu ? "-100px" : "50px"};
-    top: ${props => props.seeMenu ? "-6.25rem" : "3.125rem"};
+    top: ${props => props.seeMenu ? "-50px" : "50px"};
+    top: ${props => props.seeMenu ? "-3.125rem" : "3.125rem"};
+    animation: ${props => props.seeMenu ? collectionMenuFadeIn : collectionMenuFadeOutTablet} 1s ease forwards;
   `}
   ${customMedia.greaterThan("desktop")`
     position: static;

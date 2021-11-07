@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router';
 import styled from 'styled-components';
 import NavBtn from '../../components/NavBtn';
@@ -11,10 +11,10 @@ const Container = styled.div`
 
 const Main = () => {
   const { type } = useParams()
-  console.log(type);
+  const [moveBot, setMoveBot] = useState(false)
   return (<Container>
-    <Header />
-    {type === "speed" && <Speed />}
+    <Header setMoveBot={setMoveBot} />
+    {type === "speed" && <Speed moveBot={moveBot} />}
     <NavBtn />
   </Container>);
 }

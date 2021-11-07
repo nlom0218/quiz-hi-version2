@@ -47,11 +47,54 @@ export const collectionMenuFadeOut = keyframes`
   from {
   }
   to {
-    top: -200px;
-    top: -12.5rem;
-    ${customMedia.greaterThan("tablet")`
-      top: -100px;
-      top: -6.25rem;
-    `}
+    top: -150px;
+    top: -9.375rem;
+  }
+`
+
+export const collectionMenuFadeOutTablet = keyframes`
+  from {
+  }
+  to {
+    top: -50px;
+    top: -3.175rem;
+  }
+`
+
+export const mobileMoveBot = keyframes`
+  form {
+  }
+  to {
+    transform: translateY(200px);
+    transform: translateY(12.5rem);
+  }
+`
+
+export const tabletMoveBot = keyframes`
+  form {
+  }
+  to {
+    transform: translateY(100px);
+    transform: translateY(6.25rem);
+  }
+`
+
+export const mobileMoveTop = keyframes`
+  from {
+    transform: translateY(200px);
+    transform: translateY(12.5rem);
+  }
+  to {
+    transform: translateY(0);
+  }
+`
+
+export const tabletMoveTop = keyframes`
+  from {
+    transform: translateY(100px);
+    transform: translateY(6.25rem);
+  }
+  to {
+    transform: translateY(0);
   }
 `

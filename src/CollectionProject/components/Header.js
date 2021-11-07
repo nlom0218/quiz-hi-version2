@@ -43,7 +43,7 @@ const MenuBar = styled.div`
   justify-self: end;
 `
 
-const Header = () => {
+const Header = ({ setMoveBot }) => {
   const [seeMenu, setSeeMenu] = useState(false)
   const [initMenu, setInitMenu] = useState(true)
   const isDesktop = useMediaQuery({
@@ -55,6 +55,7 @@ const Header = () => {
   const onClickMenu = () => {
     setSeeMenu(prev => !prev)
     setInitMenu(false)
+    setMoveBot(prev => !prev)
   }
   const desktopMenu = () => {
     if (isDesktop) {

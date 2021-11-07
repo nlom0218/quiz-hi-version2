@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { mobileMoveBot, mobileMoveTop, tabletMoveBot, tabletMoveTop } from '../../animation/fade';
 import { customMedia } from '../../styles';
 
 const Container = styled.div`
@@ -10,9 +11,10 @@ const Container = styled.div`
   row-gap: 1.25rem;
   column-gap: 20px;
   column-gap: 1.25rem;
-  z-index: -2;
+  animation: ${props => props.moveBot ? mobileMoveBot : mobileMoveTop} 1s ease forwards;
   ${customMedia.greaterThan("tablet")`
     grid-template-columns: 1fr 1fr;
+    animation: ${props => props.moveBot ? tabletMoveBot : tabletMoveTop} 1s ease forwards;
   `}
   ${customMedia.greaterThan("desktop")`
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -26,19 +28,67 @@ const QuizList = styled.div`
   height: 21.875rem;
   background-size: cover;
   background-position: center;
+  display: grid;
+  align-content: flex-end;
+  cursor: pointer;
   ${customMedia.greaterThan("desktop")`
     height: 300px;
     height: 18.75rem;
+    display: block;
   `}
 `
 
-const Speed = () => {
-  return (<Container>
+const QuizInfo = styled.div`
+  background: ${props => props.theme.fontColor};
+  color: ${props => props.theme.bgColor};
+  padding: 10px 5%;
+  padding: 0.625rem 5%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  transition: background 1s ease, color 1s ease;
+  opacity: 0.9;
+  ${customMedia.greaterThan("desktop")`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  `}
+`
+
+const Topic = styled.div`
+  margin-right: 20px;
+  margin-right: 1.25rem;
+  ${customMedia.greaterThan("desktop")`
+    margin: 0px;
+    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
+  `}
+`
+
+const QuizNum = styled.div``
+
+const Speed = ({ moveBot }) => {
+  console.log(moveBot);
+  return (<Container moveBot={moveBot}>
     <QuizList img="https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1548&q=80">
+      <QuizInfo>
+        <Topic>동물</Topic>
+        <QuizNum>30문제</QuizNum>
+      </QuizInfo>
     </QuizList>
     <QuizList img="https://images.unsplash.com/photo-1550985543-49bee3167284?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80">
+      <QuizInfo>
+        <Topic>교실 물건</Topic>
+        <QuizNum>30문제</QuizNum>
+      </QuizInfo>
     </QuizList>
     <QuizList img="https://images.unsplash.com/photo-1571254120989-7a3c07c50c98?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=772&q=80">
+      <QuizInfo>
+        <Topic>학용품</Topic>
+        <QuizNum>30문제</QuizNum>
+      </QuizInfo>
     </QuizList>
   </Container>);
 }
