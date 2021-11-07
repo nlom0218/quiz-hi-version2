@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { mobileMoveBot, mobileMoveTop, tabletMoveBot, tabletMoveTop } from '../../animation/fade';
+import { speedQuizList } from '../../Quiz/SpeedQuiz/SpeedQuizList';
 import { customMedia } from '../../styles';
 
 const Container = styled.div`
@@ -32,6 +33,9 @@ const QuizList = styled.div`
   display: grid;
   align-content: flex-end;
   cursor: pointer;
+  box-shadow: ${props => props.theme.boxShadow};
+  border-radius: 3px;
+  border-radius: 0.1875rem;
   ${customMedia.greaterThan("desktop")`
     height: 300px;
     height: 18.75rem;
@@ -49,6 +53,10 @@ const QuizInfo = styled.div`
   justify-content: flex-end;
   transition: background 1s ease, color 1s ease;
   opacity: 0.9;
+  border-bottom-left-radius: 3px;
+  border-bottom-left-radius: 0.1875rem;
+  border-bottom-right-radius: 3px;
+  border-bottom-right-radius: 0.1875rem;
   ${customMedia.greaterThan("desktop")`
     display: flex;
     flex-direction: column;
@@ -61,6 +69,8 @@ const QuizInfo = styled.div`
     }
     transition: ${props => !props.changeWidth && "opacity 0.4s ease"};
     font-weight: 600;
+    border-radius: 3px;
+    border-radius: 0.1875rem;
   `}
 `
 
@@ -84,30 +94,14 @@ const Speed = ({ moveBot, changeWidth, setChangeWidth }) => {
     setChangeWidth(true)
   }
   return (<Container moveBot={moveBot} changeWidth={changeWidth}>
-    <QuizList img="https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1548&q=80">
-      <QuizInfo changeWidth={changeWidth} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-        <Topic>동물</Topic>
-        <QuizNum>30문제</QuizNum>
-      </QuizInfo>
-    </QuizList>
-    <QuizList img="https://images.unsplash.com/photo-1550985543-49bee3167284?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80">
-      <QuizInfo changeWidth={changeWidth} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-        <Topic>교실 물건</Topic>
-        <QuizNum>30문제</QuizNum>
-      </QuizInfo>
-    </QuizList>
-    <QuizList img="https://images.unsplash.com/photo-1571254120989-7a3c07c50c98?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=772&q=80">
-      <QuizInfo changeWidth={changeWidth} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-        <Topic>학용품</Topic>
-        <QuizNum>30문제</QuizNum>
-      </QuizInfo>
-    </QuizList>
-    <QuizList img="https://images.unsplash.com/photo-1506917847218-5725045a0731?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80">
-      <QuizInfo changeWidth={changeWidth} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-        <Topic>탈것</Topic>
-        <QuizNum>30문제</QuizNum>
-      </QuizInfo>
-    </QuizList>
+    {speedQuizList.map((item, index) => {
+      return <QuizList img={item.imageURL} key={index}>
+        <QuizInfo changeWidth={changeWidth} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+          <Topic>{item.topic}</Topic>
+          <QuizNum>{item.quizNum}문제</QuizNum>
+        </QuizInfo>
+      </QuizList>
+    })}
   </Container>);
 }
 
