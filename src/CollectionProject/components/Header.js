@@ -43,19 +43,14 @@ const MenuBar = styled.div`
   justify-self: end;
 `
 
-const Header = ({ setMoveBot }) => {
+const Header = ({ setMoveBot, isDesktop, setChangeWidth }) => {
   const [seeMenu, setSeeMenu] = useState(false)
   const [initMenu, setInitMenu] = useState(true)
-  const isDesktop = useMediaQuery({
-    query: "(min-width: 1024px)"
-  })
-  const isTablet = useMediaQuery({
-    query: "(min-width: 768px)"
-  })
   const onClickMenu = () => {
     setSeeMenu(prev => !prev)
     setInitMenu(false)
     setMoveBot(prev => !prev)
+    setChangeWidth(false)
   }
   const desktopMenu = () => {
     if (isDesktop) {
