@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { collectionMenuFadeIn, collectionMenuFadeOut, collectionMenuFadeOutTablet } from '../../animation/fade';
 import { customMedia } from '../../styles';
@@ -48,6 +49,9 @@ const ContentsItem = styled.li`
     margin-left: 30px;
     margin-left: 1.875rem;
   `}
+  a {
+    color: ${props => props.theme.bgColor};
+  }
 `
 
 const ItemDot = styled.span`
@@ -61,7 +65,7 @@ const Contents = ({ seeMenu }) => {
       <ContentsItem><ItemDot>•</ItemDot> 스피드 퀴즈</ContentsItem>
       <ContentsItem><ItemDot>•</ItemDot> 스피드 퀴즈</ContentsItem>
       <ContentsItem><ItemDot>•</ItemDot> 스피드 퀴즈</ContentsItem>
-      <ContentsItem><ItemDot>•</ItemDot> 스피드 퀴즈</ContentsItem>
+      <ContentsItem><ItemDot>•</ItemDot><Link to="/experiment">  실험 페이지</Link></ContentsItem>
     </ContentsList>
   </SContents>);
 }

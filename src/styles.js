@@ -33,7 +33,11 @@ export const lightTheme = {
   blurColor: "rgb(255, 255, 255, 0.6)",
   blurBgColor: "rgb(244, 244, 244, 0.9)",
   grayColor: "#EBEBEB",
-  boxShadow: "0px 17px 6px -14px rgba(0,0,0,0.2)"
+  boxShadow: "0px 17px 6px -14px rgba(0,0,0,0.2)",
+  gradient: `to right,
+  rgba(200, 200, 200, 0.1) 20%,
+  rgba(200, 200, 200, 0.7) 80%,
+  rgba(200, 200, 200, 1)`
 }
 export const darkTheme = {
   fontColor: color.white,
@@ -43,7 +47,11 @@ export const darkTheme = {
   blurColor: "rgb(0, 0, 0, 0.6)",
   blurBgColor: "rgb(63, 63, 63, 0.8)",
   grayColor: "#5A5A5A",
-  boxShadow: "0px 17px 6px -14px rgba(0,0,0,0.2)"
+  boxShadow: "0px 17px 6px -14px rgba(0,0,0,0.2)",
+  gradient: `to right,
+  rgba(20, 20, 20, 0.1) 20%,
+  rgba(20, 20, 20, 0.7) 80%,
+  rgba(20, 20, 20, 1)`,
 }
 
 export const GlobalStyle = createGlobalStyle`

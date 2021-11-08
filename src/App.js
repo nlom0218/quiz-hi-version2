@@ -26,6 +26,7 @@ import PasswordReset from './pages/PasswordReset';
 import Administrator from "./pages/Administrator"
 import Main from './CollectionProject/pages/Main';
 import SpeedQuiz from './CollectionProject/pages/Speed/SpeedQuiz';
+import Experiment from './CollectionProject/pages/Experiment/Experiment';
 
 function App() {
   const darkMode = useReactiveVar(darkModeVar)
@@ -56,6 +57,7 @@ function App() {
           <Route exact path="/password-reset">{isLoggedIn ? <PasswordReset /> : <NotFound />}</Route>
           <Route exact path="/collection/:type"><Main /></Route>
           <Route exact path="/collection/speed/:id"><SpeedQuiz /></Route>
+          <Route exact path="/experiment"><Experiment /></Route>
           <Route path="/admin/:mode">{user?.username === "nlom0218" ? <Administrator /> : <NotFound />}</Route>
           <Route><NotFound /></Route>
         </Switch>

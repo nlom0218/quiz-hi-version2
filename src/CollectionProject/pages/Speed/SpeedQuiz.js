@@ -9,9 +9,9 @@ const Container = styled.div`
 `
 
 const SpeedQuiz = () => {
-  useEffect(() => {
-    document.body.requestFullscreen()
-  })
+  // useEffect(() => {
+  //   document.body.requestFullscreen()
+  // })
   return (<Container>
 
   </Container>);
