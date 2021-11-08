@@ -10,9 +10,11 @@ const Container = styled.div`
   grid-template-rows: 100px auto 100px;
   background: linear-gradient(
     ${props => props.theme.gradient}
-  ),url("https://source.unsplash.com/random/1920*1080?school");
+  ),url("https://source.unsplash.com/random/1920*1080?nature");
   background-size: cover;
   background-position: center;
+  color: ${props => props.theme.fontColor};
+  transition: color 0.5s ease;
 `
 
 const Header = styled.div`
@@ -23,7 +25,6 @@ const Header = styled.div`
 `
 
 const MenuBtn = styled.div`
-  color: ${props => props.theme.fontColor};
   font-size: 20px;
   font-size: 1.25rem;
   cursor: pointer;
@@ -38,15 +39,16 @@ const Footer = styled.div`
 `
 
 const Experiment = () => {
-  return (<Container>
-    <NavBtn />
-    <Header>
-      <MenuBtn><FontAwesomeIcon icon={faBars} /></MenuBtn>
-    </Header>
-    <Content>
-    </Content>
-    <Footer></Footer>
-  </Container>);
+  return (
+    <Container>
+      <NavBtn />
+      <Header>
+        <MenuBtn><FontAwesomeIcon icon={faBars} /></MenuBtn>
+      </Header>
+      <Content>
+      </Content>
+      <Footer></Footer>
+    </Container>);
 }
 
 export default Experiment;
