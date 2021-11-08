@@ -2,7 +2,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import styled from 'styled-components';
-import NavBtn from '../../../components/NavBtn';
+import NavBtn from './NavBtn';
 
 const Container = styled.div`
   height: 100vh;
