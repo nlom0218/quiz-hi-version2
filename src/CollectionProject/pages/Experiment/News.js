@@ -52,7 +52,7 @@ const News = () => {
   const onMouseEnter = () => { }
   return (<Container>
     <SNews>
-      <Image onMouseEnter={onMouseEnter} />
+      <Image onMouseEnter={onMouseEnter}></Image>
     </SNews>
     <SNews>
       <Image />
