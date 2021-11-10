@@ -15,6 +15,7 @@ const Container = styled.div`
   background: linear-gradient(
     ${props => props.theme.gradient}
   ),url("https://source.unsplash.com/random/1920*1080?nature");
+  background: url("https://source.unsplash.com/random/1920*1080?nature");
   background-size: cover;
   background-position: center;
   color: ${props => props.theme.fontColor};
@@ -22,6 +23,7 @@ const Container = styled.div`
 `
 
 const Header = styled.div`
+  width: 100%;
   display: grid;
   padding: 20px;
   padding: 1.25rem;
@@ -81,20 +83,20 @@ const MenuBtn = styled.div`
   justify-self: flex-end;
   padding: 5px;
   padding: 0.3125rem;
-  :hover {
+  /* :hover { */
     background: ${props => props.theme.bgColor};
     border-radius: 5px;
     border-radius: 0.3125rem;
     transition: background 1s ease;
-  }
+  /* } */
 `
 
 const Content = styled.div`
   margin: 0 auto;
-  width: 1200px;
+  /* width: 1200px;
   width: 75rem;
   min-width: 1200px;
-  width: 75rem;
+  width: 75rem; */
   /* background: blue; */
 `
 

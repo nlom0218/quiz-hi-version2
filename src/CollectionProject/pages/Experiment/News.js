@@ -1,19 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const MainContainer = styled.div`
-  /* margin: 0 auto;
-  width: 1200px;
-  width: 75rem;
-  min-width: 1200px;
-  width: 75rem;
-  background: blue; */
+const Container = styled.div`
+ display: grid;
+ overflow: scroll;
 `
 
+const SNews = styled.div`
+  /* padding: 20px; */
+  /* background: url("http://ojsfile.ohmynews.com/STD_IMG_FILE/2021/1109/IE002894242_STD.JPG"); */
+  width: 100%;
+  height: 160px;
+  background-size: cover;
+  background-position: center;
+`
+
+const Image = styled.img``
+
 const News = () => {
-  return (<MainContainer>
-    뉴스
-  </MainContainer>);
+  return (<Container>
+    <SNews>
+      <Image src="http://ojsfile.ohmynews.com/STD_IMG_FILE/2021/1109/IE002894242_STD.JPG" />
+    </SNews>
+  </Container>);
 }
 
 export default News;
