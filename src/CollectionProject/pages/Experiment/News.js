@@ -38,6 +38,9 @@ const Image = styled.div`
   background-position: center;
   border: 5px;
   border-radius: 0.3125rem;
+  ${customMedia.greaterThan("tablet")`
+    height: 300px;
+  `}
   ${customMedia.greaterThan("desktop")`
     height: 150px;
   `}

@@ -15,7 +15,7 @@ const Container = styled.div`
   grid-template-rows: 100px 1fr 100px;
   background: url(${bgImg});
   min-height: 100vh;
-  ${customMedia.greaterThan("tablet")`
+  ${customMedia.greaterThan("desktop")`
     height: 100vh;
     background: linear-gradient(
       ${props => props.theme.gradient}
