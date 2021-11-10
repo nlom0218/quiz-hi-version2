@@ -43,13 +43,13 @@ const WeatherBtn = styled.div`
   background: ${props => props.theme.bgColor};
   border-radius: 50%;
   transition: background 1s ease;
-  animation: ${props => props.seeWeather ? weatherBtnDown : weatherBtnUp} 1s ease forwards;
+  animation: ${props => props.firstEnter ? "none" : props.seeWeather ? weatherBtnDown : weatherBtnUp} 1s ease forwards;
 `
 
 const WeatherContent = styled.div`
   position: absolute;
   top: -36px;
-  animation: ${props => props.seeWeather ? weatherDown : weatherUp} 1s ease forwards;
+  animation: ${props => props.firstEnter ? "none" : props.seeWeather ? weatherDown : weatherUp} 1s ease forwards;
   background: ${props => props.theme.bgColor};
   transition: background 1s ease;
   padding: 10px 20px;
@@ -102,14 +102,18 @@ const Footer = styled.div`
 const Experiment = () => {
   const { page } = useParams()
   const [seeWeather, setSeeWeather] = useState(false)
-  const onClickWeatherBtn = () => { setSeeWeather(prev => !prev) }
+  const [firstEnter, setFirstEnter] = useState(true)
+  const onClickWeatherBtn = () => {
+    setSeeWeather(prev => !prev)
+    setFirstEnter(false)
+  }
   return (
     <Container>
       <NavBtn />
       <Header>
         <Weather>
-          <WeatherBtn onClick={onClickWeatherBtn} seeWeather={seeWeather}>{seeWeather ? <FcUp /> : <FcDown />}</WeatherBtn>
-          <WeatherContent seeWeather={seeWeather}>춘천시 4˚ 흐림 미세먼지 좋음</WeatherContent>
+          <WeatherBtn onClick={onClickWeatherBtn} seeWeather={seeWeather} firstEnter={firstEnter}>{seeWeather ? <FcUp /> : <FcDown />}</WeatherBtn>
+          <WeatherContent seeWeather={seeWeather} firstEnter={firstEnter}>춘천시 4˚ 흐림 미세먼지 좋음</WeatherContent>
         </Weather>
         <PageBtn>
           <Link to="/experiment"><FcNews /></Link>
