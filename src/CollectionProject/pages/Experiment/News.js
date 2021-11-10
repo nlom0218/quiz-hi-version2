@@ -40,9 +40,11 @@ const Image = styled.div`
   border-radius: 0.3125rem;
   ${customMedia.greaterThan("tablet")`
     height: 300px;
+    height: 18.75rem;
   `}
   ${customMedia.greaterThan("desktop")`
     height: 150px;
+    height: 9.375rem
   `}
 `
 
