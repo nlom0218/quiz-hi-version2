@@ -54,6 +54,14 @@ const MenuBtn = styled.div`
   font-size: 1.25rem;
   cursor: pointer;
   justify-self: flex-end;
+  padding: 5px;
+  padding: 0.3125rem;
+  :hover {
+    background: ${props => props.theme.bgColor};
+    border-radius: 5px;
+    border-radius: 0.3125rem;
+    transition: background 0.5s ease;
+  }
 `
 
 const Content = styled.div`
