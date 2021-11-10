@@ -1,11 +1,12 @@
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { FcNews, FcCalendar, FcTodoList, FcGrid, FcBookmark } from "react-icons/fc";
+import { FcNews, FcCalendar, FcTodoList, FcGrid, FcBookmark, FcDown, FcUp } from "react-icons/fc";
 import NavBtn from './NavBtn';
 import { Link, useParams } from 'react-router-dom';
 import News from './News';
+import { weatherBtnDown, weatherDown, weatherUp, weatherBtnUp } from '../../../animation/fade';
 
 const Container = styled.div`
   height: 100vh;
@@ -29,13 +30,32 @@ const Header = styled.div`
 `
 
 const Weather = styled.div`
+  justify-self: flex-start;
+`
+
+const WeatherBtn = styled.div`
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+  font-size: 1.5em;
+  font-size: 1.5rem;
+  background: ${props => props.theme.bgColor};
+  border-radius: 50%;
+  transition: background 1s ease;
+  animation: ${props => props.seeWeather ? weatherBtnDown : weatherBtnUp} 1s ease forwards;
+`
+
+const WeatherContent = styled.div`
+  position: absolute;
+  top: -36px;
+  animation: ${props => props.seeWeather ? weatherDown : weatherUp} 1s ease forwards;
   background: ${props => props.theme.bgColor};
   transition: background 1s ease;
   padding: 10px 20px;
   padding: 0.625rem 1.25rem;
   border-radius: 10px;
   border-radius: 0.625rem;
-  justify-self: flex-start;
 `
 
 const PageBtn = styled.div`
@@ -67,6 +87,11 @@ const MenuBtn = styled.div`
 `
 
 const Content = styled.div`
+  margin: 0 auto;
+  width: 1200px;
+  width: 75rem;
+  min-width: 1200px;
+  width: 75rem;
   /* background: blue; */
 `
 
@@ -76,13 +101,15 @@ const Footer = styled.div`
 
 const Experiment = () => {
   const { page } = useParams()
-  console.log(page);
+  const [seeWeather, setSeeWeather] = useState(false)
+  const onClickWeatherBtn = () => { setSeeWeather(prev => !prev) }
   return (
     <Container>
       <NavBtn />
       <Header>
         <Weather>
-          춘천시 4˚ 흐림 미세먼지 좋음
+          <WeatherBtn onClick={onClickWeatherBtn} seeWeather={seeWeather}>{seeWeather ? <FcUp /> : <FcDown />}</WeatherBtn>
+          <WeatherContent seeWeather={seeWeather}>춘천시 4˚ 흐림 미세먼지 좋음</WeatherContent>
         </Weather>
         <PageBtn>
           <Link to="/experiment"><FcNews /></Link>

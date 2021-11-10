@@ -98,3 +98,40 @@ export const tabletMoveTop = keyframes`
     transform: translateY(0);
   }
 `
+
+export const weatherDown = keyframes`
+  from {
+    top: -36px;
+  }
+  to {
+    top: 20px;
+  }
+`
+
+export const weatherUp = keyframes`
+  from {
+    top: 20px;
+  }
+  to {
+    top: -36px;
+  }
+`
+
+export const weatherBtnDown = keyframes`
+  from {
+    top: 20px
+  }
+  to {
+    top: 76px
+  }
+`
+
+export const weatherBtnUp = keyframes`
+  from {
+    top: 76px
+    
+  }
+  to {
+    top: 20px
+  }
+`

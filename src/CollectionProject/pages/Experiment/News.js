@@ -1,18 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Container = styled.div`
-  margin: 0 auto;
+const MainContainer = styled.div`
+  /* margin: 0 auto;
   width: 1200px;
   width: 75rem;
   min-width: 1200px;
   width: 75rem;
+  background: blue; */
 `
 
 const News = () => {
-  return (<Container>
+  return (<MainContainer>
     뉴스
-  </Container>);
+  </MainContainer>);
 }
 
 export default News;
