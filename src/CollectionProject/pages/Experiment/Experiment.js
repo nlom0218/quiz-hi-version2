@@ -8,12 +8,11 @@ import { Link, useParams } from 'react-router-dom';
 import News from './News';
 import { weatherBtnDown, weatherDown, weatherUp, weatherBtnUp } from '../../../animation/fade';
 import { customMedia } from '../../../styles';
-import bgImg from "./body_bg.png"
 import { useMediaQuery } from 'react-responsive';
 
 const Container = styled.div`
   display: grid;
-  grid-template-rows: 100px 1fr 100px;
+  grid-template-rows: auto 1fr 100px;
   min-height: 100vh;
   height: 100vh;
   background: linear-gradient(
@@ -31,8 +30,12 @@ const Header = styled.div`
   display: grid;
   padding: 20px;
   padding: 1.25rem;
-  grid-template-columns: 1fr 1fr 1fr;
-  align-items: flex-start;
+  row-gap: 10px;
+  row-gap: 0.625rem;
+  ${customMedia.greaterThan("tablet")`
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: flex-start;
+  `}
 `
 
 const Weather = styled.div`
@@ -135,12 +138,12 @@ const Experiment = () => {
     <Container>
       <NavBtn />
       <Header>
-        <Weather>
-          {isTablet && <React.Fragment>
+        {isTablet && <Weather>
+          <React.Fragment>
             <WeatherBtn onClick={onClickWeatherBtn} seeWeather={seeWeather} firstEnter={firstEnter}>{seeWeather ? <FcUp /> : <FcDown />}</WeatherBtn>
             <WeatherContent seeWeather={seeWeather} firstEnter={firstEnter}>춘천시 4˚ 흐림 미세먼지 좋음</WeatherContent>
-          </React.Fragment>}
-        </Weather>
+          </React.Fragment>
+        </Weather>}
         <PageBtn>
           <Link to="/experiment"><FcNews /></Link>
           <Link to="/experiment/todo"><FcTodoList /></Link>
@@ -154,7 +157,7 @@ const Experiment = () => {
         {!page && <News />}
       </Content>
       <Footer></Footer>
-    </Container>);
+    </Container >);
 }
 
 export default Experiment;
