@@ -19,7 +19,7 @@ const Container = styled.div`
 const SNews = styled.div`
   padding: 0px 20px;
   padding: 0px 1.25rem;
-  overflow: hidden;
+  cursor: pointer;
   display: grid;
   grid-template-columns: 1fr 1fr;
   ${customMedia.greaterThan("tablet")`
@@ -44,14 +44,15 @@ const Image = styled.div`
   `}
   ${customMedia.greaterThan("desktop")`
     height: 150px;
-    height: 9.375rem
+    height: 9.375rem;
   `}
 `
 
 const News = () => {
+  const onMouseEnter = () => { }
   return (<Container>
     <SNews>
-      <Image />
+      <Image onMouseEnter={onMouseEnter} />
     </SNews>
     <SNews>
       <Image />

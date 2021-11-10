@@ -9,21 +9,19 @@ import News from './News';
 import { weatherBtnDown, weatherDown, weatherUp, weatherBtnUp } from '../../../animation/fade';
 import { customMedia } from '../../../styles';
 import bgImg from "./body_bg.png"
+import { useMediaQuery } from 'react-responsive';
 
 const Container = styled.div`
   display: grid;
   grid-template-rows: 100px 1fr 100px;
-  background: url(${bgImg});
   min-height: 100vh;
-  ${customMedia.greaterThan("desktop")`
-    height: 100vh;
-    background: linear-gradient(
-      ${props => props.theme.gradient}
-    ),url("https://source.unsplash.com/random/1920*1080?nature");
-    background: url("https://source.unsplash.com/random/1920*1080?nature");
-    background-size: cover;
-    background-position: center;
-    `}
+  height: 100vh;
+  background: linear-gradient(
+    ${props => props.theme.gradient}
+  ),url("https://source.unsplash.com/random/1920*1080?nature");
+  background: url("https://source.unsplash.com/random/1920*1080?nature");
+  background-size: cover;
+  background-position: center;
   color: ${props => props.theme.fontColor};
   transition: color 1s ease;
 `
@@ -80,12 +78,11 @@ const PageBtn = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   column-gap: 20px;
   column-gap: 1.25rem;
-  ${customMedia.greaterThan("desktop")`
-    padding: 5px 20px;
-    background: ${props => props.theme.bgColor};
-    border-radius: 5px;
-    transition: background 1s ease; 
-  `}
+  padding: 5px 20px;
+  background: ${props => props.theme.bgColor};
+  border-radius: 5px;
+  transition: background 1s ease; 
+
 `
 
 const MenuBtn = styled.div`
@@ -112,6 +109,7 @@ const Content = styled.div`
   width: 100%;
   max-width: 75rem;
   display: grid;
+  overflow: scroll;
   /* background: blue; */
 `
 
@@ -127,13 +125,21 @@ const Experiment = () => {
     setSeeWeather(prev => !prev)
     setFirstEnter(false)
   }
+  const isDesktop = useMediaQuery({
+    query: "(min-width: 1024px)"
+  })
+  const isTablet = useMediaQuery({
+    query: "(min-width: 768px)"
+  })
   return (
     <Container>
       <NavBtn />
       <Header>
         <Weather>
-          <WeatherBtn onClick={onClickWeatherBtn} seeWeather={seeWeather} firstEnter={firstEnter}>{seeWeather ? <FcUp /> : <FcDown />}</WeatherBtn>
-          <WeatherContent seeWeather={seeWeather} firstEnter={firstEnter}>춘천시 4˚ 흐림 미세먼지 좋음</WeatherContent>
+          {isTablet && <React.Fragment>
+            <WeatherBtn onClick={onClickWeatherBtn} seeWeather={seeWeather} firstEnter={firstEnter}>{seeWeather ? <FcUp /> : <FcDown />}</WeatherBtn>
+            <WeatherContent seeWeather={seeWeather} firstEnter={firstEnter}>춘천시 4˚ 흐림 미세먼지 좋음</WeatherContent>
+          </React.Fragment>}
         </Weather>
         <PageBtn>
           <Link to="/experiment"><FcNews /></Link>
