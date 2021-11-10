@@ -80,6 +80,12 @@ const PageBtn = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   column-gap: 20px;
   column-gap: 1.25rem;
+  ${customMedia.greaterThan("desktop")`
+    padding: 5px 20px;
+    background: ${props => props.theme.bgColor};
+    border-radius: 5px;
+    transition: background 1s ease; 
+  `}
 `
 
 const MenuBtn = styled.div`
