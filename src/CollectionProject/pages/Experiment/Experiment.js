@@ -36,11 +36,13 @@ const Weather = styled.div`
 const WeatherBtn = styled.div`
   position: absolute;
   top: 20px;
+  top: 1.25rem;
   left: 20px;
+  left: 1.25rem;
   cursor: pointer;
   font-size: 1.5em;
   font-size: 1.5rem;
-  background: ${props => props.theme.bgColor};
+  background: #e8e8e8;
   border-radius: 50%;
   transition: background 1s ease;
   animation: ${props => props.firstEnter ? "none" : props.seeWeather ? weatherBtnDown : weatherBtnUp} 1s ease forwards;
@@ -49,6 +51,7 @@ const WeatherBtn = styled.div`
 const WeatherContent = styled.div`
   position: absolute;
   top: -36px;
+  top: -2.25rem;
   animation: ${props => props.firstEnter ? "none" : props.seeWeather ? weatherDown : weatherUp} 1s ease forwards;
   background: ${props => props.theme.bgColor};
   transition: background 1s ease;
@@ -82,7 +85,7 @@ const MenuBtn = styled.div`
     background: ${props => props.theme.bgColor};
     border-radius: 5px;
     border-radius: 0.3125rem;
-    transition: background 0.5s ease;
+    transition: background 1s ease;
   }
 `
 
