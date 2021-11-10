@@ -7,17 +7,23 @@ import NavBtn from './NavBtn';
 import { Link, useParams } from 'react-router-dom';
 import News from './News';
 import { weatherBtnDown, weatherDown, weatherUp, weatherBtnUp } from '../../../animation/fade';
+import { customMedia } from '../../../styles';
+import bgImg from "./body_bg.png"
 
 const Container = styled.div`
-  height: 100vh;
   display: grid;
-  grid-template-rows: 100px auto 100px;
-  background: linear-gradient(
-    ${props => props.theme.gradient}
-  ),url("https://source.unsplash.com/random/1920*1080?nature");
-  background: url("https://source.unsplash.com/random/1920*1080?nature");
-  background-size: cover;
-  background-position: center;
+  grid-template-rows: 100px 1fr 100px;
+  background: url(${bgImg});
+  min-height: 100vh;
+  ${customMedia.greaterThan("tablet")`
+    height: 100vh;
+    background: linear-gradient(
+      ${props => props.theme.gradient}
+    ),url("https://source.unsplash.com/random/1920*1080?nature");
+    background: url("https://source.unsplash.com/random/1920*1080?nature");
+    background-size: cover;
+    background-position: center;
+    `}
   color: ${props => props.theme.fontColor};
   transition: color 1s ease;
 `
@@ -65,8 +71,8 @@ const WeatherContent = styled.div`
 
 const PageBtn = styled.div`
   justify-self: center;
-  font-size: 2.25em;
-  font-size: 2.25rem;
+  font-size: 2.75em;
+  font-size: 2.75rem;
   svg {
     cursor: pointer;
   }
@@ -97,6 +103,9 @@ const Content = styled.div`
   width: 75rem;
   min-width: 1200px;
   width: 75rem; */
+  width: 100%;
+  max-width: 75rem;
+  display: grid;
   /* background: blue; */
 `
 
