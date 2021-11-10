@@ -22,8 +22,7 @@ const Header = styled.div`
   display: grid;
   padding: 20px;
   padding: 1.25rem;
-  grid-template-columns: auto 1fr auto;
-  justify-items: end;
+  grid-template-columns: 1fr 1fr 1fr;
   align-items: flex-start;
 `
 
@@ -34,14 +33,27 @@ const Weather = styled.div`
   padding: 0.625rem 1.25rem;
   border-radius: 10px;
   border-radius: 0.625rem;
+  justify-self: flex-start;
 `
 
-const PageBtn = styled.div``
+const PageBtn = styled.div`
+  justify-self: center;
+  font-size: 36px;
+  font-size: 2.25rem;
+  svg {
+    cursor: pointer;
+  }
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: 20px;
+  column-gap: 1.25rem;
+`
 
 const MenuBtn = styled.div`
   font-size: 20px;
   font-size: 1.25rem;
   cursor: pointer;
+  justify-self: flex-end;
 `
 
 const Content = styled.div`
