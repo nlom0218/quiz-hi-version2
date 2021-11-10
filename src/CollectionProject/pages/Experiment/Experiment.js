@@ -2,8 +2,10 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import styled from 'styled-components';
-import { FcNews, FcCalendar, FcTodoList, FcGrid } from "react-icons/fc";
+import { FcNews, FcCalendar, FcTodoList, FcGrid, FcBookmark } from "react-icons/fc";
 import NavBtn from './NavBtn';
+import { Link, useParams } from 'react-router-dom';
+import News from './News';
 
 const Container = styled.div`
   height: 100vh;
@@ -38,13 +40,13 @@ const Weather = styled.div`
 
 const PageBtn = styled.div`
   justify-self: center;
-  font-size: 36px;
+  font-size: 2.25em;
   font-size: 2.25rem;
   svg {
     cursor: pointer;
   }
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   column-gap: 20px;
   column-gap: 1.25rem;
 `
@@ -73,21 +75,26 @@ const Footer = styled.div`
 `
 
 const Experiment = () => {
+  const { page } = useParams()
+  console.log(page);
   return (
     <Container>
       <NavBtn />
       <Header>
-        <Weather>춘천시 4˚ 흐림 미세먼지 좋음
+        <Weather>
+          춘천시 4˚ 흐림 미세먼지 좋음
         </Weather>
         <PageBtn>
-          <FcNews />
-          <FcTodoList />
-          <FcCalendar />
-          <FcGrid />
+          <Link to="/experiment"><FcNews /></Link>
+          <Link to="/experiment/todo"><FcTodoList /></Link>
+          <Link to="/experiment/calendar"><FcCalendar /></Link>
+          <Link to="/experiment/link"><FcBookmark /></Link>
+          <Link to="/experiment/menu"><FcGrid /></Link>
         </PageBtn>
         <MenuBtn><FontAwesomeIcon icon={faBars} /></MenuBtn>
       </Header>
       <Content>
+        {!page && <News />}
       </Content>
       <Footer></Footer>
     </Container>);

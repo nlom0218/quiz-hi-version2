@@ -58,6 +58,7 @@ function App() {
           <Route exact path="/collection/:type"><Main /></Route>
           <Route exact path="/collection/speed/:id"><SpeedQuiz /></Route>
           <Route exact path="/experiment"><Experiment /></Route>
+          <Route exact path="/experiment/:page"><Experiment /></Route>
           <Route path="/admin/:mode">{user?.username === "nlom0218" ? <Administrator /> : <NotFound />}</Route>
           <Route><NotFound /></Route>
         </Switch>
