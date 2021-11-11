@@ -9,6 +9,7 @@ import News from './News';
 import { weatherBtnDown, weatherDown, weatherUp, weatherBtnUp } from '../../../animation/fade';
 import { customMedia } from '../../../styles';
 import { useMediaQuery } from 'react-responsive';
+import FunctionPage from './FunctionPage';
 
 const Container = styled.div`
   display: grid;
@@ -159,6 +160,7 @@ const Experiment = () => {
       </Header>
       <Content>
         {!page && <News />}
+        {page === "menu" && <FunctionPage />}
       </Content>
       <Footer></Footer>
     </Container >);
