@@ -69,11 +69,11 @@ const FunctionPage = () => {
     </Icon>
     <Icon>
       <GiForkKnifeSpoon />
-      <Title>시간표</Title>
+      <Title>식단표</Title>
     </Icon>
     <Icon>
       <BsTable />
-      <Title>식단표</Title>
+      <Title>시간표</Title>
     </Icon>
     <Icon>
       <GiNotebook />
@@ -97,11 +97,11 @@ const FunctionPage = () => {
     </Icon>
     <Icon>
       <GiForkKnifeSpoon />
-      <Title>시간표</Title>
+      <Title>식단표</Title>
     </Icon>
     <Icon>
       <BsTable />
-      <Title>식단표</Title>
+      <Title>시간표</Title>
     </Icon>
     <Icon>
       <GiNotebook />
@@ -125,11 +125,11 @@ const FunctionPage = () => {
     </Icon>
     <Icon>
       <GiForkKnifeSpoon />
-      <Title>시간표</Title>
+      <Title>식단표</Title>
     </Icon>
     <Icon>
       <BsTable />
-      <Title>식단표</Title>
+      <Title>시간표</Title>
     </Icon>
     <Icon>
       <GiNotebook />
@@ -153,11 +153,11 @@ const FunctionPage = () => {
     </Icon>
     <Icon>
       <GiForkKnifeSpoon />
-      <Title>시간표</Title>
+      <Title>식단표</Title>
     </Icon>
     <Icon>
       <BsTable />
-      <Title>식단표</Title>
+      <Title>시간표</Title>
     </Icon>
     <Icon>
       <GiNotebook />
@@ -181,11 +181,11 @@ const FunctionPage = () => {
     </Icon>
     <Icon>
       <GiForkKnifeSpoon />
-      <Title>시간표</Title>
+      <Title>식단표</Title>
     </Icon>
     <Icon>
       <BsTable />
-      <Title>식단표</Title>
+      <Title>시간표</Title>
     </Icon>
     <Icon>
       <GiNotebook />
@@ -209,16 +209,129 @@ const FunctionPage = () => {
     </Icon>
     <Icon>
       <GiForkKnifeSpoon />
-      <Title>시간표</Title>
+      <Title>식단표</Title>
     </Icon>
     <Icon>
       <BsTable />
-      <Title>식단표</Title>
+      <Title>시간표</Title>
     </Icon>
     <Icon>
       <GiNotebook />
       <Title>학급일지</Title>
     </Icon>
+    <Icon>
+      <FcAlarmClock />
+      <Title>타이머</Title>
+    </Icon>
+    <Icon>
+      <FcDonate />
+      <Title>랜덤뽑기</Title>
+    </Icon>
+    <Icon>
+      <FcRefresh />
+      <Title>자리바꾸기</Title>
+    </Icon>
+    <Icon>
+      <GiBowlOfRice />
+      <Title>급식순서</Title>
+    </Icon>
+    <Icon>
+      <GiForkKnifeSpoon />
+      <Title>식단표</Title>
+    </Icon>
+    <Icon>
+      <BsTable />
+      <Title>시간표</Title>
+    </Icon>
+    <Icon>
+      <GiNotebook />
+      <Title>학급일지</Title>
+    </Icon>
+    <Icon>
+      <FcAlarmClock />
+      <Title>타이머</Title>
+    </Icon>
+    <Icon>
+      <FcDonate />
+      <Title>랜덤뽑기</Title>
+    </Icon>
+    <Icon>
+      <FcRefresh />
+      <Title>자리바꾸기</Title>
+    </Icon>
+    <Icon>
+      <GiBowlOfRice />
+      <Title>급식순서</Title>
+    </Icon>
+    <Icon>
+      <GiForkKnifeSpoon />
+      <Title>식단표</Title>
+    </Icon>
+    <Icon>
+      <BsTable />
+      <Title>시간표</Title>
+    </Icon>
+    <Icon>
+      <GiNotebook />
+      <Title>학급일지</Title>
+    </Icon>
+    <Icon>
+      <FcAlarmClock />
+      <Title>타이머</Title>
+    </Icon>
+    <Icon>
+      <FcDonate />
+      <Title>랜덤뽑기</Title>
+    </Icon>
+    <Icon>
+      <FcRefresh />
+      <Title>자리바꾸기</Title>
+    </Icon>
+    <Icon>
+      <GiBowlOfRice />
+      <Title>급식순서</Title>
+    </Icon>
+    <Icon>
+      <GiForkKnifeSpoon />
+      <Title>식단표</Title>
+    </Icon>
+    <Icon>
+      <BsTable />
+      <Title>시간표</Title>
+    </Icon>
+    <Icon>
+      <GiNotebook />
+      <Title>학급일지</Title>
+    </Icon>
+    <Icon>
+      <FcAlarmClock />
+      <Title>타이머</Title>
+    </Icon>
+    <Icon>
+      <FcDonate />
+      <Title>랜덤뽑기</Title>
+    </Icon>
+    <Icon>
+      <FcRefresh />
+      <Title>자리바꾸기</Title>
+    </Icon>
+    <Icon>
+      <GiBowlOfRice />
+      <Title>급식순서</Title>
+    </Icon>
+    <Icon>
+      <GiForkKnifeSpoon />
+      <Title>식단표</Title>
+    </Icon>
+    <Icon>
+      <BsTable />
+      <Title>시간표</Title>
+    </Icon>
+    <Icon>
+      <GiNotebook />
+      <Title>학급일지</Title>
+    </Icon>
+
   </Container>);
 }
 
