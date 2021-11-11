@@ -113,7 +113,11 @@ const Content = styled.div`
   max-width: 75rem;
   display: grid;
   overflow: scroll;
-  /* background: blue; */
+  -ms-overflow-style: none; // IE and Edge
+  scrollbar-width: none; // Firefox
+  ::-webkit-scrollbar {
+    display: none; // Chrome, Safari, Opera
+  }
 `
 
 const Footer = styled.div`
