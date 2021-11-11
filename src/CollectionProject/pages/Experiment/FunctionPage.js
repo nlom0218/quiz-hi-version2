@@ -39,18 +39,158 @@ const Icon = styled.div`
   cursor: pointer;
   svg {
     margin: 0 auto;
-    font-size: 40px;
+    font-size: 2.5em;
     font-size: 2.5rem;
   }
 `
 
 const Title = styled.div`
-  font-weight: 600;
+  font-weight: 500;
 `
 
 const FunctionPage = () => {
   // 타이머, 랜덤뽑기, 자리 바꾸기, 급식 순서 정하기, 시간표, 식단표, 학급 일지
   return (<Container>
+    <Icon>
+      <FcAlarmClock />
+      <Title>타이머</Title>
+    </Icon>
+    <Icon>
+      <FcDonate />
+      <Title>랜덤뽑기</Title>
+    </Icon>
+    <Icon>
+      <FcRefresh />
+      <Title>자리바꾸기</Title>
+    </Icon>
+    <Icon>
+      <GiBowlOfRice />
+      <Title>급식순서</Title>
+    </Icon>
+    <Icon>
+      <GiForkKnifeSpoon />
+      <Title>시간표</Title>
+    </Icon>
+    <Icon>
+      <BsTable />
+      <Title>식단표</Title>
+    </Icon>
+    <Icon>
+      <GiNotebook />
+      <Title>학급일지</Title>
+    </Icon>
+    <Icon>
+      <FcAlarmClock />
+      <Title>타이머</Title>
+    </Icon>
+    <Icon>
+      <FcDonate />
+      <Title>랜덤뽑기</Title>
+    </Icon>
+    <Icon>
+      <FcRefresh />
+      <Title>자리바꾸기</Title>
+    </Icon>
+    <Icon>
+      <GiBowlOfRice />
+      <Title>급식순서</Title>
+    </Icon>
+    <Icon>
+      <GiForkKnifeSpoon />
+      <Title>시간표</Title>
+    </Icon>
+    <Icon>
+      <BsTable />
+      <Title>식단표</Title>
+    </Icon>
+    <Icon>
+      <GiNotebook />
+      <Title>학급일지</Title>
+    </Icon>
+    <Icon>
+      <FcAlarmClock />
+      <Title>타이머</Title>
+    </Icon>
+    <Icon>
+      <FcDonate />
+      <Title>랜덤뽑기</Title>
+    </Icon>
+    <Icon>
+      <FcRefresh />
+      <Title>자리바꾸기</Title>
+    </Icon>
+    <Icon>
+      <GiBowlOfRice />
+      <Title>급식순서</Title>
+    </Icon>
+    <Icon>
+      <GiForkKnifeSpoon />
+      <Title>시간표</Title>
+    </Icon>
+    <Icon>
+      <BsTable />
+      <Title>식단표</Title>
+    </Icon>
+    <Icon>
+      <GiNotebook />
+      <Title>학급일지</Title>
+    </Icon>
+    <Icon>
+      <FcAlarmClock />
+      <Title>타이머</Title>
+    </Icon>
+    <Icon>
+      <FcDonate />
+      <Title>랜덤뽑기</Title>
+    </Icon>
+    <Icon>
+      <FcRefresh />
+      <Title>자리바꾸기</Title>
+    </Icon>
+    <Icon>
+      <GiBowlOfRice />
+      <Title>급식순서</Title>
+    </Icon>
+    <Icon>
+      <GiForkKnifeSpoon />
+      <Title>시간표</Title>
+    </Icon>
+    <Icon>
+      <BsTable />
+      <Title>식단표</Title>
+    </Icon>
+    <Icon>
+      <GiNotebook />
+      <Title>학급일지</Title>
+    </Icon>
+    <Icon>
+      <FcAlarmClock />
+      <Title>타이머</Title>
+    </Icon>
+    <Icon>
+      <FcDonate />
+      <Title>랜덤뽑기</Title>
+    </Icon>
+    <Icon>
+      <FcRefresh />
+      <Title>자리바꾸기</Title>
+    </Icon>
+    <Icon>
+      <GiBowlOfRice />
+      <Title>급식순서</Title>
+    </Icon>
+    <Icon>
+      <GiForkKnifeSpoon />
+      <Title>시간표</Title>
+    </Icon>
+    <Icon>
+      <BsTable />
+      <Title>식단표</Title>
+    </Icon>
+    <Icon>
+      <GiNotebook />
+      <Title>학급일지</Title>
+    </Icon>
     <Icon>
       <FcAlarmClock />
       <Title>타이머</Title>
