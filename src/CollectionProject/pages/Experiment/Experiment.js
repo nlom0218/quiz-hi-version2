@@ -85,8 +85,7 @@ const PageBtn = styled.div`
   padding: 5px 20px;
   background: ${props => props.theme.bgColor};
   border-radius: 5px;
-  transition: background 1s ease; 
-
+  transition: background 1s ease;
 `
 
 const MenuBtn = styled.div`
